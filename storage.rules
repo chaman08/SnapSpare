@@ -1,0 +1,255 @@
+rules_version = '2';
+
+// Phase 3: opens the three upload paths this phase's product surface needs.
+// Everything else stays closed by default (see the catch-all at the bottom).
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    // .get(key, default) (not dot access) because a token missing the claim
+    // entirely — e.g. a buyer token, which never has `sellerId` — throws
+    // instead of returning null, which can poison an otherwise-valid `||`.
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.get('role', null) == 'admin';
+    }
+
+    // Mirrors firestore.rules' isSeller(): the `sellerId` custom claim only
+    // exists while the seller's account is active.
+    function isSeller(sellerId) {
+      return isSignedIn() && request.auth.token.get('sellerId', null) == sellerId;
+    }
+
+    // Mirrors firestore.rules' hasSellerPermission() (Phase 13).
+    function hasSellerPermission(sellerId, permission) {
+      return isSeller(sellerId) && (
+        request.auth.token.get('staffRole', null) == null
+        || permission in request.auth.token.get('permissions', [])
+      );
+    }
+
+    function isValidImageUpload(maxBytes) {
+      return request.resource.size <= maxBytes
+        && request.resource.contentType.matches('image/(jpeg|jpg|png|webp|gif)');
+    }
+
+    // ---------------------------------------------------------------------
+    // Listing images — public read (they're shown on the public catalog),
+    // writable only by the owning seller. Max 5MB, image mime types only.
+    // ---------------------------------------------------------------------
+
+    match /sellers/{sellerId}/listings/{allPaths=**} {
+      allow read: if true;
+      // Phase 14: aligned with every other seller-owned write path
+      // (store banner below, firestore.rules' pickupAddresses/settings) —
+      // was isSeller(sellerId) only, which let any staff account upload
+      // listing images regardless of the manage_listings permission.
+      allow write: if hasSellerPermission(sellerId, 'manage_listings') && isValidImageUpload(5 * 1024 * 1024);
+    }
+
+    // Phase 14: images attached to a seller's new-part request (requirement
+    // 2) — same treatment as listing images, public read isn't needed here
+    // (only shown in the seller's own queue view and the admin review
+    // panel) but kept simple/consistent rather than adding a narrower rule.
+    match /sellers/{sellerId}/partRequests/{allPaths=**} {
+      allow read: if hasSellerPermission(sellerId, 'manage_listings') || isAdmin();
+      allow write: if hasSellerPermission(sellerId, 'manage_listings') && isValidImageUpload(5 * 1024 * 1024);
+    }
+
+    // Phase 14 M7: bulk upload source sheets (seller-uploaded) and generated
+    // error reports (server-written by commitBulkListingUpload.ts, which
+    // uses the Admin SDK and so bypasses this rule on write — this only
+    // gates the seller's own upload and their read-back of both files).
+    match /sellers/{sellerId}/bulkUploads/{allPaths=**} {
+      allow read: if hasSellerPermission(sellerId, 'manage_listings') || isAdmin();
+      allow write: if hasSellerPermission(sellerId, 'manage_listings')
+        && request.resource.size <= 10 * 1024 * 1024
+        && request.resource.contentType.matches('text/csv|application/vnd.ms-excel|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    }
+
+    // ---------------------------------------------------------------------
+    // KYC documents — write-only, even for admins, from the client SDK.
+    // Slightly larger cap and PDF allowed alongside images, since these are
+    // scanned certificates/statements as often as photos.
+    //
+    // Phase 13: this is also where onboarding's Step 5 (GST certificate,
+    // PAN, address proof, brand authorisation letters, shop photo) uploads
+    // to, before the applicant is ever a seller — `isOwner(sellerId)` covers
+    // that case, since `sellerId == ownerUserId` by design (see
+    // packages/shared/src/schemas/sellerApplication.ts), so this only ever
+    // lets someone write under their own uid, onboarded or not.
+    //
+    // Phase 23: reads are deliberately `if false` here, not `isAdmin()` —
+    // an admin viewing a KYC document now always goes through
+    // functions/src/seller/getSellerKycDocumentUrls.ts (Admin SDK, short-lived
+    // signed URL, writes an auditLogs entry first), so every view of a
+    // seller's PAN/GST certificate/cancelled cheque is attributable. Direct
+    // rules-gated read access can't be logged (Firestore/Storage rules have
+    // no read-triggered hook), so this closes that gap instead of leaving it.
+    // ---------------------------------------------------------------------
+
+    match /sellers/{sellerId}/kyc/{allPaths=**} {
+      allow read: if false;
+      allow write: if (isSeller(sellerId) || isOwner(sellerId))
+        && request.resource.size <= 10 * 1024 * 1024
+        && request.resource.contentType.matches('image/(jpeg|jpg|png|webp)|application/pdf');
+    }
+
+    // ---------------------------------------------------------------------
+    // Shipping labels (Phase 10) — generated only by generateShippingLabel.ts
+    // (Admin SDK) and handed back to the client as a signed URL, so direct
+    // client writes are never needed. The owning seller (or an admin) may
+    // still read the underlying object directly, matching the KYC block's
+    // treatment above.
+    // ---------------------------------------------------------------------
+
+    match /sellers/{sellerId}/labels/{allPaths=**} {
+      allow read: if isSeller(sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // GST invoices / credit notes (Phase 11) — generated only by
+    // generateInvoiceOnShipped.ts / generateCreditNoteOnReturnRefunded.ts /
+    // getInvoiceUrl.ts / getCreditNoteUrl.ts (Admin SDK). The buyer isn't
+    // granted direct object read here — every download goes through the
+    // getInvoiceUrl/getCreditNoteUrl callables' signed URLs instead, so
+    // authorization is enforced there (buyer OR seller OR admin) rather
+    // than duplicated as an auth() check against the buyer's uid, which
+    // Storage rules can't cheaply cross-reference against the invoice doc's
+    // buyerId the way Firestore rules' get() can. The owning seller/admin
+    // may still read the underlying object directly, same treatment as
+    // labels above.
+    // ---------------------------------------------------------------------
+
+    match /sellers/{sellerId}/invoices/{allPaths=**} {
+      allow read: if isSeller(sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    match /sellers/{sellerId}/creditNotes/{allPaths=**} {
+      allow read: if isSeller(sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Review images — public read (shown alongside published reviews),
+    // writable only by the reviewing user.
+    // ---------------------------------------------------------------------
+
+    match /users/{uid}/reviews/{allPaths=**} {
+      allow read: if true;
+      allow write: if isOwner(uid) && isValidImageUpload(5 * 1024 * 1024);
+    }
+
+    // ---------------------------------------------------------------------
+    // Store page banner (Phase 13's seller settings) — public read like
+    // listing images, writable by the owner or manage_listings staff.
+    // ---------------------------------------------------------------------
+
+    match /sellers/{sellerId}/store/{allPaths=**} {
+      allow read: if true;
+      allow write: if hasSellerPermission(sellerId, 'manage_listings') && isValidImageUpload(5 * 1024 * 1024);
+    }
+
+    // ---------------------------------------------------------------------
+    // Phase 15: RFQ attachments — part photos uploaded with a new RFQ,
+    // readable by the same audience as the firestore.rules `rfqs` read rule
+    // (owning buyer, any signed-in seller, admin) since sellers need to see
+    // the attached photos to quote accurately.
+    // ---------------------------------------------------------------------
+
+    match /rfqs/{buyerUid}/{allPaths=**} {
+      allow read: if isOwner(buyerUid)
+        || isAdmin()
+        || (isSignedIn() && request.auth.token.get('role', null) == 'seller');
+      allow write: if isOwner(buyerUid) && isValidImageUpload(5 * 1024 * 1024);
+    }
+
+    // Phase 15: RFQ message-thread attachments, keyed by the uploading
+    // sender's own uid. Read is any signed-in user rather than a narrower
+    // per-thread check — object paths are opaque per-upload IDs with no
+    // directory listing, the same trust level already given to the public
+    // `users/{uid}/reviews` path above; actual thread access is enforced at
+    // the Firestore level (rfqQuotes/{quoteId}/messages read rule).
+    // ---------------------------------------------------------------------
+
+    match /rfqMessages/{uid}/{allPaths=**} {
+      allow read: if isSignedIn();
+      allow write: if isOwner(uid) && isValidImageUpload(5 * 1024 * 1024);
+    }
+
+    // ---------------------------------------------------------------------
+    // Phase 17: spurious-part report evidence — deliberately NOT public read
+    // (unlike review images above): only the reporting buyer and admins can
+    // read the object directly. The accused seller reaches these photos only
+    // through getSpuriousReportEvidenceUrls.ts's signed-URL callable, which
+    // checks their own sellerId against the report doc — Storage rules can't
+    // cheaply cross-reference that the way Firestore rules' get() can, same
+    // reasoning as the invoices block above.
+    // ---------------------------------------------------------------------
+
+    match /users/{uid}/spuriousReports/{allPaths=**} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow write: if isOwner(uid) && isValidImageUpload(5 * 1024 * 1024);
+    }
+
+    // ---------------------------------------------------------------------
+    // Phase 18: post-sale evidence uploads (return request photos, seller
+    // QC photos, warranty claim photos, dispute evidence) — same
+    // owner-write/owner+admin-read shape as spuriousReports above. Every
+    // one of these is scoped to the *uploader's own* uid (buyer for
+    // returns/warrantyClaims/disputes-they-opened; the seller's uid for
+    // returnsQc), never the other party — cross-party reads (buyer viewing
+    // seller QC photos, seller viewing buyer's return evidence, etc.) go
+    // through a signed-URL callable (getReturnEvidenceUrls /
+    // getWarrantyClaimEvidenceUrls), same reasoning as the comment above:
+    // Storage rules can't cheaply cross-reference the Firestore doc's
+    // counterparty the way a callable with a `get()` can.
+    // ---------------------------------------------------------------------
+
+    match /users/{uid}/returns/{allPaths=**} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow write: if isOwner(uid) && isValidImageUpload(5 * 1024 * 1024);
+    }
+
+    match /users/{uid}/returnsQc/{allPaths=**} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow write: if isOwner(uid) && isValidImageUpload(5 * 1024 * 1024);
+    }
+
+    match /users/{uid}/warrantyClaims/{allPaths=**} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow write: if isOwner(uid) && isValidImageUpload(5 * 1024 * 1024);
+    }
+
+    match /users/{uid}/disputes/{allPaths=**} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow write: if isOwner(uid) && isValidImageUpload(5 * 1024 * 1024);
+    }
+
+    // ---------------------------------------------------------------------
+    // Phase 17: brand-authorization documents backing the "Genuine part"
+    // badge — same shape as the KYC block above (owner/staff write, image or
+    // PDF, 10MB cap), except the seller may also read their own submission
+    // back (KYC deliberately doesn't allow that; this one does since a
+    // seller needs to confirm what they submitted while it's pending).
+    // ---------------------------------------------------------------------
+
+    match /sellers/{sellerId}/brandAuthorizations/{allPaths=**} {
+      allow read: if isSeller(sellerId) || isOwner(sellerId) || isAdmin();
+      allow write: if (isSeller(sellerId) || isOwner(sellerId))
+        && request.resource.size <= 10 * 1024 * 1024
+        && request.resource.contentType.matches('image/(jpeg|jpg|png|webp)|application/pdf');
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

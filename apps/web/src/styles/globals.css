@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* SnapSpare design tokens */
+    --ink: 20 24 28; /* #14181C */
+    --steel: 74 85 96; /* #4A5560 */
+    --signal: 255 107 0; /* #FF6B00 — CTA / savings only */
+    --verify: 14 159 110; /* #0E9F6E */
+    --alert: 217 45 32; /* #D92D20 */
+    --surface: 255 255 255; /* #FFFFFF */
+    --surface-muted: 245 246 247; /* #F5F6F7 */
+
+    --radius: 6px;
+  }
+
+  * {
+    @apply border-steel/15;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface text-ink antialiased;
+    font-family: theme('fontFamily.body');
+    font-size: 16px;
+  }
+
+  /* Loaded only while a Devanagari-script language is active — see
+     src/lib/localeFonts.ts, which toggles this class on <html>. */
+  html.font-devanagari-active body {
+    font-family:
+      'Noto Sans Devanagari',
+      theme('fontFamily.body');
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .font-mono-data {
+    font-family: theme('fontFamily.mono');
+    font-feature-settings: 'tnum' 1;
+  }
+}

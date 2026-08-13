@@ -1,0 +1,2758 @@
+{
+  "app": {
+    "name": "SnapSpare"
+  },
+  "nav": {
+    "home": "Home",
+    "categories": "Categories",
+    "garage": "Garage",
+    "orders": "Orders",
+    "account": "Account"
+  },
+  "header": {
+    "searchPlaceholder": "Search parts, OEM codes, brands"
+  },
+  "fitment": {
+    "fits": "Fits your vehicle",
+    "doesNotFit": "Does not fit your vehicle",
+    "unverified": "Add your vehicle to check fitment"
+  },
+  "common": {
+    "loading": "Loading…",
+    "retry": "Try again",
+    "somethingWentWrong": "Something went wrong",
+    "noResultsTitle": "Nothing here yet",
+    "noResultsAction": "Browse categories",
+    "back": "Back",
+    "close": "Close",
+    "cancel": "Cancel",
+    "remove": "Remove",
+    "yes": "Yes",
+    "no": "No",
+    "save": "Save"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in",
+      "subtitle": "Sign in to save your garage, addresses and orders.",
+      "or": "or"
+    },
+    "phone": {
+      "label": "Mobile number",
+      "placeholder": "98765 43210",
+      "sendOtp": "Send OTP"
+    },
+    "otp": {
+      "label": "Enter OTP",
+      "placeholder": "6-digit code",
+      "sentTo": "OTP sent to {{phone}}.",
+      "changeNumber": "Change number",
+      "verify": "Verify & continue",
+      "resend": "Resend OTP",
+      "resendIn": "Resend OTP in {{seconds}}s"
+    },
+    "google": {
+      "signIn": "Continue with Google"
+    },
+    "errors": {
+      "invalidPhone": "Enter a valid 10-digit mobile number.",
+      "wrongOtp": "That code didn't match. Please try again.",
+      "otpExpired": "This code has expired. Request a new one.",
+      "tooManyRequests": "Too many attempts. Please wait a while before trying again.",
+      "quotaExceeded": "We've hit our SMS limit right now — please try again shortly.",
+      "network": "Network error. Check your connection and try again.",
+      "popupClosed": "Sign-in window was closed before finishing.",
+      "generic": "Something went wrong. Please try again."
+    },
+    "seller": {
+      "notActiveTitle": "Seller account not active",
+      "notActiveDescription": "Your seller account is pending approval or has been suspended. Contact support if you think this is a mistake."
+    },
+    "account": {
+      "signInTitle": "Sign in to view your account",
+      "signIn": "Sign in"
+    },
+    "profile": {
+      "title": "Profile",
+      "name": "Full name",
+      "nameRequired": "Name is required.",
+      "email": "Email (optional)",
+      "emailInvalid": "Enter a valid email address.",
+      "language": "Preferred language",
+      "buyerType": "I mostly shop as a…",
+      "gstin": "GSTIN (optional)",
+      "gstinInvalid": "Enter a valid 15-character GSTIN.",
+      "verify": "Verify",
+      "verifyPending": "Verification requested — we'll confirm this shortly.",
+      "verifyInvalid": "That GSTIN doesn't look valid.",
+      "save": "Save changes",
+      "saved": "Profile updated.",
+      "signOut": "Sign out"
+    },
+    "buyerType": {
+      "retail": "Retail vehicle owner",
+      "mechanic": "Mechanic",
+      "garage": "Garage",
+      "fleet": "Fleet operator",
+      "reseller": "Reseller",
+      "explainer": {
+        "retail": "You'll see standard retail pricing.",
+        "mechanic": "Mechanics see wholesale slab pricing on bulk-friendly parts.",
+        "garage": "Garages see wholesale slab pricing across the catalog.",
+        "fleet": "Fleet operators unlock the deepest bulk-quantity slabs.",
+        "reseller": "Resellers see wholesale pricing and GST-ready invoices."
+      }
+    }
+  },
+  "address": {
+    "title": "Address book",
+    "emptyTitle": "No addresses saved yet",
+    "add": "Add address",
+    "edit": "Edit",
+    "delete": "Delete",
+    "default": "Default",
+    "setDefault": "Set as default",
+    "saved": "Address saved.",
+    "deleted": "Address deleted.",
+    "defaultSet": "Default address updated.",
+    "confirmDelete": "Delete this address?",
+    "form": {
+      "label": "Label",
+      "labelPlaceholder": "Home, Work, Garage…",
+      "contactName": "Contact name",
+      "contactPhone": "Contact phone",
+      "line1": "Address line 1",
+      "line2": "Address line 2 (optional)",
+      "landmark": "Landmark (optional)",
+      "pincode": "Pincode",
+      "pincodeChecking": "Looking up city and state…",
+      "pincodeNotFound": "We couldn't find that pincode — fill in city/state manually.",
+      "pincodeInvalid": "Enter a valid 6-digit pincode.",
+      "city": "City",
+      "state": "State",
+      "gstin": "GSTIN for this address (optional)",
+      "save": "Save address",
+      "cancel": "Cancel"
+    }
+  },
+  "store": {
+    "notFoundTitle": "Store not found",
+    "notFoundDescription": "This store link doesn't exist or is no longer active.",
+    "emptyTitle": "No listings here yet",
+    "ratingCount": "{{count}} rating",
+    "ratingCount_other": "{{count}} ratings"
+  },
+  "garage": {
+    "title": "My Garage",
+    "emptyTitle": "No vehicles saved yet",
+    "emptyDescription": "Add a vehicle to unlock fitment checks across the catalog.",
+    "addVehicle": "Add a vehicle",
+    "active": "Active",
+    "setActive": "Set active",
+    "delete": "Delete",
+    "saved": "Vehicle added.",
+    "deleted": "Vehicle removed.",
+    "confirmDelete": "Remove this vehicle from your garage?",
+    "fuelType": {
+      "petrol": "Petrol",
+      "diesel": "Diesel",
+      "cng": "CNG",
+      "electric": "Electric",
+      "hybrid": "Hybrid"
+    },
+    "form": {
+      "make": "Make",
+      "model": "Model",
+      "variant": "Variant",
+      "year": "Year",
+      "fuel": "Fuel",
+      "select": "Select…",
+      "nickname": "Nickname (optional)",
+      "nicknamePlaceholder": "My Swift, Dad's car…",
+      "save": "Save vehicle",
+      "cancel": "Cancel"
+    }
+  },
+  "vehicleSelector": {
+    "trigger": "Select vehicle",
+    "title": "Select your vehicle",
+    "landingTitle": "Parts & accessories for your {{vehicle}}",
+    "step": {
+      "make": "Select make",
+      "model": "Select model",
+      "variant": "Select variant",
+      "year": "Select year"
+    },
+    "searchMake": "Search makes",
+    "searchModel": "Search models",
+    "searchVariant": "Search variants",
+    "searchYear": "Search year",
+    "noResults": "No matches found"
+  },
+  "vehicleQuickSwitch": {
+    "title": "Switch vehicle",
+    "signInPrompt": "Sign in to save vehicles and switch between them here.",
+    "empty": "No saved vehicles yet.",
+    "addVehicle": "Add vehicle"
+  },
+  "notifications": {
+    "bellLabel": "Notifications",
+    "title": "Notifications",
+    "markAllRead": "Mark all read",
+    "empty": "You're all caught up",
+    "emptyAction": "Browse categories",
+    "errorTitle": "Couldn't load notifications",
+    "preferences": {
+      "title": "Notification preferences",
+      "channelsHeading": "Channels",
+      "channel": {
+        "push": "Push notifications",
+        "sms": "SMS",
+        "whatsapp": "WhatsApp",
+        "email": "Email"
+      },
+      "marketingOptOut": "Don't send me offers, price drops or reminders",
+      "transactionalNote": "Order, payment, and account updates always reach you regardless of these settings.",
+      "save": "Save preferences",
+      "saved": "Preferences saved"
+    },
+    "push": {
+      "enablePrompt": "Get a notification the moment your order ships or is delivered.",
+      "enableButton": "Turn on order updates",
+      "enabled": "Order update notifications are on",
+      "blocked": "Notifications are blocked in your browser settings"
+    }
+  },
+  "vehicleRegLookup": {
+    "label": "Registration number",
+    "placeholder": "MH12AB1234",
+    "hint": "We'll look up the make, model and variant for you to confirm.",
+    "invalidFormat": "Enter a valid vehicle registration number (e.g. MH12AB1234).",
+    "notFound": "We couldn't match that registration number. Try selecting your vehicle manually.",
+    "lookup": "Look up",
+    "errors": {
+      "rateLimited": "Too many lookups today. Please try again tomorrow, or select your vehicle manually.",
+      "invalid": "That registration number doesn't look valid.",
+      "signInRequired": "Sign in to look up a vehicle by registration number.",
+      "generic": "Something went wrong. Please try again or select your vehicle manually."
+    }
+  },
+  "vehicleAddFlow": {
+    "title": "Add a vehicle",
+    "tabManual": "Select manually",
+    "tabReg": "Registration number",
+    "confirmNote": "Resolved from {{regNumber}} — please confirm or correct before saving."
+  },
+  "cart": {
+    "title": "Cart",
+    "emptyTitle": "Your cart is empty",
+    "emptyDescription": "Browse the catalog to add parts to your cart.",
+    "itemUnavailable": "Item unavailable",
+    "qty": "Qty: {{qty}}",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "removed": "Item removed from cart",
+    "undo": "Undo",
+    "saveForLater": "Save for later",
+    "clearCart": "Clear cart",
+    "confirmClear": "Remove all items from your cart?",
+    "unavailableItemsNotice": "{{count}} item(s) in your cart are no longer available and were left out of your total.",
+    "unitPriceLine": "{{price}}/unit at {{qty}}+ units",
+    "deliveryEtaRange": "{{min}}–{{max}} day delivery",
+    "fitmentGuard": {
+      "title": "Some items may not fit your vehicle",
+      "description": "You can still check out, but double-check these before you do.",
+      "dismiss": "Dismiss"
+    },
+    "tierNudge": {
+      "line": "Add {{count}} more → {{price}}/unit,",
+      "savings": "save {{amount}}"
+    },
+    "crossSellerNudge": {
+      "line": "{{seller}} has this part cheaper at your quantity — {{price}}/unit.",
+      "switch": "Switch seller"
+    },
+    "warnings": {
+      "outOfStock": "Out of stock",
+      "priceChanged": "Price changed from {{previous}} to {{next}} since you added this",
+      "qtyAdjustedToMoq": "Quantity adjusted to the minimum order of {{qty}}",
+      "qtyAdjustedToStep": "Quantity adjusted to {{qty}} to match this seller's pack size",
+      "qtyCappedToStock": "Quantity reduced to {{qty}} — that's all that's in stock",
+      "tierUpgraded": "Good news — this quantity unlocked a cheaper price tier",
+      "tierDowngraded": "This quantity moved to a higher price tier",
+      "generic": "This item needs your attention"
+    },
+    "freeShipping": {
+      "free": "Free",
+      "remaining": "Add {{amount}} more for free shipping from this seller",
+      "progressLabel": "Progress to free shipping"
+    },
+    "summary": {
+      "title": "Order summary",
+      "subtotal": "Subtotal",
+      "discount": "Discount",
+      "shipping": "Shipping",
+      "shippingFor": "Shipping — {{seller}}",
+      "taxableValue": "Taxable value",
+      "cgst": "CGST",
+      "sgst": "SGST",
+      "igst": "IGST",
+      "total": "Total"
+    },
+    "notices": {
+      "noShippingAddress": "Add a delivery address to see accurate shipping and tax."
+    },
+    "coupon": {
+      "label": "Coupon code",
+      "placeholder": "Enter coupon code",
+      "apply": "Apply",
+      "remove": "Remove coupon",
+      "applied": "{{code}} applied — you saved {{amount}}",
+      "errors": {
+        "notFound": "That coupon code doesn't exist.",
+        "inactive": "That coupon isn't active right now.",
+        "expired": "That coupon has expired.",
+        "notYetValid": "That coupon isn't valid yet.",
+        "minOrderNotMet": "Add {{amount}} more to use this coupon.",
+        "notApplicable": "This coupon doesn't apply to anything in your cart.",
+        "usageLimitReached": "This coupon has reached its usage limit.",
+        "generic": "That coupon code isn't valid."
+      }
+    },
+    "savedForLater": {
+      "title": "Saved for later ({{count}})",
+      "moveToCart": "Move to cart"
+    },
+    "bulkPad": {
+      "open": "Bulk order pad",
+      "title": "Bulk order pad",
+      "description": "Paste part numbers and quantities, one per line (e.g. \"OEM123, 10\"), or upload a CSV.",
+      "placeholder": "OEM123, 10\nOEM456, 25",
+      "resolve": "Resolve",
+      "uploadCsv": "Upload CSV",
+      "matchedCount": "{{count}} matched",
+      "addMatched": "Add {{count}} items to cart",
+      "addedToCart": "{{count}} items added to cart",
+      "unmatchedCount": "{{count}} rows couldn't be matched",
+      "unmatchedReasons": {
+        "notFound": "No matching part found",
+        "outOfStock": "Out of stock",
+        "invalidRow": "Couldn't read this line"
+      }
+    },
+    "emptyState": {
+      "recentOrders": "Reorder from your recent orders",
+      "orderItemCount": "{{count}} item(s)",
+      "reorder": "Reorder",
+      "reorderAdded": "Items added to your cart",
+      "popularForVehicle": "Popular parts for {{vehicle}}",
+      "bulkPadPrompt": "Ordering many parts at once? Paste a list or upload a CSV."
+    },
+    "errors": {
+      "invalid": "Something about your cart couldn't be priced. Try refreshing.",
+      "pricingFailed": "We couldn't calculate your total right now. Please try again."
+    }
+  },
+  "search": {
+    "recent": "Recent searches",
+    "trending": "Trending searches",
+    "groupParts": "Parts",
+    "groupBrands": "Brands",
+    "groupCategories": "Categories",
+    "groupVehicles": "Vehicles",
+    "filters": "Filters",
+    "clearFilters": "Clear filters",
+    "showResults": "Show {{count}} results",
+    "sortBy": "Sort by",
+    "sort": {
+      "relevance": "Relevance",
+      "price_asc": "Price: Low to High",
+      "delivery": "Delivery speed",
+      "rating": "Seller rating"
+    },
+    "facets": {
+      "fitment": "Fitment",
+      "fitsMyVehicle": "Fits {{vehicle}}",
+      "availability": "Availability",
+      "inStockOnly": "In stock only",
+      "fastDelivery": "Fast delivery (2 days or less)",
+      "brand": "Brand",
+      "price": "Price",
+      "priceMin": "Min ₹",
+      "priceMax": "Max ₹",
+      "type": "Type",
+      "partType": {
+        "oem": "OEM",
+        "oes": "OES",
+        "aftermarket": "Aftermarket",
+        "genuine": "Genuine"
+      },
+      "condition": "Condition",
+      "conditionOption": {
+        "new": "New",
+        "used": "Used",
+        "refurbished": "Refurbished"
+      },
+      "sellerRating": "Seller rating",
+      "ratingAndUp": "{{rating}}★ & up",
+      "warranty": "Warranty",
+      "warrantyMonths": "{{count}}+ months"
+    },
+    "showingCount": "Showing {{shown}} of {{total}}",
+    "resultsForQuery": "Results for \"{{query}}\"",
+    "allResults": "All parts",
+    "exactMatch": "Exact match found for part number {{partNumber}}",
+    "zeroResults": {
+      "title": "No parts found",
+      "description": "Try a different search term, or remove some filters.",
+      "removeFitmentFilter": "Remove \"fits my vehicle\" filter",
+      "relatedCategories": "Browse related categories",
+      "requestPart": "Request this part"
+    },
+    "requestPart": {
+      "title": "Request this part",
+      "signInPrompt": "Sign in to send this request to sellers.",
+      "description": "What are you looking for?",
+      "descriptionPlaceholder": "Part name, vehicle, or any details that'll help sellers quote you",
+      "descriptionRequired": "Tell us a bit more about what you need.",
+      "qty": "Quantity",
+      "targetPrice": "Target price (optional)",
+      "targetPricePlaceholder": "e.g. 500",
+      "submit": "Send request",
+      "success": "Request sent — sellers who stock this can now quote you."
+    }
+  },
+  "product": {
+    "quantityDecrease": "Decrease quantity",
+    "quantityIncrease": "Increase quantity",
+    "quantityInput": "Quantity",
+    "quantitySnapped": "Adjusted to {{qty}} — the nearest valid quantity",
+    "addedToCart": "Added to cart",
+    "discountPercent": "{{percent}}% off",
+    "slabHint": "from {{price}} at {{qty}}+",
+    "newSeller": "New seller",
+    "deliveryEta": "{{count}} day delivery",
+    "outOfStock": "Out of stock",
+    "lowStock": "Only {{count}} left",
+    "addToCart": "Add to cart",
+    "oversizedNotice": "Ships by surface transport — extended delivery, Cash on Delivery may not be available",
+    "shippingEstimate": {
+      "title": "Check delivery",
+      "pincodeLabel": "Delivery pincode",
+      "pincodePlaceholder": "Enter pincode",
+      "check": "Check",
+      "error": "Couldn't check delivery options right now",
+      "notServiceable": "Not deliverable to this pincode",
+      "codAvailable": "COD available"
+    },
+    "detail": {
+      "notFoundTitle": "Part not found",
+      "notFoundDescription": "This part may have been removed or is no longer available.",
+      "browseCategories": "Browse categories",
+      "partNumber": "Part number",
+      "oemNumbers": "OEM numbers",
+      "crossRefNumbers": "Cross-reference numbers",
+      "specifications": "Specifications",
+      "description": "Description",
+      "offersTitle": "Seller offers",
+      "offersCount": "{{count}} seller offers",
+      "bestPrice": "Best price",
+      "noOffersTitle": "No sellers currently stock this part",
+      "noOffersDescription": "Request this part and we'll notify sellers who can supply it.",
+      "priceForQty": "Price for {{qty}} units",
+      "nextTierHint": "Add {{count}} more to unlock {{price}}/unit",
+      "tierFrom": "{{min}}+ units",
+      "tierRange": "{{min}}–{{max}} units",
+      "moq": "Min. order {{moq}} units",
+      "warrantyMonths": "{{count}} month warranty",
+      "returnWindow": "{{count}}-day returns",
+      "copyPartNumber": "Copy part number",
+      "copied": "Part number copied",
+      "noSpecifications": "No specifications listed for this part yet.",
+      "stickyBuyBar": "Buy this part",
+      "gallery": {
+        "previous": "Previous image",
+        "next": "Next image",
+        "thumbnail": "Image {{index}}"
+      },
+      "ladder": {
+        "title": "Quantity pricing",
+        "businessChip": "{{type}} pricing",
+        "priceAnnouncement": "You pay {{price}} per unit for {{qty}} units",
+        "payLine": "You pay {{price}}/unit",
+        "nextTierLine": "Buy {{count}} more to get {{price}}/unit and save {{savings}}",
+        "lockedTitle": "Wholesale pricing available for garages",
+        "lockedCta": "Verify your GSTIN",
+        "savingsVsMrp": "You save {{amount}} vs MRP",
+        "savingsVsTier1": "You save {{amount}} vs single-unit price",
+        "tableCaption": "Quantity pricing table",
+        "tableQtyRange": "Quantity",
+        "tableUnitPrice": "Unit price"
+      },
+      "gst": {
+        "label": "Price shown",
+        "exclusive": "Excl. GST",
+        "inclusive": "Incl. GST",
+        "activeExclusive": "Prices shown exclude GST — added at checkout.",
+        "activeInclusive": "Prices shown include GST."
+      },
+      "compare": {
+        "title": "Compare seller offers",
+        "recommended": "Recommended · best value",
+        "unnamedSeller": "SnapSpare seller",
+        "priceAtQty1": "Price at qty 1",
+        "bestSlabPrice": "Best bulk price"
+      },
+      "tabs": {
+        "groupLabel": "Product details",
+        "specs": "Specifications",
+        "fitment": "Fitment",
+        "warranty": "Warranty & Returns",
+        "reviews": "Reviews",
+        "qa": "Q&A"
+      },
+      "reviews": {
+        "none": "No ratings yet",
+        "count": "{{count}} reviews",
+        "histogramCaption": "Rating distribution",
+        "starLabel": "{{count}} star",
+        "verifiedPurchase": "Verified purchase",
+        "anonymousBuyer": "Verified buyer",
+        "sellerReply": "Seller response",
+        "emptyTitle": "No reviews yet",
+        "emptyDescription": "Be the first to review this part after your order is delivered.",
+        "fittedTo": "Fitted to: {{vehicle}}",
+        "fitmentAccurate": "Fit as expected",
+        "qualityRating": "Quality",
+        "valueRating": "Value for money"
+      },
+      "qa": {
+        "askTitle": "Ask a question",
+        "signInPrompt": "Sign in to ask sellers a question about this part.",
+        "questionPlaceholder": "e.g. Does this fit a 2019 model?",
+        "questionRequired": "Enter at least 3 characters.",
+        "submit": "Submit question",
+        "askSuccess": "Question submitted — sellers who stock this part can answer it.",
+        "emptyTitle": "No questions yet",
+        "emptyDescription": "Ask the first question about this part.",
+        "unanswered": "Not yet answered",
+        "anonymousBuyer": "A buyer",
+        "answerAction": "Answer this question",
+        "answerPlaceholder": "Share what you know — you're eligible because you sell or bought this part.",
+        "answerSubmit": "Post answer",
+        "answerSuccess": "Answer posted",
+        "sellerAnswerBadge": "Seller",
+        "errors": {
+          "notEligible": "Only sellers who stock this part or buyers who've bought it can answer.",
+          "notFound": "That question could no longer be found.",
+          "generic": "Something went wrong — please try again."
+        }
+      },
+      "fitment": {
+        "emptyTitle": "No verified fitments listed yet",
+        "emptyDescription": "This part hasn't been matched to specific vehicles yet.",
+        "searchLabel": "Search make, model or variant",
+        "make": "Make",
+        "model": "Model",
+        "variant": "Variant",
+        "years": "Years",
+        "allVariants": "All variants",
+        "present": "present"
+      },
+      "warrantyReturns": {
+        "warrantyTitle": "Warranty",
+        "noWarranty": "No warranty advertised for this seller's listing.",
+        "returnsTitle": "Returns",
+        "noReturns": "No return window advertised for this seller's listing.",
+        "disclaimer": "Warranty and return terms are set by the selling seller and shown for the offer you've selected above.",
+        "nonReturnable": "Not returnable once fitted — electrical/sensor parts cannot be returned after installation.",
+        "nonReturnableShort": "Not returnable once fitted"
+      },
+      "related": {
+        "boughtTogether": "Frequently bought together",
+        "alsoViewed": "Others also viewed"
+      },
+      "disclosure": {
+        "soldBy": "Sold by:",
+        "address": "Address:",
+        "gstin": "GSTIN:",
+        "countryOfOrigin": "Country of origin:"
+      }
+    }
+  },
+  "category": {
+    "notFound": "Category not found",
+    "forVehicle": "For {{vehicle}}",
+    "viewAll": "View all",
+    "faqTitle": "Frequently asked questions"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "continue": "Continue",
+    "continueShopping": "Continue shopping",
+    "placeOrder": "Place order",
+    "sections": {
+      "delivery": "Delivery",
+      "billing": "Billing & GST",
+      "payment": "Payment"
+    },
+    "confirmation": {
+      "title": "Order placed!",
+      "description": "We've sent you a confirmation. Track its progress below."
+    },
+    "delivery": {
+      "selectAddress": "Select a delivery address",
+      "serviceabilityTitle": "Delivery to this address",
+      "thisSeller": "This seller",
+      "notServiceable": "Can't deliver to this pincode"
+    },
+    "billing": {
+      "toggleLabel": "This is a business purchase",
+      "toggleExplainer": "Add GSTIN to claim input tax credit on this order.",
+      "legalName": "Legal business name",
+      "useDifferentAddress": "Bill to a different address",
+      "useShippingAddress": "Use shipping address for billing",
+      "selectAddress": "Select a billing address",
+      "personalPurchase": "Personal purchase"
+    },
+    "payment": {
+      "selectMethod": "Select a payment method",
+      "online": {
+        "title": "UPI / Cards / Netbanking / Wallets",
+        "description": "Pay securely via Razorpay",
+        "emiAvailable": "EMI available on this order"
+      },
+      "cod": {
+        "title": "Cash on Delivery",
+        "feeNotice": "Includes a {{fee}} COD fee",
+        "noFee": "No extra fee",
+        "ineligible": {
+          "disabled": "Not available right now",
+          "seller_unsupported": "Not offered by one or more sellers in your cart",
+          "over_cap": "Not available for orders this large",
+          "abuse_flag": "Not available on your account",
+          "oversized": "Not available for oversized items in your cart"
+        }
+      },
+      "credit": {
+        "title": "Pay on credit (30 days)",
+        "description": "{{available}} available credit"
+      },
+      "methodLabel": {
+        "razorpay": "UPI / Cards / Netbanking / Wallets",
+        "cod": "Cash on Delivery",
+        "credit_line": "Pay on credit (30 days)"
+      }
+    },
+    "errors": {
+      "cartEmpty": "Your cart is empty.",
+      "cartChanged": "Your cart changed since you last viewed it — please review it before placing your order.",
+      "insufficientStock": "One or more items no longer have enough stock — please review your cart.",
+      "codNotEligible": "Cash on Delivery isn't available for this order.",
+      "creditNotEligible": "Pay on credit isn't available for this order.",
+      "sellerUnavailable": "One of the sellers in your cart is temporarily unavailable.",
+      "gatewayUnavailable": "We couldn't reach the payment gateway — please try again.",
+      "addressNotFound": "That address could not be found — please pick another.",
+      "generic": "We couldn't place your order — please try again.",
+      "paymentNotCompleted": "Payment wasn't completed. Your order is saved — you can resume payment anytime.",
+      "serviceabilityFailed": "We couldn't check delivery availability — please try again.",
+      "signInRequired": "Sign in to check out."
+    }
+  },
+  "orders": {
+    "title": "Your orders",
+    "orderId": "Order ID",
+    "orderTotal": "Order total",
+    "emptyTitle": "No orders yet",
+    "emptyDescription": "Orders you place will show up here.",
+    "startShopping": "Start shopping",
+    "notFoundTitle": "Order not found",
+    "viewAllOrders": "View all orders",
+    "trackOrder": "Track order",
+    "downloadInvoice": "Download invoice",
+    "pendingPaymentNotice": "Payment is still pending for this order.",
+    "resumePayment": "Resume payment",
+    "resumeBanner": "You have an order waiting for payment",
+    "awb": "AWB",
+    "status": {
+      "pending_payment": "Payment pending",
+      "placed": "Placed",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "partially_shipped": "Partially shipped",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "refunded": "Refunded"
+    },
+    "subOrderStatus": {
+      "pending": "Awaiting seller confirmation",
+      "accepted": "Accepted by seller",
+      "rejected": "Rejected by seller",
+      "packed": "Packed",
+      "shipped": "Shipped",
+      "out_for_delivery": "Out for delivery",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "ndr_raised": "Delivery attempt failed",
+      "ndr_reattempt_requested": "Redelivery requested"
+    },
+    "searchPlaceholder": "Search by order ID or part name",
+    "filterByStatus": "Filter by status",
+    "allStatuses": "All statuses",
+    "noMatchingOrders": "No orders match your search",
+    "awbCopied": "AWB copied",
+    "copyAwb": "Copy AWB",
+    "trackLink": "Track shipment",
+    "reorder": {
+      "action": "Reorder",
+      "success": "Added {{count}} item(s) to your cart",
+      "changedWarning": "{{count}} item(s) changed since your last order",
+      "failure": "Couldn't reorder — please try again."
+    },
+    "cancel": {
+      "action": "Cancel order",
+      "reasonLabel": "Reason (optional)",
+      "reasonPlaceholder": "Let us know why you're cancelling",
+      "confirm": "Confirm cancellation",
+      "success": "Order cancelled"
+    },
+    "return": {
+      "action": "Request return",
+      "itemLabel": "Item",
+      "qtyLabel": "Quantity",
+      "reasonLabel": "Reason",
+      "notesLabel": "Notes (optional)",
+      "submit": "Submit return request",
+      "success": "Return requested",
+      "reasons": {
+        "defective": "Defective",
+        "damaged_in_transit": "Damaged in transit",
+        "rto_undelivered": "Returned to origin (undelivered)",
+        "wrong_part_sent": "Wrong part sent",
+        "doesnt_fit": "Doesn't fit my vehicle",
+        "suspected_spurious": "Suspected counterfeit",
+        "changed_mind": "Changed my mind"
+      },
+      "resolutionLabel": "Preferred resolution",
+      "resolution": {
+        "refund": "Refund",
+        "replacement": "Replacement"
+      },
+      "status": "{{status}}",
+      "evidence": {
+        "photosLabel": "Photos",
+        "photosCount": "{{count}} photo attached",
+        "photosCount_other": "{{count}} photos attached",
+        "required": "At least one photo is required for this reason.",
+        "uploadFailed": "Couldn't upload — please try again.",
+        "videoLabel": "Video (optional)",
+        "videoAttached": "Video attached"
+      }
+    },
+    "ndr": {
+      "status": {
+        "raised": "Delivery attempt failed",
+        "reattempt_requested": "Redelivery requested",
+        "rto_initiated": "Being returned to seller",
+        "resolved": "Resolved"
+      },
+      "description": "The courier couldn't deliver this order. Confirm your details to request another attempt.",
+      "requestRedelivery": "Request redelivery",
+      "reattemptRequested": "Redelivery requested — we've notified the seller.",
+      "errors": {
+        "noOpenNdr": "There's no open delivery issue on this order."
+      }
+    },
+    "help": {
+      "needHelp": "Need help?",
+      "prefilledMessage": "Hi, I need help with order {{orderId}} (item {{subOrderId}})."
+    },
+    "timeline": {
+      "label": "Order status timeline",
+      "actor": {
+        "buyer": "you",
+        "seller": "seller",
+        "admin": "support"
+      }
+    },
+    "errors": {
+      "invalidTransition": "This order can no longer be changed that way.",
+      "permissionDenied": "You can't do that on this order.",
+      "orderNotActionable": "This order isn't in a state that allows that action yet.",
+      "notDelivered": "This item hasn't been delivered yet.",
+      "returnWindowClosed": "The return window for this item has closed.",
+      "returnAlreadyOpen": "A return is already open for this item.",
+      "qtyExceedsLineItem": "That quantity is more than what you ordered.",
+      "generic": "Something went wrong — please try again.",
+      "evidenceRequired": "Please attach at least one photo for this reason.",
+      "categoryNotReturnable": "This part can't be returned once fitted.",
+      "sellerOriginNotSet": "The seller has not set a pickup address yet — contact support.",
+      "noWarranty": "This item has no warranty on file.",
+      "warrantyExpired": "The warranty period for this item has ended."
+    },
+    "tax": {
+      "downloadInvoice": "Download invoice",
+      "downloadCreditNote": "Download credit note",
+      "errors": {
+        "invoiceNotGenerated": "The invoice for this order hasn't been generated yet.",
+        "notFound": "That document couldn't be found."
+      }
+    },
+    "warranty": {
+      "action": "Claim warranty",
+      "reasonLabel": "What went wrong?",
+      "reasons": {
+        "premature_failure": "Failed prematurely",
+        "manufacturing_defect": "Manufacturing defect",
+        "not_as_warranted": "Not as warranted",
+        "other": "Other"
+      },
+      "descriptionLabel": "Describe the issue",
+      "submit": "Submit claim",
+      "success": "Warranty claim submitted",
+      "evidenceRequired": "At least one photo is required.",
+      "status": "Warranty claim: {{status}}",
+      "claimStatus": {
+        "submitted": "Submitted",
+        "seller_review": "Under seller review",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "escalated_to_brand": "Escalated to brand",
+        "resolved": "Resolved"
+      }
+    },
+    "dispute": {
+      "action": "Open dispute",
+      "reasonLabel": "Why are you disputing this?",
+      "submit": "Submit to admin",
+      "success": "Dispute opened — an admin will review it",
+      "pendingReview": "Dispute opened — pending admin review",
+      "errors": {
+        "alreadyOpen": "A dispute is already open for this order."
+      }
+    }
+  },
+  "reviews": {
+    "form": {
+      "action": "Write a review",
+      "title": "Review: {{item}}",
+      "fittedTo": "Fitted to: {{vehicle}}",
+      "overallRating": "Overall rating",
+      "qualityRating": "Quality",
+      "valueRating": "Value for money",
+      "fitmentAccurateLabel": "Did this part fit as expected?",
+      "titleLabel": "Title (optional)",
+      "commentLabel": "Your review (optional)",
+      "photosLabel": "Photos (up to {{max}})",
+      "addPhoto": "Add photo",
+      "submit": "Submit review",
+      "success": "Thanks — your review has been submitted."
+    },
+    "sellerReply": {
+      "action": "Reply as seller",
+      "placeholder": "Thank the buyer or address their feedback",
+      "submit": "Post reply",
+      "success": "Reply posted"
+    },
+    "errors": {
+      "permissionDenied": "You can't do that on this review.",
+      "replyAlreadyPosted": "You've already replied to this review.",
+      "notFound": "That review could no longer be found.",
+      "generic": "Something went wrong — please try again."
+    }
+  },
+  "trust": {
+    "tier": {
+      "new": "New seller",
+      "trusted": "Trusted",
+      "top_rated": "Top rated"
+    },
+    "breakdown": {
+      "title": "Your trust score",
+      "emptyTitle": "Not scored yet",
+      "emptyDescription": "Your trust score is computed daily once you have enough order history.",
+      "computedAt": "Last updated {{date}}",
+      "component": {
+        "rating": "Customer rating",
+        "sla": "Dispatch SLA",
+        "cancellation": "Cancellation rate",
+        "return": "Return rate",
+        "spurious": "Counterfeit reports",
+        "tenure": "Tenure"
+      },
+      "lever": {
+        "rating": "Keep quality and fitment accuracy high to earn better reviews.",
+        "sla": "Accept and pack orders within your SLA window.",
+        "cancellation": "Avoid cancelling or rejecting orders once accepted.",
+        "return": "Reduce returns by describing parts and fitment accurately.",
+        "spurious": "Stay free of upheld counterfeit-part reports.",
+        "tenure": "Trust builds with more months of good standing on the platform."
+      }
+    },
+    "genuineBadge": {
+      "label": "Genuine part",
+      "verifiedOn": "verified {{date}}"
+    },
+    "spuriousReport": {
+      "action": "Report suspicious part",
+      "title": "Report a suspicious part",
+      "reasonLabel": "What made you suspect this part isn't genuine?",
+      "reasonPlaceholder": "e.g. Packaging looked different from the brand's usual packaging",
+      "evidenceLabel": "Evidence photos (up to {{max}})",
+      "addEvidence": "Add photo",
+      "submit": "Submit report",
+      "success": "Report submitted — our team will investigate."
+    },
+    "brandAuth": {
+      "title": "Genuine-part brand authorization",
+      "description": "Upload a brand-authorization document to earn the \"Genuine part\" badge on your matching listings.",
+      "brandNameLabel": "Brand name",
+      "documentLabel": "Authorization document",
+      "submit": "Submit for review",
+      "success": "Submitted — an admin will review it shortly.",
+      "status": {
+        "pending": "Pending review",
+        "verified": "Verified",
+        "rejected": "Rejected"
+      }
+    },
+    "authenticity": {
+      "title": "Verify with QR/hologram code",
+      "description": "Enter the code printed on the part's authenticity seal, if it has one.",
+      "codePlaceholder": "Enter code",
+      "check": "Check",
+      "valid": "This code matches the brand registry.",
+      "invalid": "This code could not be verified."
+    },
+    "errors": {
+      "permissionDenied": "You can't do that on this report.",
+      "responseAlreadySubmitted": "You've already responded to this report.",
+      "reportAlreadyResolved": "This report has already been resolved.",
+      "notFound": "That report could no longer be found.",
+      "generic": "Something went wrong — please try again."
+    }
+  },
+  "rfq": {
+    "errors": {
+      "rfqNotOpen": "This request is no longer open.",
+      "responseWindowClosed": "The response window for this request has closed.",
+      "quoteAlreadyPending": "You already have a quote on this request — withdraw it to quote again.",
+      "quoteNotAvailable": "That quote is no longer available.",
+      "quoteExpired": "That quote has expired.",
+      "hsnGstRequired": "HSN code and GST rate are required for a request with no catalogue part.",
+      "listingNotOwned": "You can only link one of your own listings.",
+      "listingOrPartRequired": "This request needs a linked listing or a catalogue part before it can be accepted.",
+      "permissionDenied": "You can't do that on this request.",
+      "codNotEligible": "Cash on Delivery isn't available for this order.",
+      "creditNotEligible": "Khata credit isn't available for this order.",
+      "addressNotFound": "That delivery address couldn't be found.",
+      "gatewayUnavailable": "Payment couldn't be started — please try again.",
+      "contactInfoBlocked": "Phone numbers and email addresses aren't allowed in RFQ messages.",
+      "generic": "Something went wrong — please try again."
+    },
+    "form": {
+      "signInRequired": "Sign in to request a quote.",
+      "dialogTitle": "Request a quote",
+      "bulkCta": "Need more than this? Get a bulk quote",
+      "partLabel": "Part",
+      "description": "What part do you need?",
+      "descriptionPlaceholder": "e.g. Brake pads for Honda City 2018",
+      "descriptionRequired": "Please describe the part you need.",
+      "category": "Category",
+      "qty": "Quantity",
+      "targetPrice": "Target price per unit (optional)",
+      "targetPricePlaceholder": "₹",
+      "deliveryPincode": "Delivery pincode",
+      "pincodeInvalid": "Enter a valid 6-digit pincode.",
+      "requiredByDate": "Required by (optional)",
+      "notes": "Notes (optional)",
+      "notesPlaceholder": "Any other details sellers should know",
+      "attachments": "Photos (optional)",
+      "addAttachment": "Add photo",
+      "submit": "Send request",
+      "success": "Your request has been sent to sellers.",
+      "successRouted": "Your request has been sent to {{count}} matching sellers."
+    },
+    "list": {
+      "title": "Your quote requests",
+      "navLink": "Need a bulk quote?",
+      "newRequest": "New request",
+      "emptyTitle": "No quote requests yet",
+      "emptyDescription": "Request a bulk quote and sellers will respond here.",
+      "untitled": "Untitled request",
+      "qty": "{{count}} units",
+      "target": "target {{price}}",
+      "quoteCount": "{{count}} quotes"
+    },
+    "new": {
+      "title": "Request a quote",
+      "description": "Tell sellers what you need and they'll send you their best price."
+    },
+    "detail": {
+      "noQuotesYet": "No quotes yet — sellers usually respond within 48 hours.",
+      "notFound": "This request couldn't be found.",
+      "withdraw": "Withdraw request",
+      "withdrawSuccess": "Request withdrawn.",
+      "quotesTitle": "Quotes",
+      "deliveryTo": "delivering to {{pincode}}"
+    },
+    "status": {
+      "open": "Open",
+      "quoted": "Quoted",
+      "accepted": "Accepted",
+      "converted": "Converted to order",
+      "expired": "Expired",
+      "withdrawn": "Withdrawn"
+    },
+    "quoteStatus": {
+      "pending": "Pending",
+      "accepted": "Accepted",
+      "rejected": "Not selected",
+      "withdrawn": "Withdrawn",
+      "expired": "Expired"
+    },
+    "compare": {
+      "seller": "Seller",
+      "unitPrice": "Unit price",
+      "qty": "Qty offered",
+      "leadTime": "Lead time",
+      "leadTimeDays": "{{count}} days",
+      "landedCost": "Landed cost",
+      "status": "Status",
+      "estBadge": "(est.)",
+      "plusTaxShipping": "+ tax & shipping",
+      "accept": "Accept",
+      "openThread": "Messages"
+    },
+    "accept": {
+      "title": "Accept this quote",
+      "lineSummary": "{{qty}} units at {{price}} each",
+      "success": "Quote accepted — your order has been placed.",
+      "confirm": "Place order"
+    },
+    "thread": {
+      "moderationNotice": "For your safety, phone numbers and emails aren't allowed in messages — share pricing and timelines here instead.",
+      "empty": "No messages yet.",
+      "placeholder": "Write a message…",
+      "send": "Send",
+      "titleWithSeller": "Messages with {{seller}}",
+      "contactInfoWarning": {
+        "phone": "This looks like a phone number — we don't allow sharing contact details here.",
+        "email": "This looks like an email address — we don't allow sharing contact details here."
+      }
+    },
+    "seller": {
+      "inboxTitle": "RFQ inbox",
+      "inboxEmptyTitle": "No requests routed to you yet",
+      "inboxEmptyDescription": "Buyer requests matching your categories will show up here.",
+      "respondBy": "respond by {{date}}",
+      "youQuoted": "You quoted",
+      "yourQuote": "Your quote",
+      "withdrawQuote": "Withdraw quote",
+      "quoteWithdrawn": "Quote withdrawn.",
+      "buildQuote": "Build your quote",
+      "rfqClosed": "This request is no longer accepting quotes.",
+      "unitPrice": "Unit price",
+      "unitPriceRequired": "Enter a unit price.",
+      "qtyOffered": "Quantity you can offer",
+      "counterQtyHint": "Buyer requested {{requested}} — offer a different quantity if needed.",
+      "moq": "Minimum order quantity (optional)",
+      "leadTimeDays": "Lead time (days)",
+      "validUntil": "Quote valid until",
+      "validUntilRequired": "Set a validity date.",
+      "linkListing": "Link one of your listings (optional)",
+      "noLinkedListing": "No linked listing",
+      "hsnCode": "HSN code",
+      "gstRate": "GST rate",
+      "message": "Message to buyer (optional)",
+      "messagePlaceholder": "Anything else the buyer should know",
+      "submitQuote": "Submit quote",
+      "quoteSubmitted": "Quote submitted."
+    }
+  },
+  "sellerOrders": {
+    "title": "Orders",
+    "emptyTitle": "No orders here yet",
+    "emptyDescription": "Orders in this stage will show up here.",
+    "selectedCount": "{{count}} selected",
+    "selectRow": "Select order",
+    "printSelected": "Print packing slips",
+    "nav": {
+      "dashboard": "Dashboard",
+      "listings": "Listings",
+      "partRequests": "Part requests",
+      "rfqs": "RFQs",
+      "orders": "Orders",
+      "tax": "GST & Compliance",
+      "payments": "Payments",
+      "staff": "Staff",
+      "settings": "Settings",
+      "warrantyClaims": "Warranty",
+      "disputes": "Disputes"
+    },
+    "tabs": {
+      "new": "New",
+      "toPack": "To pack",
+      "toShip": "To ship",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "returns": "Returns"
+    },
+    "bulkAccept": {
+      "action": "Accept selected",
+      "success": "Accepted {{count}} order(s)",
+      "partialFailure": "{{count}} order(s) couldn't be accepted",
+      "failure": "Couldn't accept the selected orders — please try again."
+    },
+    "actions": {
+      "accept": "Accept",
+      "reject": "Reject",
+      "pack": "Mark packed",
+      "ship": "Ship",
+      "markOutForDelivery": "Mark out for delivery",
+      "markDelivered": "Mark delivered"
+    },
+    "ship": {
+      "awbLabel": "AWB number",
+      "courierLabel": "Courier",
+      "confirm": "Confirm shipment",
+      "success": "Marked as shipped"
+    },
+    "shipping": {
+      "bookAction": "Book with courier",
+      "bookSuccess": "Shipment booked",
+      "pickupDateLabel": "Pickup date",
+      "pickupAction": "Schedule pickup",
+      "pickupSuccess": "Pickup scheduled",
+      "pickupScheduledOn": "Pickup scheduled for {{date}}",
+      "labelAction": "Download label",
+      "errors": {
+        "notPacked": "This order must be packed before booking a courier",
+        "notBooked": "Book a courier shipment first",
+        "originNotSet": "Add a warehouse address in your seller profile before booking shipments"
+      }
+    },
+    "packingSlip": {
+      "title": "Packing slip",
+      "subOrderId": "Sub-order ID",
+      "deliverTo": "Deliver to",
+      "sku": "SKU",
+      "item": "Item",
+      "qty": "Qty"
+    },
+    "returns": {
+      "emptyTitle": "No return requests",
+      "approve": "Approve",
+      "reject": "Reject",
+      "markRefunded": "Mark refunded",
+      "status": {
+        "requested": "Requested",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "picked_up": "Picked up",
+        "refunded": "Refunded",
+        "closed": "Closed",
+        "qc_passed": "QC passed",
+        "qc_disputed": "QC disputed",
+        "replaced": "Replaced"
+      },
+      "pickupAwb": "Pickup AWB",
+      "qcDisputedNote": "You disputed this return. Escalate to admin if the buyer disagrees.",
+      "qc": {
+        "action": "Submit QC",
+        "photosLabel": "QC photos",
+        "photosRequired": "At least one QC photo is required.",
+        "noteLabel": "Notes (optional)",
+        "pass": "Pass — resolve return",
+        "dispute": "Dispute",
+        "passSuccess": "QC recorded — return resolved",
+        "disputeSuccess": "QC dispute recorded",
+        "failure": "Couldn't submit QC — please try again."
+      }
+    },
+    "ewayBill": {
+      "title": "E-way bill tasks",
+      "emptyTitle": "No e-way bill tasks",
+      "emptyDescription": "Shipments over the consignment-value threshold will show up here.",
+      "exportCsv": "Export pending as CSV",
+      "consignmentValue": "Consignment value",
+      "downloadJson": "Download JSON",
+      "numberPlaceholder": "E-way bill number",
+      "markGenerated": "Save number",
+      "generatedTitle": "Generated",
+      "marked": "E-way bill number saved",
+      "markFailed": "Couldn't save the e-way bill number — please try again.",
+      "exportFailed": "Couldn't export — please try again."
+    }
+  },
+  "sellerPayments": {
+    "currentBalance": "Current balance",
+    "upcomingPayout": "Upcoming payout",
+    "expectedOn": "Expected on {{date}}",
+    "recentActivity": "Recent activity",
+    "noActivity": "No ledger activity yet.",
+    "payoutHistory": "Payout history",
+    "emptyTitle": "No payouts yet",
+    "emptyDescription": "Your first settlement will show up here once eligible orders clear their return window.",
+    "downloadStatement": "Download statement",
+    "statementDownloadFailed": "Couldn't download the statement — please try again.",
+    "gross": "Gross",
+    "commission": "Commission",
+    "taxWithheld": "Tax withheld",
+    "orderCount": "Orders",
+    "status": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "paid": "Paid",
+      "failed": "Failed"
+    },
+    "entryType": {
+      "orderCredit": "Sale",
+      "commission": "Commission",
+      "refund": "Refund",
+      "payout": "Payout",
+      "adjustment": "Adjustment",
+      "tcs": "TCS",
+      "tds": "TDS",
+      "shipping": "Shipping charge",
+      "penalty": "Penalty",
+      "disputeRefund": "Dispute refund (admin-forced)"
+    }
+  },
+  "khata": {
+    "title": "Khata credit",
+    "limit": "Credit limit",
+    "used": "Used",
+    "available": "Available",
+    "suspended": "Your Khata account is currently suspended pending an overdue repayment.",
+    "closed": "Your Khata account is closed.",
+    "repayAmount": "Amount to repay (₹)",
+    "repayNow": "Repay now",
+    "repayFailed": "Couldn't create a repayment link — please try again.",
+    "statements": "Statements",
+    "noStatements": "No statements yet",
+    "noStatementsDescription": "Monthly statements appear here once you have Khata activity.",
+    "dueOn": "Due {{date}}",
+    "statementStatus": {
+      "due": "Due",
+      "paid": "Paid",
+      "overdue": "Overdue"
+    },
+    "requestLimitTitle": "Request a Khata credit limit",
+    "requestedLimit": "Requested limit (₹)",
+    "reasonOptional": "Reason (optional)",
+    "submitRequest": "Submit request",
+    "requestSubmitted": "Your request has been submitted for review.",
+    "requestFailed": "Couldn't submit your request — please try again.",
+    "notEligibleTitle": "Khata credit is for verified garages",
+    "notEligibleDescription": "Ask us to verify your garage account to become eligible for Khata credit."
+  },
+  "sell": {
+    "landing": {
+      "heroTitle": "Sell your parts to garages and mechanics across India",
+      "heroSubtitle": "List once, set your own bulk prices, and get paid straight to your bank account. No stall, no stock, just your shop's parts online.",
+      "cta": "Start selling",
+      "footerLink": "Sell on SnapSpare",
+      "slabPricing": {
+        "title": "Set your own bulk pricing",
+        "description": "Charge one price for a single piece, and a lower price per piece when a garage orders in bulk — you decide the quantities and the discount.",
+        "qtyLabel": "{{range}} pcs",
+        "example": "Example: ₹250/pc for 1–9, ₹195/pc for 10–49, ₹145/pc for 50 or more."
+      },
+      "commission": {
+        "title": "Simple, transparent fees",
+        "commissionTitle": "One commission, no surprises",
+        "commissionDescription": "We take a small, published commission only when an order is delivered — never upfront, never on cancelled or returned orders.",
+        "payoutTitle": "Paid on a fixed schedule",
+        "payoutDescription": "Your payment is sent straight to your bank account on a regular settlement cycle — track every payout and its breakdown in your dashboard.",
+        "noHiddenFeesTitle": "No listing fees, no hidden charges",
+        "noHiddenFeesDescription": "It costs nothing to list your parts. You only pay when you make a sale."
+      },
+      "howItWorks": {
+        "title": "How it works",
+        "step1": "Tell us about your shop — business details, GST/PAN, and where you'll ship from.",
+        "step2": "Upload your documents — GST certificate, PAN, address proof and a shop photo.",
+        "step3": "Our team verifies your application, usually within a few business days.",
+        "step4": "Once approved, list your parts, set your bulk prices, and start receiving orders."
+      }
+    },
+    "apply": {
+      "title": "Seller registration"
+    },
+    "tracker": {
+      "title": "Application status",
+      "step": {
+        "submitted": "Submitted",
+        "under_review": "Under review",
+        "approved": "Approved"
+      },
+      "stepDescription": {
+        "submitted": "We've received your application and it's in the queue for review.",
+        "under_review": "Our team is reviewing your documents and details.",
+        "approved": "You're approved — welcome to SnapSpare!"
+      },
+      "approvedDescription": "Your seller account is now active. Head to your seller dashboard to start listing parts.",
+      "changesRequestedTitle": "A few changes are needed",
+      "changesRequestedDescription": "Please review the notes below, update the relevant step, and resubmit.",
+      "resumeEditing": "Resume editing",
+      "rejectedTitle": "Application not approved",
+      "rejectedDescription": "Your seller application wasn't approved this time. Contact support if you have questions."
+    },
+    "wizard": {
+      "progressLabel": "Onboarding progress",
+      "stepIndicator": "Step {{current}} of {{total}}",
+      "back": "Back",
+      "continue": "Continue",
+      "steps": {
+        "business": "Business",
+        "taxIdentity": "Tax & identity",
+        "addresses": "Addresses",
+        "bank": "Bank",
+        "documents": "Documents",
+        "agreement": "Agreement",
+        "general": "General"
+      },
+      "business": {
+        "legalName": "Legal business name",
+        "tradeName": "Trade name (shop name)",
+        "tradeNameHint": "This is the name buyers will see.",
+        "businessType": "Business type",
+        "businessTypeOption": {
+          "proprietorship": "Proprietorship",
+          "partnership": "Partnership",
+          "llp": "LLP",
+          "pvt_ltd": "Private Limited",
+          "individual": "Individual",
+          "other": "Other"
+        },
+        "yearsInBusiness": "Years in business",
+        "categories": "Categories you deal in",
+        "categoriesRequired": "Select at least one category.",
+        "brandsDealtIn": "Brands you deal in (optional)",
+        "brandsDealtInPlaceholder": "Bosch, Denso, MRF…",
+        "brandsDealtInHint": "Separate multiple brands with commas."
+      },
+      "tax": {
+        "gstRegisteredYes": "I'm GST-registered",
+        "gstRegisteredNo": "I'm not GST-registered",
+        "gstin": "GSTIN",
+        "gstinInvalid": "Enter a valid 15-character GSTIN.",
+        "gstinFormatOk": "GSTIN format looks valid — verification pending.",
+        "gstComposition": "I'm registered under the GST Composition Scheme",
+        "unregisteredWarning": "Without a GST registration, selling on SnapSpare is currently limited. Our team will guide you on next steps after reviewing your application.",
+        "turnoverModeBelowThreshold": "My annual turnover is below the GST registration threshold",
+        "turnoverModeIntrastateOnly": "I only want to sell within my own state",
+        "pan": "PAN",
+        "panInvalid": "Enter a valid 10-character PAN."
+      },
+      "addresses": {
+        "registeredTitle": "Registered business address",
+        "pickupTitle": "Pickup address(es)",
+        "pickupHint": "This is where couriers will collect your shipments from. You can add more than one.",
+        "pickupLabel": "Address label (e.g. Main warehouse)",
+        "addPickup": "Add another pickup address",
+        "removePickup": "Remove this address",
+        "atLeastOnePickup": "Add at least one pickup address.",
+        "setDefault": "Default pickup address",
+        "notServiceable": "We couldn't confirm pickup service for this pincode yet — you can still continue."
+      },
+      "bank": {
+        "accountHolderName": "Account holder name",
+        "accountNumber": "Account number",
+        "confirmAccountNumber": "Confirm account number",
+        "accountNumberMismatch": "Account numbers don't match.",
+        "ifsc": "IFSC code",
+        "ifscInvalid": "Enter a valid 11-character IFSC code.",
+        "bankName": "Bank name",
+        "branch": "Branch",
+        "cancelledCheque": "Cancelled cheque",
+        "cancelledChequeHint": "A photo or scan of a cancelled cheque for this account (optional but recommended)."
+      },
+      "documents": {
+        "intro": "Upload clear photos or scans — each file must be under 5MB (we'll compress large photos automatically).",
+        "gstCertificate": "GST registration certificate",
+        "pan": "PAN card",
+        "addressProof": "Address proof",
+        "addressProofHint": "Utility bill, rent agreement, or similar, matching your registered address.",
+        "shopPhoto": "Shop photo",
+        "brandAuth": "Brand authorisation letters (optional)",
+        "brandAuthHint": "Adding these boosts buyer trust for the brands you're authorised to sell.",
+        "addBrandAuth": "Add a letter",
+        "upload": "Upload",
+        "replace": "Replace",
+        "uploaded": "Uploaded",
+        "uploadError": "Upload failed — please try again.",
+        "incomplete": "Please upload all required documents before continuing."
+      },
+      "agreement": {
+        "summaryIntro": "By submitting this application, you agree to:",
+        "point1": "List only parts you're authorised to sell, with accurate descriptions and pricing.",
+        "point2": "Fulfil accepted orders within the seller SLA and keep your stock up to date.",
+        "point3": "Pay SnapSpare's published commission on delivered orders — deducted before payout.",
+        "point4": "Keep your GST, PAN and bank details accurate and up to date.",
+        "acceptLabel": "I have read and agree to the seller terms above.",
+        "acceptRequired": "You must accept the terms to submit your application.",
+        "submit": "Submit application",
+        "submitError": "Couldn't submit your application — please try again."
+      }
+    }
+  },
+  "sellerStaff": {
+    "pageTitle": "Staff",
+    "invite": {
+      "title": "Invite a staff member",
+      "name": "Name",
+      "phone": "Mobile number",
+      "role": "Role",
+      "permissions": "Permissions",
+      "submit": "Send invite",
+      "success": "Invite sent — they'll get access after signing in with this number."
+    },
+    "roleOption": {
+      "owner": "Owner",
+      "manager": "Manager",
+      "packer": "Packer"
+    },
+    "permission": {
+      "manage_listings": "Manage listings",
+      "manage_orders": "Manage orders",
+      "manage_staff": "Manage staff",
+      "view_payouts": "View payouts",
+      "manage_returns": "Manage returns"
+    },
+    "status": {
+      "active": "Active",
+      "invited": "Invited",
+      "removed": "Removed"
+    },
+    "list": {
+      "emptyTitle": "No staff yet",
+      "emptyDescription": "Invite a manager or packer to help run your seller account.",
+      "remove": "Remove",
+      "removed": "Staff member removed"
+    }
+  },
+  "sellerSettings": {
+    "pageTitle": "Settings",
+    "save": "Save",
+    "saved": "Saved",
+    "storePage": {
+      "title": "Store page",
+      "storeName": "Store display name",
+      "storeDescription": "Store description",
+      "storeSlug": "Store handle",
+      "storeSlugHint": "Lowercase letters, numbers and hyphens only. This is your public store link.",
+      "slugTaken": "That store handle is already taken — try another."
+    },
+    "holidayMode": {
+      "title": "Holiday mode",
+      "description": "Pause all your active listings while you're away, and resume them automatically when you're back.",
+      "active": "Active",
+      "inactive": "Off",
+      "returnDate": "Expected return date (optional)",
+      "reason": "Reason (optional)",
+      "enable": "Pause my listings",
+      "disable": "Resume my listings",
+      "pausedToast": "{{count}} listing(s) paused",
+      "resumedToast": "{{count}} listing(s) resumed"
+    },
+    "sla": {
+      "title": "Order SLA preferences",
+      "description": "How quickly you commit to accepting and packing orders. Missing these may auto-cancel an order.",
+      "acceptWithinHours": "Accept within (hours)",
+      "packWithinHours": "Pack within (hours)"
+    },
+    "notifications": {
+      "title": "Notification preferences",
+      "channel": {
+        "push": "Push notifications",
+        "sms": "SMS",
+        "whatsapp": "WhatsApp",
+        "email": "Email"
+      }
+    }
+  },
+  "sellerListings": {
+    "title": "Listings",
+    "addAction": "Add listing",
+    "emptyTitle": "No listings yet",
+    "emptyDescription": "Add your first listing from the master catalogue to start selling.",
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "paused": "Paused",
+      "out_of_stock": "Out of stock",
+      "rejected": "Rejected",
+      "archived": "Archived"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "paused": "Paused",
+      "out_of_stock": "Out of stock",
+      "rejected": "Rejected",
+      "archived": "Archived"
+    },
+    "table": {
+      "part": "Part",
+      "sku": "SKU",
+      "price": "From price",
+      "stock": "Stock",
+      "status": "Status"
+    },
+    "actions": {
+      "edit": "Edit",
+      "stock": "Stock",
+      "activate": "Activate",
+      "pause": "Pause",
+      "archive": "Archive"
+    },
+    "inventory": {
+      "title": "Inventory",
+      "notFound": "Listing not found",
+      "totalStock": "Total stock",
+      "reserved": "Reserved",
+      "available": "Available",
+      "outOfStock": "Out of stock",
+      "lowStock": "Low stock",
+      "adjustDeltaLabel": "Adjust by",
+      "adjustDeltaPlaceholder": "e.g. 10 or -5",
+      "adjustReasonLabel": "Reason",
+      "adjustNoteLabel": "Note (optional)",
+      "adjustAction": "Apply",
+      "adjustSuccess": "Stock updated",
+      "insufficientStock": "That adjustment would take stock below zero.",
+      "ledgerEmptyTitle": "No stock movements yet",
+      "date": "Date",
+      "reasonColumn": "Reason",
+      "delta": "Change",
+      "balance": "Balance",
+      "note": "Note",
+      "reason": {
+        "restock": "Restock",
+        "sale": "Sale",
+        "return": "Return",
+        "adjustment": "Adjustment",
+        "correction": "Correction"
+      }
+    },
+    "addFlow": {
+      "step1Title": "Find the part",
+      "step1Description": "Search the master catalogue by part number, name or brand.",
+      "searchPlaceholder": "Search part number, name or brand",
+      "searchMinChars": "Type at least 2 characters to search",
+      "noResults": "No matching parts found in the catalogue.",
+      "requestNewPart": "Can't find this part? Request it",
+      "confirmPart": "Use this part",
+      "step2Title": "Commercial details",
+      "step2Description": "Only pricing, stock and logistics — the part's specs come from the catalogue.",
+      "skuLabel": "Your SKU",
+      "conditionLabel": "Condition",
+      "stockQtyLabel": "Stock quantity",
+      "mrpLabel": "MRP (₹)",
+      "taxIncludedLabel": "Prices include GST",
+      "weightLabel": "Weight (grams)",
+      "warrantyLabel": "Warranty (months)",
+      "packLabelLabel": "Pack label",
+      "returnWindowLabel": "Return window (days)",
+      "priceLabel": "Unit price (₹)",
+      "hsnCodeLabel": "HSN code",
+      "gstRateLabel": "GST rate",
+      "oversizedLabel": "Oversized (bumpers, panels, batteries)",
+      "saveDraft": "Save as draft",
+      "publish": "Publish listing",
+      "saveSuccess": "Listing saved",
+      "saveError": "Couldn't save the listing — check the errors above.",
+      "publishBlockedOutOfStock": "Add stock before publishing",
+      "images": {
+        "title": "Photos",
+        "add": "Add photo",
+        "uploading": "Uploading…",
+        "remove": "Remove",
+        "reorder": "Drag to reorder"
+      }
+    },
+    "condition": {
+      "new": "New",
+      "used": "Used",
+      "refurbished": "Refurbished"
+    },
+    "pricingEditor": {
+      "title": "Quantity-slab pricing",
+      "moqLabel": "Minimum order quantity (MOQ)",
+      "stepQtyLabel": "Step quantity",
+      "addTier": "Add tier",
+      "tierLabel": "Tier {{tierNumber}}",
+      "andAbove": "and above",
+      "endsAtLabel": "Ends at",
+      "unitPriceLabel": "Unit price (₹)",
+      "reorderTier": "Reorder tier {{tierNumber}} — drag or use arrow keys",
+      "removeTier": "Remove tier {{tierNumber}}",
+      "previewTitle": "Buyer preview",
+      "previewEmpty": "Enter tier prices to see the buyer-facing preview.",
+      "decreasePreviewQty": "Preview a lower quantity",
+      "increasePreviewQty": "Preview a higher quantity",
+      "upsellHint": "{{qty}} more unlocks {{price}}/unit",
+      "fixErrorsBeforeSave": "Fix the pricing errors above before saving.",
+      "sharesDefaultMoq": "Shares the default ladder's MOQ ({{moq}}) and step quantity ({{stepQty}}) — only prices differ per group."
+    },
+    "buyerGroups": {
+      "title": "Buyer-group pricing",
+      "description": "Give retail, mechanic, garage, fleet or reseller buyers their own price ladder. A group without an override sees the default ladder above.",
+      "type": {
+        "retail": "Retail",
+        "mechanic": "Mechanic",
+        "garage": "Garage",
+        "fleet": "Fleet",
+        "reseller": "Reseller"
+      },
+      "usingDefault": "This group sees the default ladder.",
+      "copyFromDefault": "Copy from default",
+      "removeOverride": "Remove override"
+    },
+    "templates": {
+      "title": "Pricing templates",
+      "empty": "No saved templates yet.",
+      "apply": "Apply",
+      "delete": "Delete",
+      "saveCurrent": "Save current ladder as template",
+      "namePlaceholder": "e.g. Standard 3-step 5/10%",
+      "save": "Save template",
+      "saved": "Template saved",
+      "fixErrorsToSave": "Fix the pricing errors above before saving a template."
+    },
+    "marginCalculator": {
+      "title": "Margin calculator",
+      "costPriceLabel": "Your cost price (₹)",
+      "commissionRateHint": "Platform commission for this category: {{percent}}%",
+      "enterCostPrompt": "Enter your cost price to see per-tier margin.",
+      "tier": "Tier",
+      "price": "Price",
+      "commission": "Commission",
+      "shipping": "Est. shipping",
+      "margin": "Margin",
+      "marginPercent": "Margin %",
+      "belowCostWarning": "One or more tiers sell below cost after commission and estimated shipping.",
+      "shippingEstimateNote": "Shipping is estimated for a typical (national-zone) delivery — the actual charge depends on the buyer's location and is computed at checkout."
+    },
+    "pricingErrors": {
+      "firstTierMustMatchMoq": "Tier 1 must start at the MOQ ({{moq}})",
+      "moqMustBeMultipleOfStep": "MOQ must be a whole multiple of the step quantity ({{stepQty}})",
+      "tierMustBeOpenEnded": "The last tier must stay open-ended — leave \"ends at\" blank",
+      "onlyLastTierOpenEnded": "Only the last tier can be open-ended — set an \"ends at\" value for tier {{tierNumber}}",
+      "maxMustBeAtLeastMin": "Tier {{tierNumber}}'s \"ends at\" value must be at or above where it starts",
+      "tierMustStartAfterPrevious": "Tier {{tierNumber}} must start at {{expectedMinQty}} — tier {{previousTierNumber}} ends at {{previousMaxQty}}",
+      "tierPriceMustBeLower": "Tier {{tierNumber}}'s price must be lower than tier {{previousTierNumber}}'s",
+      "raw": "{{raw}}"
+    },
+    "partRequest": {
+      "title": "Request a new part",
+      "description": "Can't find this part in the catalogue? Submit it for admin review — once approved, it's added to the catalogue and a draft listing is created for you automatically.",
+      "titleLabel": "Part name",
+      "brandLabel": "Brand",
+      "oemNumberLabel": "OEM number",
+      "partTypeLabel": "Part type",
+      "partType": {
+        "oem": "OEM",
+        "oes": "OES",
+        "aftermarket": "Aftermarket",
+        "genuine": "Genuine"
+      },
+      "categoryLabel": "Category",
+      "subcategoryLabel": "Subcategory",
+      "noSubcategory": "No subcategory",
+      "specsLabel": "Specs / description",
+      "fitmentLabel": "Fitment notes",
+      "fitmentPlaceholder": "e.g. Maruti Suzuki Swift 2018-2023, Baleno 2019+",
+      "submit": "Submit request",
+      "submitSuccess": "Part request submitted",
+      "queueTitle": "Part requests",
+      "newAction": "Request a new part",
+      "emptyTitle": "No part requests yet",
+      "emptyDescription": "Requests you submit for parts missing from the catalogue will show up here.",
+      "viewListing": "View draft listing",
+      "status": {
+        "pending": "Pending",
+        "under_review": "Under review",
+        "changes_requested": "Changes requested",
+        "approved": "Approved",
+        "rejected": "Rejected"
+      }
+    },
+    "bulkUpload": {
+      "navLink": "Bulk upload",
+      "pageTitle": "Bulk upload listings",
+      "title": "Bulk upload",
+      "description": "Download the template, fill in your listings offline, then upload it here. Only valid rows are added — everything else comes back with a plain-language reason.",
+      "downloadTemplate": "Download template",
+      "uploadAction": "Upload file",
+      "parsing": "Checking your file…",
+      "startOver": "Start over",
+      "notASeller": "This page is only available to sellers.",
+      "parseError": "Couldn't read that file — check it's a .csv or .xlsx saved from the template.",
+      "commitError": "Couldn't save the listings — try again.",
+      "commitSuccess": "{{count}} listing added",
+      "commitSuccess_other": "{{count}} listings added",
+      "summaryTotal": "{{count}} rows",
+      "summaryValid": "{{count}} valid",
+      "summaryInvalid": "{{count}} invalid",
+      "summaryCommitted": "{{count}} added",
+      "downloadErrorReport": "Download error report",
+      "commitAction": "Add {{count}} valid listing",
+      "commitAction_other": "Add {{count}} valid listings",
+      "committing": "Adding listings…",
+      "table": {
+        "row": "Row",
+        "sku": "SKU",
+        "status": "Status",
+        "reason": "Reason",
+        "valid": "Valid",
+        "invalid": "Invalid"
+      }
+    },
+    "bulkActions": {
+      "selectAll": "Select all listings",
+      "selectRow": "Select {{title}}",
+      "selectedCount": "{{count}} selected",
+      "clearSelection": "Clear selection",
+      "priceChange": {
+        "trigger": "Bulk price change",
+        "title": "Bulk price change",
+        "byCategory": "By category",
+        "byBrand": "By brand",
+        "categoryLabel": "Category",
+        "brandLabel": "Brand",
+        "percentMode": "Percent",
+        "absoluteMode": "Fixed amount",
+        "percentValueLabel": "Change (%, negative to discount)",
+        "absoluteValueLabel": "Change (₹, negative to discount)",
+        "invalidValue": "Enter a non-zero number.",
+        "apply": "Apply price change",
+        "success": "{{updated}} listings updated, {{failed}} skipped"
+      },
+      "stockUpdate": {
+        "trigger": "Update stock",
+        "title": "Update stock for selected listings",
+        "setMode": "Set to",
+        "deltaMode": "Adjust by",
+        "setValueLabel": "New stock quantity",
+        "deltaValueLabel": "Change (e.g. 10 or -5)",
+        "invalidValue": "Enter a whole number.",
+        "apply": "Update stock",
+        "success": "{{updated}} listings updated, {{failed}} skipped"
+      },
+      "statusChange": {
+        "trigger": "Change status",
+        "title": "Change status for selected listings",
+        "statusLabel": "New status",
+        "apply": "Apply status change",
+        "success": "{{updated}} listings updated, {{failed}} skipped"
+      }
+    }
+  },
+  "sellerDashboard": {
+    "title": "Dashboard",
+    "viewAllOrders": "View all orders",
+    "todaysOrders": {
+      "title": "Today's orders",
+      "emptyTitle": "No orders yet today",
+      "orderId": "Order",
+      "items": "Items",
+      "total": "Total",
+      "status": "Status"
+    },
+    "pendingActions": {
+      "title": "Pending actions",
+      "needsAccept": "Need acceptance",
+      "needsPack": "Need packing"
+    },
+    "revenueChart": {
+      "title": "Revenue",
+      "rangeLabel": "Date range",
+      "rangeDays": "{{count}}d",
+      "emptyTitle": "No sales in this range yet"
+    },
+    "topSellingParts": {
+      "title": "Top-selling parts",
+      "emptyTitle": "No sales in this range yet",
+      "part": "Part",
+      "unitsSold": "Units sold",
+      "revenue": "Revenue"
+    },
+    "conversion": {
+      "title": "Conversion",
+      "caveat": "Estimated: units sold in range ÷ all-time listing views."
+    },
+    "slaScorecard": {
+      "title": "SLA scorecard",
+      "acceptOnTime": "Accepted on time",
+      "packOnTime": "Packed on time"
+    },
+    "missedDemand": {
+      "title": "Missed demand",
+      "description": "Searches buyers ran in your categories that found nothing.",
+      "emptyTitle": "No missed searches in your categories recently"
+    }
+  },
+  "home": {
+    "emptyTitle": "Catalog coming soon",
+    "emptyDescription": "Browse categories will appear here once listings go live.",
+    "emptyAction": "Browse categories",
+    "vehicleSelector": {
+      "title": "Select your vehicle to see parts that fit",
+      "subtitle": "Add your bike or car once, and every listing shows whether it fits."
+    },
+    "categoryTiles": {
+      "title": "Shop by category"
+    },
+    "dealOfDay": {
+      "title": "Deal of the day",
+      "badge": "Today only"
+    },
+    "bulkBuySpotlight": {
+      "title": "Biggest bulk-buy savings"
+    },
+    "brandRail": {
+      "title": "Shop by brand"
+    },
+    "recentlyViewed": {
+      "title": "Recently viewed"
+    },
+    "reorderRail": {
+      "title": "Reorder your usuals",
+      "andMore": " +{{count}} more"
+    }
+  },
+  "admin": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "gstReports": "GST reports",
+      "creditApprovals": "Credit approvals",
+      "sellerApplications": "Seller applications",
+      "partRequests": "Part requests",
+      "rfqs": "RFQs",
+      "notifications": "Notifications",
+      "reviewModeration": "Review moderation",
+      "spuriousReports": "Counterfeit reports",
+      "brandAuthorizations": "Brand authorizations",
+      "warrantyClaims": "Warranty claims",
+      "disputes": "Disputes",
+      "sellers": "Sellers",
+      "orders": "Orders",
+      "finance": "Finance",
+      "catalogue": "Catalogue",
+      "fitment": "Fitment",
+      "listings": "Listings",
+      "returns": "Returns",
+      "marketing": "Marketing",
+      "content": "Content",
+      "users": "Users",
+      "config": "Config",
+      "auditLog": "Audit log",
+      "analytics": "Analytics",
+      "groups": {
+        "overview": "Overview",
+        "sellers": "Sellers",
+        "catalogue": "Catalogue",
+        "fitment": "Fitment",
+        "listings": "Listings",
+        "orders": "Orders",
+        "returnsDisputes": "Returns & disputes",
+        "finance": "Finance",
+        "marketing": "Marketing",
+        "content": "Content",
+        "users": "Users",
+        "config": "Config",
+        "platform": "Platform",
+        "analytics": "Analytics"
+      },
+      "support": "Support tickets"
+    },
+    "analytics": {
+      "title": "Analytics",
+      "rangeLabel": "Date range",
+      "segmentLabel": "Buyer segment",
+      "segmentAll": "All buyers",
+      "funnel": {
+        "tabLabel": "Funnel",
+        "empty": "No funnel activity in this range yet.",
+        "countLabel": "Events",
+        "dropOff": "-{{percent}}%",
+        "steps": {
+          "search": "Search",
+          "view_item_list": "Viewed list",
+          "view_item": "Viewed product",
+          "add_to_cart": "Added to cart",
+          "view_cart": "Viewed cart",
+          "begin_checkout": "Began checkout",
+          "add_payment_info": "Added payment",
+          "purchase": "Purchased"
+        }
+      },
+      "slab": {
+        "tabLabel": "Slab effectiveness",
+        "empty": "No GMV recorded in this range yet.",
+        "gmvLabel": "GMV",
+        "tierLabel": "Qty ≥ {{qty}}"
+      },
+      "cohort": {
+        "tabLabel": "Cohort retention",
+        "empty": "No cohorts yet for this buyer type.",
+        "tableCaption": "Percentage of each monthly cohort that placed at least one order N months later.",
+        "cohortMonth": "Cohort",
+        "cohortSize": "Buyers",
+        "monthOffset": "M+{{count}}"
+      }
+    },
+    "notifications": {
+      "title": "Failed notifications",
+      "subtitle": "Messages that exhausted every delivery retry — the underlying notification (in-app) still reached the user; this is only the external channel.",
+      "emptyTitle": "No failed deliveries",
+      "channel": "Channel",
+      "type": "Type",
+      "attempts": "Attempts",
+      "lastError": "Last error",
+      "failedAt": "Failed at",
+      "resolved": "Resolved"
+    },
+    "rfqs": {
+      "title": "RFQs",
+      "demandTitle": "Demand for missing catalogue parts",
+      "allTitle": "All requests",
+      "emptyTitle": "No RFQs yet"
+    },
+    "reviewModeration": {
+      "title": "Flagged reviews",
+      "emptyTitle": "Nothing flagged",
+      "emptyDescription": "Every review published cleanly — reviews the automated screen flags will show up here.",
+      "actionFailed": "Couldn't complete that action — please try again.",
+      "flag": {
+        "contact_info": "Contact info",
+        "profanity": "Profanity",
+        "pii": "Personal ID info"
+      },
+      "action": {
+        "approve": "Approve & publish",
+        "approveSuccess": "Review published",
+        "reject": "Reject & hide",
+        "rejectSuccess": "Review hidden"
+      }
+    },
+    "spuriousReports": {
+      "title": "Counterfeit part reports",
+      "detailTitle": "Report detail",
+      "notFound": "Report not found",
+      "emptyTitle": "No open reports",
+      "emptyDescription": "Suspicious-part reports from buyers will show up here.",
+      "actionFailed": "Couldn't complete that action — please try again.",
+      "listingLabel": "Listing",
+      "sellerLabel": "Seller",
+      "statusLabel": "Status",
+      "reasonTitle": "Buyer's reason",
+      "sellerResponseTitle": "Seller's response",
+      "outcomeTitle": "Resolve with outcome",
+      "notesLabel": "Admin notes (optional)",
+      "resolvedWith": "Resolved with outcome: {{outcome}}",
+      "status": {
+        "submitted": "Submitted",
+        "under_review": "Under review",
+        "seller_responded": "Seller responded",
+        "resolved": "Resolved"
+      },
+      "outcome": {
+        "warning": "Warning",
+        "listing_removal": "Listing removal",
+        "category_ban": "Category ban",
+        "payout_hold": "Payout hold",
+        "delisting": "Delisting",
+        "dismissed": "Dismissed"
+      },
+      "action": {
+        "startReview": "Start review",
+        "startReviewSuccess": "Marked under review",
+        "resolve": "Resolve report",
+        "resolveSuccess": "Report resolved"
+      }
+    },
+    "brandAuthorizations": {
+      "title": "Brand authorizations",
+      "emptyTitle": "No submissions awaiting review",
+      "emptyDescription": "Seller-submitted brand-authorization documents will show up here.",
+      "actionFailed": "Couldn't complete that action — please try again.",
+      "viewDocument": "View document",
+      "rejectReasonPlaceholder": "Reason for rejection",
+      "action": {
+        "verify": "Verify",
+        "verifySuccess": "Authorization verified — matching listings will show the Genuine part badge.",
+        "reject": "Reject",
+        "rejectSuccess": "Authorization rejected"
+      }
+    },
+    "gstReports": {
+      "title": "GST reports",
+      "subtitle": "Tax rates and thresholds are configured in config/tax and should be reviewed with a chartered accountant before relying on these for filing.",
+      "month": "Month",
+      "exportCsv": "Export CSV",
+      "downloaded": "Downloaded {{count}} row(s)",
+      "errors": {
+        "generic": "Couldn't generate that report — please try again."
+      },
+      "gstr1": {
+        "title": "GSTR-1 outward supply summary",
+        "description": "Per-seller, B2B/B2C, rate-wise taxable value and tax for the selected month."
+      },
+      "tcs": {
+        "title": "TCS summary",
+        "description": "Net taxable supplies and TCS withheld per seller, for GSTR-8 reconciliation."
+      },
+      "gmv": {
+        "title": "Monthly GMV & tax",
+        "description": "Marketplace-wide gross merchandise value, tax collected and TCS for the selected month.",
+        "gmv": "GMV",
+        "tax": "Tax collected",
+        "tcs": "TCS"
+      },
+      "ewayBill": {
+        "title": "E-way bill tasks",
+        "description": "All pending e-way-bill tasks marketplace-wide, exportable for the GST portal's bulk tools."
+      },
+      "tds": {
+        "title": "TDS summary",
+        "description": "Section 194-O TDS deducted per seller for a financial-year quarter.",
+        "financialYear": "Financial year",
+        "quarter": "Quarter",
+        "generate": "Export CSV"
+      }
+    },
+    "credit": {
+      "emptyTitle": "No pending requests",
+      "emptyDescription": "Khata credit-limit requests awaiting review will show up here.",
+      "requested": "Requested",
+      "approvedLimit": "Approved limit (₹)",
+      "approve": "Approve",
+      "reject": "Reject",
+      "approved": "Request approved",
+      "rejected": "Request rejected",
+      "actionFailed": "Couldn't complete that action — please try again."
+    },
+    "sellerApplications": {
+      "emptyTitle": "No applications awaiting review",
+      "emptyDescription": "Submitted seller applications will show up here.",
+      "detailTitle": "Seller application",
+      "notFound": "Application not found",
+      "gstinRequiredToApprove": "This applicant isn't GST-registered. Approval requires a GSTIN in this version of the platform — request changes to ask for one, or reject.",
+      "notesTitle": "Review notes",
+      "notePlaceholder": "What needs to change?",
+      "addNote": "Add note",
+      "actionFailed": "Couldn't complete that action — please try again.",
+      "action": {
+        "startReview": "Start review",
+        "requestChanges": "Request changes",
+        "reject": "Reject",
+        "approve": "Approve",
+        "start_reviewSuccess": "Marked as under review",
+        "request_changesSuccess": "Changes requested",
+        "rejectSuccess": "Application rejected",
+        "approveSuccess": "Seller approved"
+      }
+    },
+    "partRequests": {
+      "title": "Part requests",
+      "emptyTitle": "No requests awaiting review",
+      "emptyDescription": "Seller-submitted new-part requests will show up here.",
+      "detailTitle": "Part request",
+      "notFound": "Request not found",
+      "confirmCatalogueValues": "Confirm catalogue values",
+      "approvedPartNumber": "Part number",
+      "approveRequiresValues": "A part number and HSN code are required to approve.",
+      "notesTitle": "Review notes",
+      "actionFailed": "Couldn't complete that action — please try again.",
+      "action": {
+        "start_reviewSuccess": "Marked as under review",
+        "request_changesSuccess": "Changes requested",
+        "rejectSuccess": "Request rejected",
+        "approveSuccess": "Part added to the catalogue"
+      }
+    },
+    "warrantyClaims": {
+      "title": "Warranty claims",
+      "detailTitle": "Warranty claim",
+      "notFound": "Claim not found",
+      "emptyTitle": "No escalated warranty claims",
+      "emptyDescription": "Claims sellers escalate to the brand will show up here for resolution.",
+      "reasonLabel": "Reason",
+      "sellerLabel": "Seller",
+      "brandLabel": "Brand",
+      "statusLabel": "Status",
+      "resolutionTypeLabel": "Resolution",
+      "resolutionType": {
+        "refund": "Refund",
+        "replacement": "Replacement",
+        "repair_reimbursement": "Repair reimbursement"
+      },
+      "amountLabel": "Amount (paise, optional)",
+      "noteLabel": "Note",
+      "resolve": "Resolve",
+      "actionFailed": "Couldn't complete that action — please try again.",
+      "status": {
+        "submitted": "Submitted",
+        "seller_review": "Under seller review",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "escalated_to_brand": "Escalated to brand",
+        "resolved": "Resolved"
+      },
+      "actionSuccess": "Resolved"
+    },
+    "disputes": {
+      "title": "Disputes",
+      "detailTitle": "Dispute",
+      "notFound": "Dispute not found",
+      "emptyTitle": "No open disputes",
+      "emptyDescription": "Escalated returns and warranty claims needing admin resolution will show up here.",
+      "typeLabel": "Type",
+      "reasonTitle": "Reason",
+      "evidenceTitle": "Evidence",
+      "slaLabel": "SLA deadline",
+      "statusLabel": "Status",
+      "actionLabel": "Resolution action",
+      "action": {
+        "refund_buyer": "Refund buyer (full)",
+        "partial_refund": "Refund buyer (partial)",
+        "uphold_seller": "Uphold seller",
+        "dismissed": "Dismiss"
+      },
+      "refundAmountLabel": "Refund amount (paise)",
+      "adminNoteLabel": "Admin note (required)",
+      "resolve": "Resolve dispute",
+      "resolveSuccess": "Dispute resolved",
+      "actionFailed": "Couldn't resolve — please try again.",
+      "status": {
+        "open": "Open",
+        "under_review": "Under review",
+        "resolved": "Resolved"
+      }
+    },
+    "sla": {
+      "breached": "Overdue",
+      "hoursLeft": "{{count}}h left",
+      "daysLeft": "{{count}}d left"
+    },
+    "dashboard": {
+      "periodLabel": "Period",
+      "periodDays": "{{count}}d",
+      "vsPreviousPeriod": "vs previous period",
+      "alertsTitle": "Alerts",
+      "metrics": {
+        "gmv": "GMV",
+        "orders": "Orders",
+        "aov": "Average order value",
+        "takeRate": "Take rate",
+        "newBuyers": "New buyers",
+        "newSellers": "New sellers",
+        "repeatRate": "Repeat rate",
+        "paymentSuccessRate": "Payment success rate"
+      },
+      "alerts": {
+        "slaBreachesOpen": "SLA breaches (24h)",
+        "failedPayouts": "Failed payouts",
+        "stuckPayments": "Stuck payments",
+        "spuriousReportsOpen": "Open counterfeit reports"
+      },
+      "newOrders": {
+        "title": "New orders",
+        "emptyTitle": "No orders yet"
+      }
+    },
+    "sellers": {
+      "searchPlaceholder": "Search by business name or GSTIN",
+      "emptyTitle": "No sellers yet",
+      "emptyDescription": "Approved sellers will appear here.",
+      "table": {
+        "name": "Business",
+        "status": "Status",
+        "rating": "Rating",
+        "commission": "Commission",
+        "warnings": "Warnings",
+        "actions": "Actions"
+      },
+      "manage": "Manage",
+      "statusSection": "Status",
+      "suspendReasonLabel": "Reason for suspension",
+      "suspend": "Suspend",
+      "reinstate": "Reinstate",
+      "statusNotManageable": "Status \"{{status}}\" is not directly manageable here.",
+      "commissionLabel": "Commission override (%)",
+      "commissionHint": "Leave blank to use the platform default commission rate.",
+      "commissionPlatformDefault": "Platform default",
+      "commissionInvalid": "Enter a commission percent between 0 and 100.",
+      "commissionSaved": "Commission override saved.",
+      "suspendSuccess": "Seller suspended.",
+      "reinstateSuccess": "Seller reinstated.",
+      "actionFailed": "That action failed. Please try again."
+    },
+    "orders": {
+      "actionFailed": "That action failed. Please try again.",
+      "applyForceStatus": "Apply status",
+      "currentStatus": "Status",
+      "forceCancel": "Force cancel",
+      "forceCancelReasonPrompt": "Reason for forced cancellation:",
+      "forceCancelSuccess": "Sub-order cancelled.",
+      "forceRefund": "Force refund",
+      "forceRefundAmountPrompt": "Refund amount in ₹:",
+      "forceRefundInvalidAmount": "Enter a valid amount.",
+      "forceRefundReasonPrompt": "Reason for forced refund:",
+      "forceRefundSuccess": "Refund initiated.",
+      "forceStatusPlaceholder": "Choose a status",
+      "forceStatusReasonPlaceholder": "Reason (required)",
+      "forceStatusSuccess": "Order status updated.",
+      "forceStatusTitle": "Force order status",
+      "notFoundTitle": "No order found with that id",
+      "orderIdLabel": "Order ID",
+      "paymentStatus": "Payment",
+      "reconciliation": {
+        "emptyTitle": "Nothing to reconcile",
+        "issue": "Issue",
+        "issues": {
+          "pending_payment_stale": "Payment stuck pending",
+          "failed_payment": "Payment failed, order not cancelled",
+          "paid_but_uncancelled_reservation": "Paid but reservation not cleared"
+        }
+      },
+      "searchAction": "Search",
+      "subOrdersTitle": "Sub-orders",
+      "tabs": {
+        "lookup": "Lookup & force actions",
+        "reconciliation": "Payment reconciliation"
+      },
+      "total": "Total"
+    },
+    "finance": {
+      "tabs": {
+        "commission": "Commission plan",
+        "payouts": "Payouts",
+        "ledger": "Ledger explorer",
+        "refunds": "Refund register"
+      },
+      "commission": {
+        "notConfigured": "Commission config has not been set up yet.",
+        "categoryRates": "Category rate overrides",
+        "addRow": "Add row",
+        "categorySlug": "Category slug",
+        "percent": "Percent",
+        "settlementCycleDays": "Settlement cycle (days)",
+        "creditOverdueGraceDays": "Credit overdue grace (days)",
+        "slaBreachPenalty": "SLA breach penalty (₹)",
+        "saveSuccess": "Commission plan saved.",
+        "saveFailed": "Could not save the commission plan."
+      },
+      "payouts": {
+        "description": "Manually trigger a payout run for every eligible seller.",
+        "triggerAction": "Run payouts now",
+        "triggerSuccess": "Payout run started for {{count}} seller(s).",
+        "triggerFailed": "Could not start the payout run.",
+        "emptyTitle": "No payouts yet",
+        "seller": "Seller",
+        "net": "Net amount",
+        "status": "Status",
+        "paidAt": "Paid at",
+        "statusValue": {
+          "paid": "Paid",
+          "processing": "Processing",
+          "pending": "Pending",
+          "failed": "Failed"
+        }
+      },
+      "ledger": {
+        "sellerIdLabel": "Seller ID",
+        "emptyTitle": "No ledger entries found",
+        "type": "Type",
+        "amount": "Amount",
+        "balanceAfter": "Balance after",
+        "date": "Date",
+        "description": "Description"
+      },
+      "refundRegister": {
+        "emptyTitle": "No refunds recorded",
+        "types": {
+          "refund_debit": "Refund",
+          "dispute_refund_debit": "Dispute refund"
+        }
+      }
+    },
+    "catalogue": {
+      "tabs": {
+        "parts": "Parts",
+        "brands": "Brands",
+        "categories": "Categories",
+        "bulkImport": "Bulk import"
+      },
+      "parts": {
+        "searchPlaceholder": "Search by part number, name, or OEM number",
+        "emptyTitle": "No catalogue parts yet",
+        "newTitle": "New part",
+        "editTitle": "Edit part",
+        "edit": "Edit",
+        "partNumber": "Part number",
+        "name": "Name",
+        "categorySlug": "Category slug",
+        "brand": "Brand",
+        "hsnCode": "HSN code",
+        "gstRate": "GST rate",
+        "oemNumbers": "OEM numbers (semicolon-separated)",
+        "saveSuccess": "Part saved.",
+        "saveFailed": "Could not save the part.",
+        "savedWithDuplicates": "Saved, but {{count}} possible OEM duplicate(s) exist.",
+        "duplicateConfirm": "{{count}} existing part(s) share an OEM number. Save anyway?",
+        "countryOfOrigin": "Country of origin"
+      },
+      "brands": {
+        "name": "Name",
+        "slug": "Slug",
+        "status": "Status",
+        "add": "Add brand",
+        "emptyTitle": "No brands yet",
+        "saveSuccess": "Brand added.",
+        "saveFailed": "Could not add the brand."
+      },
+      "categories": {
+        "name": "Name",
+        "slug": "Slug",
+        "status": "Status",
+        "add": "Add category",
+        "emptyTitle": "No categories yet",
+        "saveSuccess": "Category added.",
+        "saveFailed": "Could not add the category."
+      },
+      "bulkImport": {
+        "instructions": "Upload a CSV with header: partNumber,name,categorySlug,subcategorySlug,brand,hsnCode,gstRatePercent,oemNumbers (oemNumbers semicolon-separated).",
+        "row": "Row",
+        "status": "Status",
+        "rowStatus": {
+          "ok": "Ready",
+          "duplicate": "Duplicate OEM",
+          "error": "Error"
+        },
+        "parseFailed": "Could not validate the file.",
+        "commitAction": "Import {{count}} row(s)",
+        "commitSuccess": "{{count}} part(s) created.",
+        "commitFailed": "Import failed."
+      }
+    },
+    "fitment": {
+      "tabs": {
+        "workbench": "Workbench",
+        "bulkImport": "Bulk import"
+      },
+      "addNewTitle": "Add fitment mapping",
+      "partId": "Part ID",
+      "makeId": "Make ID",
+      "modelId": "Model ID",
+      "variantIdOptional": "Variant ID (optional)",
+      "addAction": "Add mapping",
+      "addSuccess": "Fitment mapping added.",
+      "saveFailed": "Could not save the fitment mapping.",
+      "conflictWarning": "Saved, but {{count}} conflicting row(s) exist.",
+      "conflictBlocked": "{{count}} conflicting row(s) already exist — resolve before saving.",
+      "searchTitle": "Search",
+      "byPart": "By part ID",
+      "byVehicle": "By vehicle model ID",
+      "searchValueLabel": "Search value",
+      "emptyTitle": "No fitment rows found",
+      "verified": "Verified",
+      "verifiedYes": "Verified",
+      "verifiedNo": "Unverified",
+      "verifyAction": "Verify",
+      "verifySuccess": "Fitment row verified.",
+      "bulkImport": {
+        "instructions": "Upload a CSV with header: partId,makeId,modelId,variantId,yearFrom,yearTo,notes.",
+        "parseFailed": "Could not validate the file.",
+        "commitSuccess": "{{count}} fitment row(s) created.",
+        "commitFailed": "Import failed.",
+        "rowStatus": {
+          "ok": "Ready",
+          "conflict": "Conflict",
+          "error": "Error"
+        }
+      }
+    },
+    "listings": {
+      "tabs": {
+        "search": "Search",
+        "anomalies": "Price & stock reports"
+      },
+      "sellerIdFilter": "Filter by seller ID",
+      "titleFilter": "Filter by title",
+      "emptyTitle": "No listings found",
+      "title": "Title",
+      "seller": "Seller",
+      "status": "Status",
+      "price": "Price",
+      "block": "Block",
+      "unblock": "Unblock",
+      "blockReasonPrompt": "Reason for blocking this listing:",
+      "blockSuccess": "Listing blocked.",
+      "unblockSuccess": "Listing unblocked.",
+      "actionFailed": "That action failed. Please try again.",
+      "statusValue": {
+        "active": "Active",
+        "paused": "Paused",
+        "out_of_stock": "Out of stock",
+        "rejected": "Blocked",
+        "draft": "Draft",
+        "archived": "Archived"
+      },
+      "anomaly": {
+        "priceTitle": "Price anomalies",
+        "priceEmptyTitle": "No price anomalies found",
+        "mrp": "MRP",
+        "sellingPrice": "Lowest tier price",
+        "direction": "Vs. MRP",
+        "directionValue": {
+          "above": "Above",
+          "below": "Below"
+        },
+        "outOfStockTitle": "Out of stock",
+        "outOfStockEmptyTitle": "Nothing out of stock"
+      }
+    },
+    "returns": {
+      "emptyTitle": "No active returns",
+      "emptyDescription": "Returns awaiting a decision or QC will appear here.",
+      "status": {
+        "requested": "Requested",
+        "approved": "Awaiting QC",
+        "qc_disputed": "QC disputed"
+      },
+      "reason": {
+        "wrong_part_sent": "Wrong part sent",
+        "doesnt_fit": "Doesn't fit",
+        "damaged_in_transit": "Damaged in transit",
+        "defective": "Defective",
+        "suspected_spurious": "Suspected counterfeit",
+        "changed_mind": "Changed mind",
+        "rto_undelivered": "RTO undelivered"
+      }
+    },
+    "marketing": {
+      "tabs": {
+        "coupons": "Coupons",
+        "banners": "Banners",
+        "campaigns": "Campaigns",
+        "homeSections": "Homepage"
+      },
+      "coupons": {
+        "newAction": "New coupon",
+        "code": "Code",
+        "discount": "Discount",
+        "usage": "Usage",
+        "status": "Status",
+        "emptyTitle": "No coupons yet",
+        "percentOff": "% off",
+        "flatOff": "₹ off",
+        "validDays": "Valid for (days)",
+        "saveSuccess": "Coupon created.",
+        "saveFailed": "Could not create the coupon."
+      },
+      "banners": {
+        "newAction": "New banner",
+        "slot": "Slot",
+        "schedule": "Schedule",
+        "sortOrder": "Sort order",
+        "status": "Status",
+        "emptyTitle": "No banners yet",
+        "imageUrl": "Image URL",
+        "linkUrl": "Link URL (optional)",
+        "startAt": "Start date",
+        "endAt": "End date",
+        "saveSuccess": "Banner created.",
+        "saveFailed": "Could not create the banner."
+      },
+      "campaigns": {
+        "newAction": "New campaign",
+        "title": "Title",
+        "body": "Message",
+        "audience": "Audience",
+        "status": "Status",
+        "emptyTitle": "No campaigns yet",
+        "saveSuccess": "Campaign draft saved.",
+        "saveFailed": "Could not save the campaign.",
+        "sendAction": "Send",
+        "sendConfirm": "Send this campaign now? This cannot be undone.",
+        "sendSuccess": "Campaign sent to {{count}} recipient(s).",
+        "sendFailed": "Could not send the campaign."
+      },
+      "homeSections": {
+        "newAction": "New section",
+        "order": "Order",
+        "type": "Type",
+        "title": "Title",
+        "status": "Status",
+        "titleEn": "Title (English)",
+        "titleHi": "Title (Hindi)",
+        "emptyTitle": "No homepage sections yet",
+        "saveSuccess": "Homepage section saved.",
+        "saveFailed": "Could not save the section.",
+        "reorderFailed": "Could not reorder sections.",
+        "incompleteForm": "Fill in every required field for this section type first.",
+        "moveUp": "Move up",
+        "moveDown": "Move down",
+        "categorySlug": "Category slug",
+        "imageUrl": "Image URL",
+        "addTile": "Add row",
+        "listingId": "Listing ID",
+        "maxItems": "Max items",
+        "pinnedListingIds": "Pinned listing IDs (comma-separated)",
+        "brandIds": "Brand IDs (comma-separated)",
+        "typeLabel": {
+          "hero_banner": "Hero banner",
+          "vehicle_selector": "Vehicle selector CTA",
+          "category_tiles": "Category tiles",
+          "deal_of_day": "Deal of the day",
+          "bulk_buy_spotlight": "Bulk-buy spotlight",
+          "brand_rail": "Brand rail",
+          "recently_viewed": "Recently viewed",
+          "reorder_rail": "Reorder rail",
+          "trust_strip": "Trust strip"
+        },
+        "helper": {
+          "hero_banner": "Shows the top active banner from the \"home_hero\" slot — manage its image/link on the Banners tab.",
+          "vehicle_selector": "Shows the \"Select your vehicle to see parts that fit\" picker. No extra fields needed."
+        }
+      }
+    },
+    "content": {
+      "tabs": {
+        "pages": "Pages",
+        "strings": "String overrides"
+      },
+      "pages": {
+        "newAction": "New page",
+        "slug": "Slug",
+        "type": "Type",
+        "status": "Status",
+        "emptyTitle": "No pages yet",
+        "titleEn": "Title (English)",
+        "titleHi": "Title (Hindi)",
+        "bodyEn": "Body (English)",
+        "bodyHi": "Body (Hindi)",
+        "saveDraft": "Save draft",
+        "publish": "Publish",
+        "saveSuccess": "Page saved.",
+        "saveFailed": "Could not save the page."
+      },
+      "strings": {
+        "keyPlaceholder": "i18next key (e.g. checkout.codNotice)",
+        "emptyTitle": "No overrides yet",
+        "saveSuccess": "Override saved.",
+        "saveFailed": "Could not save the override."
+      }
+    },
+    "users": {
+      "phoneSearchPlaceholder": "Search by exact phone number",
+      "emptyTitle": "No users found",
+      "name": "Name",
+      "phone": "Phone",
+      "flags": "Flags",
+      "codAbuse": "COD abuse",
+      "returnAbuse": "Return abuse",
+      "setCodAbuse": "Flag for COD abuse",
+      "clearCodAbuse": "Clear COD abuse flag",
+      "setReturnAbuse": "Flag for return abuse",
+      "clearReturnAbuse": "Clear return abuse flag",
+      "flagUpdateSuccess": "Flag updated.",
+      "actionFailed": "That action failed. Please try again.",
+      "impersonateAction": "Impersonate (opens a new tab)",
+      "impersonateReasonPrompt": "Reason for impersonating this user (required, logged):",
+      "impersonateFailed": "Could not start an impersonation session."
+    },
+    "config": {
+      "comingSoonTitle": "Config editor coming soon",
+      "comingSoonDescription": "Feature flags, tax rates, shipping matrix, SLA windows, and COD caps will be editable here without a deploy."
+    },
+    "auditLog": {
+      "targetTypeFilter": "Filter by target type (e.g. sellers)",
+      "actorIdFilter": "Filter by actor (admin) ID",
+      "emptyTitle": "No audit log entries found",
+      "action": "Action",
+      "target": "Target",
+      "actor": "Actor",
+      "when": "When",
+      "note": "Note"
+    },
+    "support": {
+      "title": "Support tickets",
+      "detailTitle": "Support ticket",
+      "notFound": "Ticket not found",
+      "emptyTitle": "No open tickets",
+      "emptyDescription": "New contact-form submissions needing a reply will show up here.",
+      "categoryLabel": "Category",
+      "statusLabel": "Status",
+      "slaLabel": "SLA deadline",
+      "contactLabel": "Contact",
+      "replyTitle": "Reply",
+      "sendReply": "Send reply",
+      "markResolved": "Mark resolved",
+      "markClosed": "Mark closed",
+      "replySuccess": "Reply sent",
+      "resolveSuccess": "Ticket updated",
+      "actionFailed": "Couldn't complete that — please try again.",
+      "status": {
+        "open": "Open",
+        "in_progress": "In progress",
+        "resolved": "Resolved",
+        "closed": "Closed"
+      },
+      "authorRole": {
+        "buyer": "Customer",
+        "seller": "Seller",
+        "admin": "Support"
+      }
+    }
+  },
+  "sellerWarrantyClaims": {
+    "title": "Warranty claims",
+    "emptyTitle": "No warranty claims",
+    "emptyDescription": "Claims buyers submit against your delivered orders will show up here.",
+    "reasonLabel": "Reason",
+    "descriptionLabel": "Description",
+    "approve": "Approve",
+    "reject": "Reject",
+    "escalateToBrand": "Escalate to brand",
+    "notesLabel": "Note (optional)",
+    "actionFailed": "Couldn't complete that action — please try again.",
+    "actionSuccess": "Done",
+    "status": {
+      "submitted": "Submitted",
+      "seller_review": "Under review",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "escalated_to_brand": "Escalated to brand",
+      "resolved": "Resolved"
+    }
+  },
+  "sellerDisputes": {
+    "title": "Disputes",
+    "emptyTitle": "No disputes",
+    "emptyDescription": "Escalated returns and warranty claims will show up here.",
+    "reasonLabel": "Reason",
+    "addEvidence": "Add evidence",
+    "evidenceUrlPlaceholder": "Paste an evidence photo URL",
+    "submitEvidence": "Add",
+    "status": {
+      "open": "Open",
+      "under_review": "Under review",
+      "resolved": "Resolved"
+    }
+  },
+  "onboarding": {
+    "language": {
+      "title": "Choose your language",
+      "description": "You can change this any time from your account settings.",
+      "continue": "Continue"
+    }
+  },
+  "pwa": {
+    "installPrompt": {
+      "title": "Install SnapSpare",
+      "description": "Add it to your home screen for faster access and offline order tracking.",
+      "install": "Install",
+      "dismiss": "Not now"
+    }
+  },
+  "preferences": {
+    "title": "Preferences",
+    "lowDataMode": {
+      "label": "Low-data mode",
+      "description": "Smaller images, no autoplay, and less background loading — good for limited data plans or a slow connection."
+    }
+  },
+  "legal": {
+    "notFoundTitle": "Page not found",
+    "notFoundDescription": "This page isn't available right now — please check back later."
+  },
+  "help": {
+    "title": "Help Centre",
+    "subtitle": "Answers to common questions about orders, returns, pricing, and selling.",
+    "metaDescription": "Help Centre — answers to common questions about SnapSpare.",
+    "emptyTitle": "No help articles yet",
+    "stillNeedHelp": "Didn't find what you were looking for?",
+    "contactSupportLink": "Contact support"
+  },
+  "support": {
+    "title": "Support",
+    "subtitle": "We're here to help with orders, payments, returns, and your account.",
+    "metaDescription": "Contact SnapSpare support — contact form, WhatsApp, phone, and business hours.",
+    "contactForm": {
+      "title": "Send us a message",
+      "nameLabel": "Your name",
+      "categoryLabel": "What is this about?",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone",
+      "contactChannelHint": "Add an email or phone number so we can reply to you.",
+      "subjectLabel": "Subject",
+      "messageLabel": "Message",
+      "submit": "Submit",
+      "success": "We've received your message.",
+      "error": "Couldn't submit your message — please try again.",
+      "submittedTitle": "Thanks — we've got your message",
+      "submittedDescription": "Our support team will respond within the SLA shown alongside this form.",
+      "viewTickets": "View my support tickets",
+      "submitAnother": "Send another message"
+    },
+    "category": {
+      "order_issue": "Order issue",
+      "payment_issue": "Payment issue",
+      "return_refund": "Return or refund",
+      "seller_conduct": "Seller conduct",
+      "account_access": "Can't sign in / account access",
+      "listing_or_pricing": "Listing or pricing question",
+      "other": "Something else"
+    },
+    "whatsapp": {
+      "cta": "Chat with us on WhatsApp",
+      "prefilledMessage": "Hi, I need help with my SnapSpare account/order."
+    },
+    "businessHours": {
+      "title": "Business hours",
+      "closedToday": "We're closed today",
+      "openToday": "Open today, {{hours}}",
+      "closed": "Closed",
+      "timezoneNote": "All times are in Indian Standard Time (IST).",
+      "day": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
+      }
+    },
+    "slaNote": "We acknowledge every support ticket within a few hours and aim to resolve it within {{hours}} hours.",
+    "grievanceLink": "Grievance Officer details & statutory timelines",
+    "helpCentreLink": "Browse the Help Centre"
+  },
+  "footer": {
+    "legal": {
+      "navLabel": "Legal",
+      "termsOfUse": "Terms of Use",
+      "privacyPolicy": "Privacy Policy",
+      "sellerAgreement": "Seller Agreement",
+      "returnRefundPolicy": "Return & Refund Policy",
+      "shippingPolicy": "Shipping Policy",
+      "cancellationPolicy": "Cancellation Policy",
+      "grievanceRedressal": "Grievance Redressal"
+    },
+    "helpCentre": "Help Centre",
+    "contactSupport": "Contact Support",
+    "operatedBy": "Operated by {{name}}",
+    "grievanceOfficer": "Grievance Officer: {{name}}"
+  }
+}

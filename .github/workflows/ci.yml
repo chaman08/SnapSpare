@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # The Firestore emulator (used by `pnpm test:rules` below) is a JVM
+      # process. GitHub's ubuntu-latest runner image bundles several Temurin
+      # JDKs but does not put any of them on PATH or set JAVA_HOME by
+      # default, so `firebase emulators:exec` fails to find `java` without
+      # this step.
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: i18n key parity
+        run: pnpm --filter @snapspare/web i18n:check
+
+      - name: Test
+        run: pnpm test
+
+      - name: Firestore/Storage rules tests
+        run: pnpm test:rules
+
+      - name: Build
+        run: pnpm build
+
+      - name: Lighthouse CI (perf/a11y budget)
+        run: pnpm --filter @snapspare/web lighthouse
+        env:
+          LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}

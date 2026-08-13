@@ -1,0 +1,28 @@
+{
+  "name": "@snapspare/seed",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20 <21"
+  },
+  "scripts": {
+    "seed": "tsx src/index.ts",
+    "backfill-search": "tsx src/scripts/backfillSearchIndex.ts",
+    "backfill-catalog-part-search": "tsx src/scripts/backfillCatalogPartSearchIndex.ts",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"no tests in @snapspare/seed\" --passWithNoTests"
+  },
+  "dependencies": {
+    "@snapspare/shared": "workspace:*",
+    "firebase-admin": "^12.7.0",
+    "typesense": "^1.8.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.6",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}

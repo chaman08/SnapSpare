@@ -1,0 +1,2758 @@
+{
+  "app": {
+    "name": "SnapSpare"
+  },
+  "nav": {
+    "home": "होम",
+    "categories": "श्रेणियाँ",
+    "garage": "गैराज",
+    "orders": "ऑर्डर",
+    "account": "खाता"
+  },
+  "header": {
+    "searchPlaceholder": "पार्ट्स, OEM कोड, ब्रांड खोजें"
+  },
+  "fitment": {
+    "fits": "आपकी गाड़ी में फिट होगा",
+    "doesNotFit": "आपकी गाड़ी में फिट नहीं होगा",
+    "unverified": "फिटमेंट जांचने के लिए अपनी गाड़ी जोड़ें"
+  },
+  "common": {
+    "loading": "लोड हो रहा है…",
+    "retry": "फिर से कोशिश करें",
+    "somethingWentWrong": "कुछ गलत हो गया",
+    "noResultsTitle": "अभी यहाँ कुछ नहीं है",
+    "noResultsAction": "श्रेणियाँ देखें",
+    "back": "वापस",
+    "close": "बंद करें",
+    "cancel": "रद्द करें",
+    "remove": "हटाएं",
+    "yes": "हाँ",
+    "no": "नहीं",
+    "save": "सेव करें"
+  },
+  "auth": {
+    "login": {
+      "title": "साइन इन करें",
+      "subtitle": "अपना गैराज, पते और ऑर्डर सहेजने के लिए साइन इन करें।",
+      "or": "या"
+    },
+    "phone": {
+      "label": "मोबाइल नंबर",
+      "placeholder": "98765 43210",
+      "sendOtp": "OTP भेजें"
+    },
+    "otp": {
+      "label": "OTP दर्ज करें",
+      "placeholder": "6-अंकों का कोड",
+      "sentTo": "{{phone}} पर OTP भेजा गया।",
+      "changeNumber": "नंबर बदलें",
+      "verify": "सत्यापित करें और जारी रखें",
+      "resend": "OTP फिर से भेजें",
+      "resendIn": "{{seconds}} सेकंड में फिर से भेजें"
+    },
+    "google": {
+      "signIn": "Google से जारी रखें"
+    },
+    "errors": {
+      "invalidPhone": "एक मान्य 10-अंकों का मोबाइल नंबर दर्ज करें।",
+      "wrongOtp": "यह कोड मेल नहीं खाया। कृपया फिर से कोशिश करें।",
+      "otpExpired": "इस कोड की समय-सीमा समाप्त हो गई है। नया कोड मांगें।",
+      "tooManyRequests": "बहुत सारे प्रयास हो गए। कृपया कुछ समय बाद फिर से कोशिश करें।",
+      "quotaExceeded": "अभी हमारी SMS सीमा पूरी हो गई है — कृपया थोड़ी देर बाद कोशिश करें।",
+      "network": "नेटवर्क त्रुटि। अपना कनेक्शन जांचें और फिर से कोशिश करें।",
+      "popupClosed": "साइन-इन विंडो पूरी होने से पहले बंद हो गई।",
+      "generic": "कुछ गलत हो गया। कृपया फिर से कोशिश करें।"
+    },
+    "seller": {
+      "notActiveTitle": "विक्रेता खाता सक्रिय नहीं है",
+      "notActiveDescription": "आपका विक्रेता खाता अनुमोदन की प्रतीक्षा में है या निलंबित कर दिया गया है। अगर आपको लगता है कि यह गलती है तो सहायता से संपर्क करें।"
+    },
+    "account": {
+      "signInTitle": "अपना खाता देखने के लिए साइन इन करें",
+      "signIn": "साइन इन करें"
+    },
+    "profile": {
+      "title": "प्रोफ़ाइल",
+      "name": "पूरा नाम",
+      "nameRequired": "नाम आवश्यक है।",
+      "email": "ईमेल (वैकल्पिक)",
+      "emailInvalid": "एक मान्य ईमेल पता दर्ज करें।",
+      "language": "पसंदीदा भाषा",
+      "buyerType": "मैं ज़्यादातर खरीदारी करता/करती हूँ एक…",
+      "gstin": "GSTIN (वैकल्पिक)",
+      "gstinInvalid": "एक मान्य 15-अक्षर का GSTIN दर्ज करें।",
+      "verify": "सत्यापित करें",
+      "verifyPending": "सत्यापन का अनुरोध किया गया — हम जल्द ही पुष्टि करेंगे।",
+      "verifyInvalid": "यह GSTIN सही नहीं लग रहा।",
+      "save": "बदलाव सहेजें",
+      "saved": "प्रोफ़ाइल अपडेट हो गई।",
+      "signOut": "साइन आउट करें"
+    },
+    "buyerType": {
+      "retail": "निजी वाहन मालिक",
+      "mechanic": "मैकेनिक",
+      "garage": "गैराज",
+      "fleet": "फ्लीट ऑपरेटर",
+      "reseller": "रीसेलर",
+      "explainer": {
+        "retail": "आपको सामान्य रिटेल मूल्य दिखेगा।",
+        "mechanic": "मैकेनिक को थोक-अनुकूल पार्ट्स पर होलसेल स्लैब मूल्य दिखता है।",
+        "garage": "गैराज को पूरे कैटलॉग में होलसेल स्लैब मूल्य दिखता है।",
+        "fleet": "फ्लीट ऑपरेटर को सबसे गहरे थोक-मात्रा स्लैब मिलते हैं।",
+        "reseller": "रीसेलर को होलसेल मूल्य और GST-तैयार इनवॉइस दिखते हैं।"
+      }
+    }
+  },
+  "address": {
+    "title": "पता बुक",
+    "emptyTitle": "अभी तक कोई पता सहेजा नहीं गया",
+    "add": "पता जोड़ें",
+    "edit": "संपादित करें",
+    "delete": "हटाएं",
+    "default": "डिफ़ॉल्ट",
+    "setDefault": "डिफ़ॉल्ट के रूप में सेट करें",
+    "saved": "पता सहेजा गया।",
+    "deleted": "पता हटा दिया गया।",
+    "defaultSet": "डिफ़ॉल्ट पता अपडेट हो गया।",
+    "confirmDelete": "क्या इस पते को हटाएं?",
+    "form": {
+      "label": "लेबल",
+      "labelPlaceholder": "घर, ऑफिस, गैराज…",
+      "contactName": "संपर्क नाम",
+      "contactPhone": "संपर्क फोन",
+      "line1": "पता लाइन 1",
+      "line2": "पता लाइन 2 (वैकल्पिक)",
+      "landmark": "लैंडमार्क (वैकल्पिक)",
+      "pincode": "पिनकोड",
+      "pincodeChecking": "शहर और राज्य खोजा जा रहा है…",
+      "pincodeNotFound": "यह पिनकोड नहीं मिला — कृपया शहर/राज्य खुद भरें।",
+      "pincodeInvalid": "एक मान्य 6-अंकों का पिनकोड दर्ज करें।",
+      "city": "शहर",
+      "state": "राज्य",
+      "gstin": "इस पते के लिए GSTIN (वैकल्पिक)",
+      "save": "पता सहेजें",
+      "cancel": "रद्द करें"
+    }
+  },
+  "store": {
+    "notFoundTitle": "स्टोर नहीं मिला",
+    "notFoundDescription": "यह स्टोर लिंक मौजूद नहीं है या अब सक्रिय नहीं है।",
+    "emptyTitle": "यहां अभी तक कोई लिस्टिंग नहीं",
+    "ratingCount": "{{count}} रेटिंग",
+    "ratingCount_other": "{{count}} रेटिंग्स"
+  },
+  "garage": {
+    "title": "मेरा गैराज",
+    "emptyTitle": "अभी तक कोई गाड़ी सहेजी नहीं गई",
+    "emptyDescription": "कैटलॉग में फिटमेंट जांचने के लिए एक गाड़ी जोड़ें।",
+    "addVehicle": "गाड़ी जोड़ें",
+    "active": "सक्रिय",
+    "setActive": "सक्रिय करें",
+    "delete": "हटाएं",
+    "saved": "गाड़ी जोड़ी गई।",
+    "deleted": "गाड़ी हटा दी गई।",
+    "confirmDelete": "क्या इस गाड़ी को गैराज से हटाएं?",
+    "fuelType": {
+      "petrol": "पेट्रोल",
+      "diesel": "डीज़ल",
+      "cng": "सीएनजी",
+      "electric": "इलेक्ट्रिक",
+      "hybrid": "हाइब्रिड"
+    },
+    "form": {
+      "make": "मेक",
+      "model": "मॉडल",
+      "variant": "वैरिएंट",
+      "year": "वर्ष",
+      "fuel": "ईंधन",
+      "select": "चुनें…",
+      "nickname": "उपनाम (वैकल्पिक)",
+      "nicknamePlaceholder": "मेरी स्विफ्ट, पापा की गाड़ी…",
+      "save": "गाड़ी सहेजें",
+      "cancel": "रद्द करें"
+    }
+  },
+  "vehicleSelector": {
+    "trigger": "गाड़ी चुनें",
+    "title": "अपनी गाड़ी चुनें",
+    "landingTitle": "अपनी {{vehicle}} के लिए पार्ट्स और एक्सेसरीज़",
+    "step": {
+      "make": "मेक चुनें",
+      "model": "मॉडल चुनें",
+      "variant": "वैरिएंट चुनें",
+      "year": "वर्ष चुनें"
+    },
+    "searchMake": "मेक खोजें",
+    "searchModel": "मॉडल खोजें",
+    "searchVariant": "वैरिएंट खोजें",
+    "searchYear": "वर्ष खोजें",
+    "noResults": "कोई मेल नहीं मिला"
+  },
+  "vehicleQuickSwitch": {
+    "title": "गाड़ी बदलें",
+    "signInPrompt": "गाड़ियाँ सहेजने और उनके बीच स्विच करने के लिए साइन इन करें।",
+    "empty": "अभी तक कोई गाड़ी सहेजी नहीं गई।",
+    "addVehicle": "गाड़ी जोड़ें"
+  },
+  "notifications": {
+    "bellLabel": "सूचनाएं",
+    "title": "सूचनाएं",
+    "markAllRead": "सभी को पढ़ा हुआ चिह्नित करें",
+    "empty": "आप पूरी तरह अप टू डेट हैं",
+    "emptyAction": "श्रेणियां देखें",
+    "errorTitle": "सूचनाएं लोड नहीं हो सकीं",
+    "preferences": {
+      "title": "सूचना प्राथमिकताएं",
+      "channelsHeading": "चैनल",
+      "channel": {
+        "push": "पुश सूचनाएं",
+        "sms": "एसएमएस",
+        "whatsapp": "व्हाट्सएप",
+        "email": "ईमेल"
+      },
+      "marketingOptOut": "मुझे ऑफ़र, कीमत में कमी या रिमाइंडर न भेजें",
+      "transactionalNote": "ऑर्डर, भुगतान और खाते से जुड़े अपडेट इन सेटिंग्स की परवाह किए बिना हमेशा आप तक पहुंचेंगे।",
+      "save": "प्राथमिकताएं सहेजें",
+      "saved": "प्राथमिकताएं सहेजी गईं"
+    },
+    "push": {
+      "enablePrompt": "जैसे ही आपका ऑर्डर भेजा जाए या डिलीवर हो, तुरंत सूचना पाएं।",
+      "enableButton": "ऑर्डर अपडेट चालू करें",
+      "enabled": "ऑर्डर अपडेट सूचनाएं चालू हैं",
+      "blocked": "आपकी ब्राउज़र सेटिंग्स में सूचनाएं अवरुद्ध हैं"
+    }
+  },
+  "vehicleRegLookup": {
+    "label": "रजिस्ट्रेशन नंबर",
+    "placeholder": "MH12AB1234",
+    "hint": "हम मेक, मॉडल और वैरिएंट खोजेंगे — आप पुष्टि कर सकते हैं।",
+    "invalidFormat": "एक मान्य वाहन रजिस्ट्रेशन नंबर दर्ज करें (जैसे MH12AB1234)।",
+    "notFound": "यह रजिस्ट्रेशन नंबर नहीं मिला। कृपया अपनी गाड़ी खुद चुनें।",
+    "lookup": "खोजें",
+    "errors": {
+      "rateLimited": "आज बहुत सारी खोजें हो गईं। कृपया कल फिर कोशिश करें, या अपनी गाड़ी खुद चुनें।",
+      "invalid": "यह रजिस्ट्रेशन नंबर सही नहीं लग रहा।",
+      "signInRequired": "रजिस्ट्रेशन नंबर से गाड़ी खोजने के लिए साइन इन करें।",
+      "generic": "कुछ गलत हो गया। कृपया फिर से कोशिश करें या अपनी गाड़ी खुद चुनें।"
+    }
+  },
+  "vehicleAddFlow": {
+    "title": "गाड़ी जोड़ें",
+    "tabManual": "खुद चुनें",
+    "tabReg": "रजिस्ट्रेशन नंबर",
+    "confirmNote": "{{regNumber}} से पता चला — सहेजने से पहले कृपया पुष्टि करें या ठीक करें।"
+  },
+  "cart": {
+    "title": "कार्ट",
+    "emptyTitle": "आपका कार्ट खाली है",
+    "emptyDescription": "कार्ट में पार्ट्स जोड़ने के लिए कैटलॉग देखें।",
+    "itemUnavailable": "आइटम उपलब्ध नहीं है",
+    "qty": "मात्रा: {{qty}}",
+    "checkout": "चेकआउट",
+    "remove": "हटाएं",
+    "removed": "आइटम कार्ट से हटा दिया गया",
+    "undo": "पूर्ववत करें",
+    "saveForLater": "बाद के लिए सहेजें",
+    "clearCart": "कार्ट खाली करें",
+    "confirmClear": "क्या कार्ट से सभी आइटम हटाएं?",
+    "unavailableItemsNotice": "आपके कार्ट के {{count}} आइटम अब उपलब्ध नहीं हैं और आपकी कुल राशि में शामिल नहीं किए गए।",
+    "unitPriceLine": "{{qty}}+ यूनिट पर {{price}}/यूनिट",
+    "deliveryEtaRange": "{{min}}–{{max}} दिन में डिलीवरी",
+    "fitmentGuard": {
+      "title": "हो सकता है कुछ आइटम आपकी गाड़ी में फिट न हों",
+      "description": "आप फिर भी चेकआउट कर सकते हैं, लेकिन आगे बढ़ने से पहले इन्हें ज़रूर जांच लें।",
+      "dismiss": "बंद करें"
+    },
+    "tierNudge": {
+      "line": "{{count}} और जोड़ें → {{price}}/यूनिट,",
+      "savings": "{{amount}} बचाएं"
+    },
+    "crossSellerNudge": {
+      "line": "{{seller}} के पास यह पार्ट आपकी मात्रा पर सस्ता है — {{price}}/यूनिट।",
+      "switch": "विक्रेता बदलें"
+    },
+    "warnings": {
+      "outOfStock": "स्टॉक खत्म",
+      "priceChanged": "यह जोड़ने के बाद से कीमत {{previous}} से बदलकर {{next}} हो गई",
+      "qtyAdjustedToMoq": "मात्रा को न्यूनतम ऑर्डर {{qty}} के अनुसार समायोजित किया गया",
+      "qtyAdjustedToStep": "इस विक्रेता के पैक साइज़ के अनुसार मात्रा {{qty}} में समायोजित की गई",
+      "qtyCappedToStock": "मात्रा घटाकर {{qty}} कर दी गई — स्टॉक में बस इतना ही बचा है",
+      "tierUpgraded": "अच्छी खबर — इस मात्रा पर एक सस्ता मूल्य स्तर मिल गया",
+      "tierDowngraded": "यह मात्रा एक ऊँचे मूल्य स्तर पर चली गई",
+      "generic": "इस आइटम पर ध्यान देने की ज़रूरत है"
+    },
+    "freeShipping": {
+      "free": "मुफ़्त",
+      "remaining": "इस विक्रेता से मुफ़्त शिपिंग के लिए {{amount}} और जोड़ें",
+      "progressLabel": "मुफ़्त शिपिंग की प्रगति"
+    },
+    "summary": {
+      "title": "ऑर्डर सारांश",
+      "subtotal": "सबटोटल",
+      "discount": "छूट",
+      "shipping": "शिपिंग",
+      "shippingFor": "शिपिंग — {{seller}}",
+      "taxableValue": "कर योग्य मूल्य",
+      "cgst": "CGST",
+      "sgst": "SGST",
+      "igst": "IGST",
+      "total": "कुल"
+    },
+    "notices": {
+      "noShippingAddress": "सटीक शिपिंग और टैक्स देखने के लिए डिलीवरी पता जोड़ें।"
+    },
+    "coupon": {
+      "label": "कूपन कोड",
+      "placeholder": "कूपन कोड दर्ज करें",
+      "apply": "लागू करें",
+      "remove": "कूपन हटाएं",
+      "applied": "{{code}} लागू — आपने {{amount}} बचाए",
+      "errors": {
+        "notFound": "यह कूपन कोड मौजूद नहीं है।",
+        "inactive": "यह कूपन अभी सक्रिय नहीं है।",
+        "expired": "इस कूपन की समय-सीमा समाप्त हो गई है।",
+        "notYetValid": "यह कूपन अभी मान्य नहीं है।",
+        "minOrderNotMet": "इस कूपन का उपयोग करने के लिए {{amount}} और जोड़ें।",
+        "notApplicable": "यह कूपन आपके कार्ट की किसी भी चीज़ पर लागू नहीं होता।",
+        "usageLimitReached": "इस कूपन की उपयोग सीमा पूरी हो गई है।",
+        "generic": "यह कूपन कोड मान्य नहीं है।"
+      }
+    },
+    "savedForLater": {
+      "title": "बाद के लिए सहेजा गया ({{count}})",
+      "moveToCart": "कार्ट में ले जाएं"
+    },
+    "bulkPad": {
+      "open": "बल्क ऑर्डर पैड",
+      "title": "बल्क ऑर्डर पैड",
+      "description": "पार्ट नंबर और मात्रा पेस्ट करें, हर लाइन में एक (जैसे \"OEM123, 10\"), या CSV अपलोड करें।",
+      "placeholder": "OEM123, 10\nOEM456, 25",
+      "resolve": "खोजें",
+      "uploadCsv": "CSV अपलोड करें",
+      "matchedCount": "{{count}} मेल खाए",
+      "addMatched": "{{count}} आइटम कार्ट में जोड़ें",
+      "addedToCart": "{{count}} आइटम कार्ट में जोड़े गए",
+      "unmatchedCount": "{{count}} लाइनें मेल नहीं खाईं",
+      "unmatchedReasons": {
+        "notFound": "कोई मेल खाता पार्ट नहीं मिला",
+        "outOfStock": "स्टॉक खत्म",
+        "invalidRow": "यह लाइन समझ नहीं आई"
+      }
+    },
+    "emptyState": {
+      "recentOrders": "अपने हाल के ऑर्डर से फिर से ऑर्डर करें",
+      "orderItemCount": "{{count}} आइटम",
+      "reorder": "फिर से ऑर्डर करें",
+      "reorderAdded": "आइटम आपके कार्ट में जोड़ दिए गए",
+      "popularForVehicle": "{{vehicle}} के लिए लोकप्रिय पार्ट्स",
+      "bulkPadPrompt": "एक साथ कई पार्ट्स ऑर्डर करने हैं? सूची पेस्ट करें या CSV अपलोड करें।"
+    },
+    "errors": {
+      "invalid": "आपके कार्ट की कीमत तय नहीं हो पाई। कृपया पेज रीफ्रेश करें।",
+      "pricingFailed": "अभी हम आपकी कुल राशि नहीं निकाल पाए। कृपया फिर से कोशिश करें।"
+    }
+  },
+  "search": {
+    "recent": "हाल की खोजें",
+    "trending": "ट्रेंडिंग खोजें",
+    "groupParts": "पार्ट्स",
+    "groupBrands": "ब्रांड्स",
+    "groupCategories": "श्रेणियाँ",
+    "groupVehicles": "वाहन",
+    "filters": "फ़िल्टर",
+    "clearFilters": "फ़िल्टर हटाएं",
+    "showResults": "{{count}} परिणाम दिखाएं",
+    "sortBy": "इस क्रम में लगाएं",
+    "sort": {
+      "relevance": "प्रासंगिकता",
+      "price_asc": "कीमत: कम से ज़्यादा",
+      "delivery": "डिलीवरी की गति",
+      "rating": "विक्रेता रेटिंग"
+    },
+    "facets": {
+      "fitment": "फिटमेंट",
+      "fitsMyVehicle": "{{vehicle}} में फिट होगा",
+      "availability": "उपलब्धता",
+      "inStockOnly": "केवल स्टॉक में",
+      "fastDelivery": "तेज़ डिलीवरी (2 दिन या कम)",
+      "brand": "ब्रांड",
+      "price": "कीमत",
+      "priceMin": "न्यूनतम ₹",
+      "priceMax": "अधिकतम ₹",
+      "type": "प्रकार",
+      "partType": {
+        "oem": "OEM",
+        "oes": "OES",
+        "aftermarket": "आफ्टरमार्केट",
+        "genuine": "जेन्युइन"
+      },
+      "condition": "स्थिति",
+      "conditionOption": {
+        "new": "नया",
+        "used": "इस्तेमाल किया हुआ",
+        "refurbished": "रिफर्बिश्ड"
+      },
+      "sellerRating": "विक्रेता रेटिंग",
+      "ratingAndUp": "{{rating}}★ और ऊपर",
+      "warranty": "वारंटी",
+      "warrantyMonths": "{{count}}+ महीने"
+    },
+    "showingCount": "{{total}} में से {{shown}} दिखाए जा रहे हैं",
+    "resultsForQuery": "\"{{query}}\" के लिए परिणाम",
+    "allResults": "सभी पार्ट्स",
+    "exactMatch": "पार्ट नंबर {{partNumber}} के लिए सटीक मेल मिला",
+    "zeroResults": {
+      "title": "कोई पार्ट्स नहीं मिले",
+      "description": "कोई दूसरा खोज शब्द आज़माएं, या कुछ फ़िल्टर हटाएं।",
+      "removeFitmentFilter": "\"मेरी गाड़ी में फिट\" फ़िल्टर हटाएं",
+      "relatedCategories": "संबंधित श्रेणियाँ देखें",
+      "requestPart": "यह पार्ट मंगवाने का अनुरोध करें"
+    },
+    "requestPart": {
+      "title": "पार्ट का अनुरोध करें",
+      "signInPrompt": "यह अनुरोध विक्रेताओं को भेजने के लिए साइन इन करें।",
+      "description": "आपको क्या चाहिए?",
+      "descriptionPlaceholder": "पार्ट का नाम, गाड़ी, या कोई भी जानकारी जो विक्रेताओं को कोट देने में मदद करे",
+      "descriptionRequired": "कृपया अपनी ज़रूरत के बारे में थोड़ा और बताएं।",
+      "qty": "मात्रा",
+      "targetPrice": "लक्ष्य कीमत (वैकल्पिक)",
+      "targetPricePlaceholder": "जैसे 500",
+      "submit": "अनुरोध भेजें",
+      "success": "अनुरोध भेज दिया गया — जिन विक्रेताओं के पास यह है वे अब आपको कोट दे सकते हैं।"
+    }
+  },
+  "product": {
+    "quantityDecrease": "मात्रा घटाएं",
+    "quantityIncrease": "मात्रा बढ़ाएं",
+    "quantityInput": "मात्रा",
+    "quantitySnapped": "{{qty}} में बदला गया — सबसे नज़दीकी मान्य मात्रा",
+    "addedToCart": "कार्ट में जोड़ा गया",
+    "discountPercent": "{{percent}}% छूट",
+    "slabHint": "{{qty}}+ पर {{price}} से शुरू",
+    "newSeller": "नया विक्रेता",
+    "deliveryEta": "{{count}} दिन में डिलीवरी",
+    "outOfStock": "स्टॉक खत्म",
+    "lowStock": "केवल {{count}} बचे",
+    "addToCart": "कार्ट में जोड़ें",
+    "oversizedNotice": "सरफेस ट्रांसपोर्ट से भेजा जाएगा — डिलीवरी में अधिक समय लगेगा, कैश ऑन डिलीवरी उपलब्ध नहीं हो सकता",
+    "shippingEstimate": {
+      "title": "डिलीवरी जांचें",
+      "pincodeLabel": "डिलीवरी पिनकोड",
+      "pincodePlaceholder": "पिनकोड दर्ज करें",
+      "check": "जांचें",
+      "error": "अभी डिलीवरी विकल्प जांचने में समस्या हुई",
+      "notServiceable": "इस पिनकोड पर डिलीवरी उपलब्ध नहीं",
+      "codAvailable": "COD उपलब्ध"
+    },
+    "detail": {
+      "notFoundTitle": "पार्ट नहीं मिला",
+      "notFoundDescription": "यह पार्ट हटा दिया गया है या अब उपलब्ध नहीं है।",
+      "browseCategories": "श्रेणियां देखें",
+      "partNumber": "पार्ट नंबर",
+      "oemNumbers": "OEM नंबर",
+      "crossRefNumbers": "क्रॉस-रेफरेंस नंबर",
+      "specifications": "विशेषताएं",
+      "description": "विवरण",
+      "offersTitle": "विक्रेता ऑफ़र",
+      "offersCount": "{{count}} विक्रेता ऑफ़र",
+      "bestPrice": "सबसे अच्छी कीमत",
+      "noOffersTitle": "फ़िलहाल कोई विक्रेता यह पार्ट नहीं रखता",
+      "noOffersDescription": "इस पार्ट का अनुरोध करें — जो विक्रेता इसे रखते हैं वे आपको सूचित किए जाएंगे।",
+      "priceForQty": "{{qty}} यूनिट के लिए कीमत",
+      "nextTierHint": "{{price}}/यूनिट पाने के लिए {{count}} और जोड़ें",
+      "tierFrom": "{{min}}+ यूनिट",
+      "tierRange": "{{min}}–{{max}} यूनिट",
+      "moq": "न्यूनतम ऑर्डर {{moq}} यूनिट",
+      "warrantyMonths": "{{count}} महीने की वारंटी",
+      "returnWindow": "{{count}} दिन की वापसी",
+      "copyPartNumber": "पार्ट नंबर कॉपी करें",
+      "copied": "पार्ट नंबर कॉपी हो गया",
+      "noSpecifications": "इस पार्ट के लिए अभी तक कोई विशेषताएं सूचीबद्ध नहीं हैं।",
+      "stickyBuyBar": "यह पार्ट खरीदें",
+      "gallery": {
+        "previous": "पिछली तस्वीर",
+        "next": "अगली तस्वीर",
+        "thumbnail": "तस्वीर {{index}}"
+      },
+      "ladder": {
+        "title": "मात्रा के अनुसार कीमत",
+        "businessChip": "{{type}} मूल्य",
+        "priceAnnouncement": "{{qty}} यूनिट के लिए आप {{price}} प्रति यूनिट देंगे",
+        "payLine": "आप {{price}}/यूनिट देंगे",
+        "nextTierLine": "{{price}}/यूनिट पाने और {{savings}} बचाने के लिए {{count}} और जोड़ें",
+        "lockedTitle": "गैराज के लिए होलसेल मूल्य उपलब्ध है",
+        "lockedCta": "अपना GSTIN सत्यापित करें",
+        "savingsVsMrp": "MRP से {{amount}} की बचत",
+        "savingsVsTier1": "सिंगल-यूनिट कीमत से {{amount}} की बचत",
+        "tableCaption": "मात्रा मूल्य तालिका",
+        "tableQtyRange": "मात्रा",
+        "tableUnitPrice": "यूनिट मूल्य"
+      },
+      "gst": {
+        "label": "दिखाई गई कीमत",
+        "exclusive": "GST रहित",
+        "inclusive": "GST सहित",
+        "activeExclusive": "दिखाई गई कीमतों में GST शामिल नहीं है — चेकआउट पर जोड़ा जाएगा।",
+        "activeInclusive": "दिखाई गई कीमतों में GST शामिल है।"
+      },
+      "compare": {
+        "title": "विक्रेता ऑफ़र की तुलना करें",
+        "recommended": "अनुशंसित · सर्वश्रेष्ठ मूल्य",
+        "unnamedSeller": "SnapSpare विक्रेता",
+        "priceAtQty1": "मात्रा 1 पर कीमत",
+        "bestSlabPrice": "सबसे अच्छी थोक कीमत"
+      },
+      "tabs": {
+        "groupLabel": "उत्पाद विवरण",
+        "specs": "विशेषताएं",
+        "fitment": "फिटमेंट",
+        "warranty": "वारंटी और वापसी",
+        "reviews": "समीक्षाएं",
+        "qa": "प्रश्न-उत्तर"
+      },
+      "reviews": {
+        "none": "अभी तक कोई रेटिंग नहीं",
+        "count": "{{count}} समीक्षाएं",
+        "histogramCaption": "रेटिंग वितरण",
+        "starLabel": "{{count}} स्टार",
+        "verifiedPurchase": "सत्यापित खरीद",
+        "anonymousBuyer": "सत्यापित खरीदार",
+        "sellerReply": "विक्रेता की प्रतिक्रिया",
+        "emptyTitle": "अभी तक कोई समीक्षा नहीं",
+        "emptyDescription": "अपना ऑर्डर डिलीवर होने के बाद इस पार्ट की समीक्षा करने वाले पहले व्यक्ति बनें।",
+        "fittedTo": "फिट हुआ: {{vehicle}}",
+        "fitmentAccurate": "उम्मीद के अनुसार फिट हुआ",
+        "qualityRating": "गुणवत्ता",
+        "valueRating": "पैसे की कीमत"
+      },
+      "qa": {
+        "askTitle": "एक सवाल पूछें",
+        "signInPrompt": "इस पार्ट के बारे में विक्रेताओं से सवाल पूछने के लिए साइन इन करें।",
+        "questionPlaceholder": "जैसे, क्या यह 2019 मॉडल में फिट होगा?",
+        "questionRequired": "कम से कम 3 अक्षर दर्ज करें।",
+        "submit": "सवाल सबमिट करें",
+        "askSuccess": "सवाल सबमिट हो गया — जो विक्रेता इसे रखते हैं वे जवाब दे सकते हैं।",
+        "emptyTitle": "अभी तक कोई सवाल नहीं",
+        "emptyDescription": "इस पार्ट के बारे में पहला सवाल पूछें।",
+        "unanswered": "अभी तक जवाब नहीं मिला",
+        "anonymousBuyer": "एक खरीदार",
+        "answerAction": "इस सवाल का जवाब दें",
+        "answerPlaceholder": "जो जानते हैं साझा करें — आप पात्र हैं क्योंकि आप यह पार्ट बेचते हैं या खरीद चुके हैं।",
+        "answerSubmit": "जवाब पोस्ट करें",
+        "answerSuccess": "जवाब पोस्ट हो गया",
+        "sellerAnswerBadge": "विक्रेता",
+        "errors": {
+          "notEligible": "केवल वे विक्रेता जो यह पार्ट रखते हैं या वे खरीदार जिन्होंने इसे खरीदा है, जवाब दे सकते हैं।",
+          "notFound": "वह सवाल अब नहीं मिल सका।",
+          "generic": "कुछ गलत हो गया — कृपया फिर से कोशिश करें।"
+        }
+      },
+      "fitment": {
+        "emptyTitle": "अभी तक कोई सत्यापित फिटमेंट सूचीबद्ध नहीं",
+        "emptyDescription": "यह पार्ट अभी तक किसी विशेष गाड़ी से मेल नहीं खाया गया है।",
+        "searchLabel": "मेक, मॉडल या वैरिएंट खोजें",
+        "make": "मेक",
+        "model": "मॉडल",
+        "variant": "वैरिएंट",
+        "years": "वर्ष",
+        "allVariants": "सभी वैरिएंट",
+        "present": "अब तक"
+      },
+      "warrantyReturns": {
+        "warrantyTitle": "वारंटी",
+        "noWarranty": "इस विक्रेता की लिस्टिंग के लिए कोई वारंटी नहीं दी गई।",
+        "returnsTitle": "वापसी",
+        "noReturns": "इस विक्रेता की लिस्टिंग के लिए कोई वापसी अवधि नहीं दी गई।",
+        "disclaimer": "वारंटी और वापसी की शर्तें बेचने वाले विक्रेता द्वारा तय की जाती हैं और ऊपर चुने गए ऑफ़र के लिए दिखाई गई हैं।",
+        "nonReturnable": "फिट होने के बाद वापस नहीं किया जा सकता — इलेक्ट्रिकल/सेंसर पार्ट्स इंस्टॉलेशन के बाद वापस नहीं किए जा सकते।",
+        "nonReturnableShort": "फिट होने के बाद वापस नहीं किया जा सकता"
+      },
+      "related": {
+        "boughtTogether": "अक्सर साथ खरीदे गए",
+        "alsoViewed": "अन्य ने यह भी देखा"
+      },
+      "disclosure": {
+        "soldBy": "द्वारा बेचा गया:",
+        "address": "पता:",
+        "gstin": "GSTIN:",
+        "countryOfOrigin": "मूल देश:"
+      }
+    }
+  },
+  "category": {
+    "notFound": "श्रेणी नहीं मिली",
+    "forVehicle": "{{vehicle}} के लिए",
+    "viewAll": "सभी देखें",
+    "faqTitle": "अक्सर पूछे जाने वाले प्रश्न"
+  },
+  "checkout": {
+    "title": "चेकआउट",
+    "continue": "जारी रखें",
+    "continueShopping": "खरीदारी जारी रखें",
+    "placeOrder": "ऑर्डर करें",
+    "sections": {
+      "delivery": "डिलीवरी",
+      "billing": "बिलिंग और जीएसटी",
+      "payment": "भुगतान"
+    },
+    "confirmation": {
+      "title": "ऑर्डर हो गया!",
+      "description": "हमने आपको पुष्टि भेज दी है। नीचे इसकी प्रगति देखें।"
+    },
+    "delivery": {
+      "selectAddress": "डिलीवरी पता चुनें",
+      "serviceabilityTitle": "इस पते पर डिलीवरी",
+      "thisSeller": "यह विक्रेता",
+      "notServiceable": "इस पिनकोड पर डिलीवरी उपलब्ध नहीं"
+    },
+    "billing": {
+      "toggleLabel": "यह एक व्यावसायिक खरीद है",
+      "toggleExplainer": "इस ऑर्डर पर इनपुट टैक्स क्रेडिट पाने के लिए जीएसटीआईएन जोड़ें।",
+      "legalName": "कानूनी व्यवसाय का नाम",
+      "useDifferentAddress": "किसी अन्य पते पर बिल भेजें",
+      "useShippingAddress": "बिलिंग के लिए डिलीवरी पता उपयोग करें",
+      "selectAddress": "बिलिंग पता चुनें",
+      "personalPurchase": "व्यक्तिगत खरीद"
+    },
+    "payment": {
+      "selectMethod": "भुगतान का तरीका चुनें",
+      "online": {
+        "title": "यूपीआई / कार्ड / नेटबैंकिंग / वॉलेट",
+        "description": "Razorpay के ज़रिए सुरक्षित भुगतान करें",
+        "emiAvailable": "इस ऑर्डर पर ईएमआई उपलब्ध है"
+      },
+      "cod": {
+        "title": "डिलीवरी पर भुगतान (COD)",
+        "feeNotice": "{{fee}} COD शुल्क शामिल है",
+        "noFee": "कोई अतिरिक्त शुल्क नहीं",
+        "ineligible": {
+          "disabled": "अभी उपलब्ध नहीं है",
+          "seller_unsupported": "आपकी कार्ट के एक या अधिक विक्रेता इसे नहीं देते",
+          "over_cap": "इतने बड़े ऑर्डर के लिए उपलब्ध नहीं",
+          "abuse_flag": "आपके खाते पर उपलब्ध नहीं है",
+          "oversized": "आपकी कार्ट में बड़े आकार की वस्तुओं के लिए उपलब्ध नहीं"
+        }
+      },
+      "credit": {
+        "title": "क्रेडिट पर भुगतान (30 दिन)",
+        "description": "{{available}} उपलब्ध क्रेडिट"
+      },
+      "methodLabel": {
+        "razorpay": "यूपीआई / कार्ड / नेटबैंकिंग / वॉलेट",
+        "cod": "डिलीवरी पर भुगतान",
+        "credit_line": "क्रेडिट पर भुगतान (30 दिन)"
+      }
+    },
+    "errors": {
+      "cartEmpty": "आपकी कार्ट खाली है।",
+      "cartChanged": "आपकी कार्ट में बदलाव हुआ है — कृपया ऑर्डर करने से पहले इसे दोबारा देखें।",
+      "insufficientStock": "एक या अधिक आइटम में पर्याप्त स्टॉक नहीं है — कृपया अपनी कार्ट देखें।",
+      "codNotEligible": "इस ऑर्डर के लिए Cash on Delivery उपलब्ध नहीं है।",
+      "creditNotEligible": "इस ऑर्डर के लिए क्रेडिट पर भुगतान उपलब्ध नहीं है।",
+      "sellerUnavailable": "आपकी कार्ट के किसी विक्रेता अस्थायी रूप से अनुपलब्ध हैं।",
+      "gatewayUnavailable": "हम भुगतान गेटवे तक नहीं पहुँच सके — कृपया फिर से प्रयास करें।",
+      "addressNotFound": "वह पता नहीं मिला — कृपया कोई और पता चुनें।",
+      "generic": "हम आपका ऑर्डर नहीं दे सके — कृपया फिर से प्रयास करें।",
+      "paymentNotCompleted": "भुगतान पूरा नहीं हुआ। आपका ऑर्डर सुरक्षित है — आप कभी भी भुगतान फिर से कर सकते हैं।",
+      "serviceabilityFailed": "हम डिलीवरी उपलब्धता जांच नहीं सके — कृपया फिर से प्रयास करें।",
+      "signInRequired": "चेकआउट के लिए साइन इन करें।"
+    }
+  },
+  "orders": {
+    "title": "आपके ऑर्डर",
+    "orderId": "ऑर्डर आईडी",
+    "orderTotal": "ऑर्डर कुल",
+    "emptyTitle": "अभी तक कोई ऑर्डर नहीं",
+    "emptyDescription": "आपके द्वारा दिए गए ऑर्डर यहां दिखाई देंगे।",
+    "startShopping": "खरीदारी शुरू करें",
+    "notFoundTitle": "ऑर्डर नहीं मिला",
+    "viewAllOrders": "सभी ऑर्डर देखें",
+    "trackOrder": "ऑर्डर ट्रैक करें",
+    "downloadInvoice": "इनवॉइस डाउनलोड करें",
+    "pendingPaymentNotice": "इस ऑर्डर के लिए भुगतान अभी बाकी है।",
+    "resumePayment": "भुगतान फिर से करें",
+    "resumeBanner": "आपका एक ऑर्डर भुगतान की प्रतीक्षा में है",
+    "awb": "एडब्ल्यूबी",
+    "status": {
+      "pending_payment": "भुगतान बाकी",
+      "placed": "दिया गया",
+      "confirmed": "पुष्टि हो गई",
+      "processing": "प्रोसेसिंग में",
+      "partially_shipped": "आंशिक रूप से भेजा गया",
+      "shipped": "भेज दिया गया",
+      "delivered": "डिलीवर हो गया",
+      "completed": "पूर्ण",
+      "cancelled": "रद्द",
+      "refunded": "रिफंड हो गया"
+    },
+    "subOrderStatus": {
+      "pending": "विक्रेता की पुष्टि का इंतज़ार",
+      "accepted": "विक्रेता द्वारा स्वीकृत",
+      "rejected": "विक्रेता द्वारा अस्वीकृत",
+      "packed": "पैक हो गया",
+      "shipped": "भेज दिया गया",
+      "out_for_delivery": "डिलीवरी के लिए निकल गया",
+      "delivered": "डिलीवर हो गया",
+      "cancelled": "रद्द",
+      "returned": "वापस किया गया",
+      "refunded": "रिफंड हो गया",
+      "ndr_raised": "डिलीवरी असफल",
+      "ndr_reattempt_requested": "पुनः डिलीवरी का अनुरोध"
+    },
+    "searchPlaceholder": "ऑर्डर आईडी या पार्ट के नाम से खोजें",
+    "filterByStatus": "स्थिति के अनुसार फ़िल्टर करें",
+    "allStatuses": "सभी स्थितियां",
+    "noMatchingOrders": "आपकी खोज से कोई ऑर्डर मेल नहीं खाता",
+    "awbCopied": "AWB कॉपी हो गया",
+    "copyAwb": "AWB कॉपी करें",
+    "trackLink": "शिपमेंट ट्रैक करें",
+    "reorder": {
+      "action": "फिर से ऑर्डर करें",
+      "success": "आपके कार्ट में {{count}} आइटम जोड़े गए",
+      "changedWarning": "आपके पिछले ऑर्डर के बाद से {{count}} आइटम बदल गए हैं",
+      "failure": "फिर से ऑर्डर नहीं किया जा सका — कृपया फिर से प्रयास करें।"
+    },
+    "cancel": {
+      "action": "ऑर्डर रद्द करें",
+      "reasonLabel": "कारण (वैकल्पिक)",
+      "reasonPlaceholder": "हमें बताएं कि आप क्यों रद्द कर रहे हैं",
+      "confirm": "रद्दीकरण की पुष्टि करें",
+      "success": "ऑर्डर रद्द कर दिया गया"
+    },
+    "return": {
+      "action": "रिटर्न का अनुरोध करें",
+      "itemLabel": "आइटम",
+      "qtyLabel": "मात्रा",
+      "reasonLabel": "कारण",
+      "notesLabel": "नोट्स (वैकल्पिक)",
+      "submit": "रिटर्न अनुरोध सबमिट करें",
+      "success": "रिटर्न का अनुरोध किया गया",
+      "reasons": {
+        "defective": "खराब",
+        "damaged_in_transit": "ट्रांजिट में क्षतिग्रस्त",
+        "rto_undelivered": "मूल स्थान पर वापस (अनडिलीवर्ड)",
+        "wrong_part_sent": "गलत पार्ट भेजा गया",
+        "doesnt_fit": "मेरे वाहन में फिट नहीं होता",
+        "suspected_spurious": "नकली होने का संदेह",
+        "changed_mind": "विचार बदल गया"
+      },
+      "resolutionLabel": "पसंदीदा समाधान",
+      "resolution": {
+        "refund": "रिफंड",
+        "replacement": "रिप्लेसमेंट"
+      },
+      "status": "{{status}}",
+      "evidence": {
+        "photosLabel": "फ़ोटो",
+        "photosCount": "{{count}} फ़ोटो संलग्न",
+        "photosCount_other": "{{count}} फ़ोटो संलग्न",
+        "required": "इस कारण के लिए कम से कम एक फ़ोटो आवश्यक है।",
+        "uploadFailed": "अपलोड नहीं हो सका — कृपया फिर से प्रयास करें।",
+        "videoLabel": "वीडियो (वैकल्पिक)",
+        "videoAttached": "वीडियो संलग्न"
+      }
+    },
+    "ndr": {
+      "status": {
+        "raised": "डिलीवरी असफल",
+        "reattempt_requested": "पुनः डिलीवरी का अनुरोध",
+        "rto_initiated": "विक्रेता को वापस भेजा जा रहा है",
+        "resolved": "सुलझा लिया गया"
+      },
+      "description": "कूरियर यह ऑर्डर डिलीवर नहीं कर सका। दोबारा प्रयास के लिए अपना विवरण कन्फर्म करें।",
+      "requestRedelivery": "पुनः डिलीवरी का अनुरोध करें",
+      "reattemptRequested": "पुनः डिलीवरी का अनुरोध किया गया — हमने विक्रेता को सूचित कर दिया है।",
+      "errors": {
+        "noOpenNdr": "इस ऑर्डर पर कोई खुली डिलीवरी समस्या नहीं है।"
+      }
+    },
+    "help": {
+      "needHelp": "मदद चाहिए?",
+      "prefilledMessage": "नमस्ते, मुझे ऑर्डर {{orderId}} (आइटम {{subOrderId}}) में मदद चाहिए।"
+    },
+    "timeline": {
+      "label": "ऑर्डर स्थिति समयरेखा",
+      "actor": {
+        "buyer": "आप",
+        "seller": "विक्रेता",
+        "admin": "सहायता टीम"
+      }
+    },
+    "errors": {
+      "invalidTransition": "इस ऑर्डर को अब उस तरह बदला नहीं जा सकता।",
+      "permissionDenied": "आप इस ऑर्डर पर वह कार्य नहीं कर सकते।",
+      "orderNotActionable": "यह ऑर्डर अभी उस कार्य की अनुमति देने वाली स्थिति में नहीं है।",
+      "notDelivered": "यह आइटम अभी डिलीवर नहीं हुआ है।",
+      "returnWindowClosed": "इस आइटम के लिए रिटर्न विंडो बंद हो चुकी है।",
+      "returnAlreadyOpen": "इस आइटम के लिए पहले से एक रिटर्न खुला है।",
+      "qtyExceedsLineItem": "वह मात्रा आपके द्वारा ऑर्डर की गई मात्रा से अधिक है।",
+      "generic": "कुछ गलत हो गया — कृपया फिर से प्रयास करें।",
+      "evidenceRequired": "कृपया इस कारण के लिए कम से कम एक फ़ोटो संलग्न करें।",
+      "categoryNotReturnable": "यह पार्ट फिट होने के बाद वापस नहीं किया जा सकता।",
+      "sellerOriginNotSet": "विक्रेता ने अभी तक पिकअप पता सेट नहीं किया है — सहायता से संपर्क करें।",
+      "noWarranty": "इस आइटम पर कोई वारंटी दर्ज नहीं है।",
+      "warrantyExpired": "इस आइटम की वारंटी अवधि समाप्त हो चुकी है।"
+    },
+    "tax": {
+      "downloadInvoice": "इनवॉइस डाउनलोड करें",
+      "downloadCreditNote": "क्रेडिट नोट डाउनलोड करें",
+      "errors": {
+        "invoiceNotGenerated": "इस ऑर्डर का इनवॉइस अभी तैयार नहीं हुआ है।",
+        "notFound": "यह दस्तावेज़ नहीं मिला।"
+      }
+    },
+    "warranty": {
+      "action": "वारंटी दावा करें",
+      "reasonLabel": "क्या समस्या हुई?",
+      "reasons": {
+        "premature_failure": "समय से पहले खराब हो गया",
+        "manufacturing_defect": "निर्माण दोष",
+        "not_as_warranted": "वारंटी के अनुसार नहीं",
+        "other": "अन्य"
+      },
+      "descriptionLabel": "समस्या का विवरण दें",
+      "submit": "दावा जमा करें",
+      "success": "वारंटी दावा जमा हुआ",
+      "evidenceRequired": "कम से कम एक फ़ोटो आवश्यक है।",
+      "status": "वारंटी दावा: {{status}}",
+      "claimStatus": {
+        "submitted": "जमा हुआ",
+        "seller_review": "विक्रेता समीक्षा में",
+        "approved": "स्वीकृत",
+        "rejected": "अस्वीकृत",
+        "escalated_to_brand": "ब्रांड को भेजा गया",
+        "resolved": "हल हुआ"
+      }
+    },
+    "dispute": {
+      "action": "विवाद खोलें",
+      "reasonLabel": "आप इसे विवादित क्यों कर रहे हैं?",
+      "submit": "एडमिन को भेजें",
+      "success": "विवाद खोला गया — एडमिन समीक्षा करेगा",
+      "pendingReview": "विवाद खोला गया — एडमिन समीक्षा लंबित",
+      "errors": {
+        "alreadyOpen": "इस ऑर्डर के लिए पहले से ही एक विवाद खुला है।"
+      }
+    }
+  },
+  "sell": {
+    "landing": {
+      "heroTitle": "अपने पार्ट्स पूरे भारत के गैराज और मैकेनिकों को बेचें",
+      "heroSubtitle": "एक बार लिस्ट करें, अपनी थोक कीमतें खुद तय करें, और सीधे अपने बैंक खाते में भुगतान पाएं। न कोई स्टॉल, न कोई झंझट — बस अपनी दुकान के पार्ट्स ऑनलाइन।",
+      "cta": "बेचना शुरू करें",
+      "footerLink": "SnapSpare पर बेचें",
+      "slabPricing": {
+        "title": "अपनी थोक कीमत खुद तय करें",
+        "description": "एक पीस के लिए एक कीमत रखें, और जब कोई गैराज थोक में ऑर्डर करे तो प्रति पीस कम कीमत — मात्रा और छूट आप खुद तय करते हैं।",
+        "qtyLabel": "{{range}} पीस",
+        "example": "उदाहरण: 1–9 के लिए ₹250/पीस, 10–49 के लिए ₹195/पीस, 50 या अधिक के लिए ₹145/पीस।"
+      },
+      "commission": {
+        "title": "सरल, पारदर्शी शुल्क",
+        "commissionTitle": "एक ही कमीशन, कोई छिपा शुल्क नहीं",
+        "commissionDescription": "हम केवल डिलीवर हुए ऑर्डर पर एक छोटा, घोषित कमीशन लेते हैं — कभी पहले से नहीं, रद्द या रिटर्न हुए ऑर्डर पर कभी नहीं।",
+        "payoutTitle": "तय समय पर भुगतान",
+        "payoutDescription": "आपका भुगतान एक नियमित सेटलमेंट चक्र में सीधे आपके बैंक खाते में भेजा जाता है — हर भुगतान और उसका विवरण अपने डैशबोर्ड में देखें।",
+        "noHiddenFeesTitle": "कोई लिस्टिंग शुल्क नहीं, कोई छिपा शुल्क नहीं",
+        "noHiddenFeesDescription": "अपने पार्ट्स लिस्ट करने का कोई शुल्क नहीं है। आप केवल तभी भुगतान करते हैं जब बिक्री होती है।"
+      },
+      "howItWorks": {
+        "title": "यह कैसे काम करता है",
+        "step1": "हमें अपनी दुकान के बारे में बताएं — व्यवसाय विवरण, GST/PAN, और आप कहां से शिपिंग करेंगे।",
+        "step2": "अपने दस्तावेज़ अपलोड करें — GST प्रमाणपत्र, PAN, पता प्रमाण और दुकान की फोटो।",
+        "step3": "हमारी टीम आपके आवेदन की जांच करेगी, आमतौर पर कुछ कार्य दिवसों में।",
+        "step4": "स्वीकृति मिलने पर, अपने पार्ट्स लिस्ट करें, थोक कीमतें तय करें, और ऑर्डर पाना शुरू करें।"
+      }
+    },
+    "apply": {
+      "title": "विक्रेता पंजीकरण"
+    },
+    "tracker": {
+      "title": "आवेदन की स्थिति",
+      "step": {
+        "submitted": "जमा हुआ",
+        "under_review": "समीक्षाधीन",
+        "approved": "स्वीकृत"
+      },
+      "stepDescription": {
+        "submitted": "हमें आपका आवेदन मिल गया है और यह समीक्षा की कतार में है।",
+        "under_review": "हमारी टीम आपके दस्तावेज़ और विवरण की समीक्षा कर रही है।",
+        "approved": "आप स्वीकृत हो गए हैं — SnapSpare में आपका स्वागत है!"
+      },
+      "approvedDescription": "आपका विक्रेता खाता अब सक्रिय है। पार्ट्स लिस्ट करना शुरू करने के लिए अपने विक्रेता डैशबोर्ड पर जाएं।",
+      "changesRequestedTitle": "कुछ बदलाव आवश्यक हैं",
+      "changesRequestedDescription": "कृपया नीचे दिए गए नोट्स देखें, संबंधित चरण अपडेट करें, और फिर से जमा करें।",
+      "resumeEditing": "संपादन जारी रखें",
+      "rejectedTitle": "आवेदन स्वीकृत नहीं हुआ",
+      "rejectedDescription": "इस बार आपका विक्रेता आवेदन स्वीकृत नहीं हुआ। यदि आपके कोई प्रश्न हों तो सहायता से संपर्क करें।"
+    },
+    "wizard": {
+      "progressLabel": "ऑनबोर्डिंग प्रगति",
+      "stepIndicator": "चरण {{current}} / {{total}}",
+      "back": "पीछे",
+      "continue": "जारी रखें",
+      "steps": {
+        "business": "व्यवसाय",
+        "taxIdentity": "टैक्स और पहचान",
+        "addresses": "पते",
+        "bank": "बैंक",
+        "documents": "दस्तावेज़",
+        "agreement": "अनुबंध",
+        "general": "सामान्य"
+      },
+      "business": {
+        "legalName": "कानूनी व्यवसाय का नाम",
+        "tradeName": "व्यापारिक नाम (दुकान का नाम)",
+        "tradeNameHint": "यह वह नाम है जो खरीदार देखेंगे।",
+        "businessType": "व्यवसाय का प्रकार",
+        "businessTypeOption": {
+          "proprietorship": "प्रोप्राइटरशिप",
+          "partnership": "पार्टनरशिप",
+          "llp": "LLP",
+          "pvt_ltd": "प्राइवेट लिमिटेड",
+          "individual": "व्यक्तिगत",
+          "other": "अन्य"
+        },
+        "yearsInBusiness": "व्यवसाय में वर्ष",
+        "categories": "आप जिन श्रेणियों में काम करते हैं",
+        "categoriesRequired": "कम से कम एक श्रेणी चुनें।",
+        "brandsDealtIn": "आपके ब्रांड (वैकल्पिक)",
+        "brandsDealtInPlaceholder": "Bosch, Denso, MRF…",
+        "brandsDealtInHint": "एक से अधिक ब्रांड को कॉमा से अलग करें।"
+      },
+      "tax": {
+        "gstRegisteredYes": "मैं GST-पंजीकृत हूं",
+        "gstRegisteredNo": "मैं GST-पंजीकृत नहीं हूं",
+        "gstin": "GSTIN",
+        "gstinInvalid": "मान्य 15-अक्षर का GSTIN दर्ज करें।",
+        "gstinFormatOk": "GSTIN फॉर्मैट सही लगता है — सत्यापन लंबित है।",
+        "gstComposition": "मैं GST कंपोज़िशन स्कीम के तहत पंजीकृत हूं",
+        "unregisteredWarning": "GST पंजीकरण के बिना, SnapSpare पर बिक्री फिलहाल सीमित है। आपके आवेदन की समीक्षा के बाद हमारी टीम आपको अगले कदम बताएगी।",
+        "turnoverModeBelowThreshold": "मेरा वार्षिक टर्नओवर GST पंजीकरण सीमा से कम है",
+        "turnoverModeIntrastateOnly": "मैं केवल अपने राज्य के भीतर बेचना चाहता/चाहती हूं",
+        "pan": "PAN",
+        "panInvalid": "मान्य 10-अक्षर का PAN दर्ज करें।"
+      },
+      "addresses": {
+        "registeredTitle": "पंजीकृत व्यवसाय पता",
+        "pickupTitle": "पिकअप पता(पते)",
+        "pickupHint": "कूरियर यहीं से आपके शिपमेंट लेंगे। आप एक से अधिक पता जोड़ सकते हैं।",
+        "pickupLabel": "पता लेबल (जैसे मुख्य गोदाम)",
+        "addPickup": "एक और पिकअप पता जोड़ें",
+        "removePickup": "यह पता हटाएं",
+        "atLeastOnePickup": "कम से कम एक पिकअप पता जोड़ें।",
+        "setDefault": "डिफ़ॉल्ट पिकअप पता",
+        "notServiceable": "हम अभी इस पिनकोड के लिए पिकअप सेवा की पुष्टि नहीं कर सके — आप फिर भी जारी रख सकते हैं।"
+      },
+      "bank": {
+        "accountHolderName": "खाताधारक का नाम",
+        "accountNumber": "खाता संख्या",
+        "confirmAccountNumber": "खाता संख्या की पुष्टि करें",
+        "accountNumberMismatch": "खाता संख्याएं मेल नहीं खातीं।",
+        "ifsc": "IFSC कोड",
+        "ifscInvalid": "मान्य 11-अक्षर का IFSC कोड दर्ज करें।",
+        "bankName": "बैंक का नाम",
+        "branch": "शाखा",
+        "cancelledCheque": "कैंसल्ड चेक",
+        "cancelledChequeHint": "इस खाते के कैंसल्ड चेक की फोटो या स्कैन (वैकल्पिक लेकिन अनुशंसित)।"
+      },
+      "documents": {
+        "intro": "स्पष्ट फोटो या स्कैन अपलोड करें — हर फ़ाइल 5MB से कम होनी चाहिए (बड़ी फोटो अपने आप संपीड़ित हो जाएंगी)।",
+        "gstCertificate": "GST पंजीकरण प्रमाणपत्र",
+        "pan": "PAN कार्ड",
+        "addressProof": "पता प्रमाण",
+        "addressProofHint": "बिजली बिल, किराया अनुबंध, या इससे मिलता-जुलता, आपके पंजीकृत पते से मेल खाता हुआ।",
+        "shopPhoto": "दुकान की फोटो",
+        "brandAuth": "ब्रांड प्राधिकरण पत्र (वैकल्पिक)",
+        "brandAuthHint": "इन्हें जोड़ने से उन ब्रांड्स के लिए खरीदारों का भरोसा बढ़ता है जिन्हें बेचने के लिए आप अधिकृत हैं।",
+        "addBrandAuth": "एक पत्र जोड़ें",
+        "upload": "अपलोड करें",
+        "replace": "बदलें",
+        "uploaded": "अपलोड हो गया",
+        "uploadError": "अपलोड विफल — कृपया फिर से प्रयास करें।",
+        "incomplete": "आगे बढ़ने से पहले कृपया सभी आवश्यक दस्तावेज़ अपलोड करें।"
+      },
+      "agreement": {
+        "summaryIntro": "यह आवेदन जमा करके, आप सहमत होते हैं कि:",
+        "point1": "केवल वही पार्ट्स लिस्ट करेंगे जिन्हें बेचने के लिए आप अधिकृत हैं, सही विवरण और कीमत के साथ।",
+        "point2": "स्वीकृत ऑर्डर विक्रेता SLA के भीतर पूरे करेंगे और अपना स्टॉक अपडेट रखेंगे।",
+        "point3": "डिलीवर हुए ऑर्डर पर SnapSpare का घोषित कमीशन चुकाएंगे — भुगतान से पहले काटा जाएगा।",
+        "point4": "अपना GST, PAN और बैंक विवरण सही और अपडेट रखेंगे।",
+        "acceptLabel": "मैंने ऊपर दिए गए विक्रेता नियम पढ़ लिए हैं और उनसे सहमत हूं।",
+        "acceptRequired": "आवेदन जमा करने के लिए आपको नियमों से सहमत होना होगा।",
+        "submit": "आवेदन जमा करें",
+        "submitError": "आपका आवेदन जमा नहीं हो सका — कृपया फिर से प्रयास करें।"
+      }
+    }
+  },
+  "sellerStaff": {
+    "pageTitle": "स्टाफ",
+    "invite": {
+      "title": "एक स्टाफ सदस्य को आमंत्रित करें",
+      "name": "नाम",
+      "phone": "मोबाइल नंबर",
+      "role": "भूमिका",
+      "permissions": "अनुमतियां",
+      "submit": "आमंत्रण भेजें",
+      "success": "आमंत्रण भेज दिया गया — इस नंबर से साइन इन करने के बाद उन्हें एक्सेस मिल जाएगा।"
+    },
+    "roleOption": {
+      "owner": "मालिक",
+      "manager": "मैनेजर",
+      "packer": "पैकर"
+    },
+    "permission": {
+      "manage_listings": "लिस्टिंग प्रबंधित करें",
+      "manage_orders": "ऑर्डर प्रबंधित करें",
+      "manage_staff": "स्टाफ प्रबंधित करें",
+      "view_payouts": "भुगतान देखें",
+      "manage_returns": "रिटर्न प्रबंधित करें"
+    },
+    "status": {
+      "active": "सक्रिय",
+      "invited": "आमंत्रित",
+      "removed": "हटाया गया"
+    },
+    "list": {
+      "emptyTitle": "अभी तक कोई स्टाफ नहीं",
+      "emptyDescription": "अपना विक्रेता खाता चलाने में मदद के लिए एक मैनेजर या पैकर आमंत्रित करें।",
+      "remove": "हटाएं",
+      "removed": "स्टाफ सदस्य हटा दिया गया"
+    }
+  },
+  "sellerSettings": {
+    "pageTitle": "सेटिंग्स",
+    "save": "सेव करें",
+    "saved": "सेव हो गया",
+    "storePage": {
+      "title": "स्टोर पेज",
+      "storeName": "स्टोर का प्रदर्शित नाम",
+      "storeDescription": "स्टोर विवरण",
+      "storeSlug": "स्टोर हैंडल",
+      "storeSlugHint": "केवल छोटे अक्षर, अंक और हाइफ़न। यह आपका सार्वजनिक स्टोर लिंक है।",
+      "slugTaken": "यह स्टोर हैंडल पहले से लिया जा चुका है — कोई और आज़माएं।"
+    },
+    "holidayMode": {
+      "title": "हॉलिडे मोड",
+      "description": "दूर रहते समय अपनी सभी सक्रिय लिस्टिंग रोकें, और लौटने पर उन्हें अपने आप फिर से शुरू करें।",
+      "active": "सक्रिय",
+      "inactive": "बंद",
+      "returnDate": "अपेक्षित वापसी तिथि (वैकल्पिक)",
+      "reason": "कारण (वैकल्पिक)",
+      "enable": "मेरी लिस्टिंग रोकें",
+      "disable": "मेरी लिस्टिंग फिर से शुरू करें",
+      "pausedToast": "{{count}} लिस्टिंग रोकी गईं",
+      "resumedToast": "{{count}} लिस्टिंग फिर से शुरू हुईं"
+    },
+    "sla": {
+      "title": "ऑर्डर SLA प्राथमिकताएं",
+      "description": "आप कितनी जल्दी ऑर्डर स्वीकार करने और पैक करने की प्रतिबद्धता रखते हैं। इन्हें चूकने पर ऑर्डर अपने आप रद्द हो सकता है।",
+      "acceptWithinHours": "इतने घंटों में स्वीकार करें",
+      "packWithinHours": "इतने घंटों में पैक करें"
+    },
+    "notifications": {
+      "title": "सूचना प्राथमिकताएं",
+      "channel": {
+        "push": "पुश सूचनाएं",
+        "sms": "SMS",
+        "whatsapp": "WhatsApp",
+        "email": "ईमेल"
+      }
+    }
+  },
+  "reviews": {
+    "form": {
+      "action": "समीक्षा लिखें",
+      "title": "समीक्षा: {{item}}",
+      "fittedTo": "फिट हुआ: {{vehicle}}",
+      "overallRating": "समग्र रेटिंग",
+      "qualityRating": "गुणवत्ता",
+      "valueRating": "पैसे की कीमत",
+      "fitmentAccurateLabel": "क्या यह पार्ट उम्मीद के अनुसार फिट हुआ?",
+      "titleLabel": "शीर्षक (वैकल्पिक)",
+      "commentLabel": "आपकी समीक्षा (वैकल्पिक)",
+      "photosLabel": "फ़ोटो (अधिकतम {{max}})",
+      "addPhoto": "फ़ोटो जोड़ें",
+      "submit": "समीक्षा सबमिट करें",
+      "success": "धन्यवाद — आपकी समीक्षा सबमिट कर दी गई है।"
+    },
+    "sellerReply": {
+      "action": "विक्रेता के रूप में जवाब दें",
+      "placeholder": "खरीदार को धन्यवाद दें या उनकी प्रतिक्रिया का समाधान करें",
+      "submit": "जवाब पोस्ट करें",
+      "success": "जवाब पोस्ट हो गया"
+    },
+    "errors": {
+      "permissionDenied": "आप इस समीक्षा पर यह नहीं कर सकते।",
+      "replyAlreadyPosted": "आप पहले ही इस समीक्षा का जवाब दे चुके हैं।",
+      "notFound": "वह समीक्षा अब नहीं मिल सकी।",
+      "generic": "कुछ गलत हो गया — कृपया फिर से कोशिश करें।"
+    }
+  },
+  "trust": {
+    "tier": {
+      "new": "नया विक्रेता",
+      "trusted": "विश्वसनीय",
+      "top_rated": "शीर्ष रेटेड"
+    },
+    "breakdown": {
+      "title": "आपका ट्रस्ट स्कोर",
+      "emptyTitle": "अभी स्कोर नहीं हुआ",
+      "emptyDescription": "पर्याप्त ऑर्डर इतिहास होने पर आपका ट्रस्ट स्कोर रोज़ाना कैलकुलेट होता है।",
+      "computedAt": "अंतिम अपडेट {{date}}",
+      "component": {
+        "rating": "ग्राहक रेटिंग",
+        "sla": "डिस्पैच SLA",
+        "cancellation": "रद्दीकरण दर",
+        "return": "रिटर्न दर",
+        "spurious": "नकली पार्ट रिपोर्ट",
+        "tenure": "कार्यकाल"
+      },
+      "lever": {
+        "rating": "बेहतर समीक्षाएं पाने के लिए गुणवत्ता और फिटमेंट सटीकता ऊंची रखें।",
+        "sla": "अपनी SLA समय सीमा में ऑर्डर स्वीकार और पैक करें।",
+        "cancellation": "स्वीकार करने के बाद ऑर्डर रद्द या अस्वीकार करने से बचें।",
+        "return": "पार्ट्स और फिटमेंट का सटीक विवरण देकर रिटर्न कम करें।",
+        "spurious": "नकली-पार्ट रिपोर्ट से मुक्त रहें।",
+        "tenure": "प्लेटफ़ॉर्म पर अच्छी स्थिति के जितने अधिक महीने, ट्रस्ट उतना बढ़ता है।"
+      }
+    },
+    "genuineBadge": {
+      "label": "असली पार्ट",
+      "verifiedOn": "{{date}} को सत्यापित"
+    },
+    "spuriousReport": {
+      "action": "संदिग्ध पार्ट की रिपोर्ट करें",
+      "title": "एक संदिग्ध पार्ट की रिपोर्ट करें",
+      "reasonLabel": "आपको यह पार्ट असली न लगने की वजह क्या थी?",
+      "reasonPlaceholder": "जैसे, पैकेजिंग ब्रांड की सामान्य पैकेजिंग से अलग दिखी",
+      "evidenceLabel": "प्रमाण फ़ोटो (अधिकतम {{max}})",
+      "addEvidence": "फ़ोटो जोड़ें",
+      "submit": "रिपोर्ट सबमिट करें",
+      "success": "रिपोर्ट सबमिट हो गई — हमारी टीम जांच करेगी।"
+    },
+    "brandAuth": {
+      "title": "असली-पार्ट ब्रांड प्राधिकरण",
+      "description": "अपनी मिलती-जुलती लिस्टिंग पर \"असली पार्ट\" बैज पाने के लिए ब्रांड-प्राधिकरण दस्तावेज़ अपलोड करें।",
+      "brandNameLabel": "ब्रांड का नाम",
+      "documentLabel": "प्राधिकरण दस्तावेज़",
+      "submit": "समीक्षा हेतु सबमिट करें",
+      "success": "सबमिट हो गया — एक एडमिन जल्द ही समीक्षा करेगा।",
+      "status": {
+        "pending": "समीक्षा लंबित",
+        "verified": "सत्यापित",
+        "rejected": "अस्वीकृत"
+      }
+    },
+    "authenticity": {
+      "title": "QR/होलोग्राम कोड से सत्यापित करें",
+      "description": "अगर पार्ट की प्रामाणिकता सील पर कोड छपा है, तो उसे दर्ज करें।",
+      "codePlaceholder": "कोड दर्ज करें",
+      "check": "जांचें",
+      "valid": "यह कोड ब्रांड रजिस्ट्री से मेल खाता है।",
+      "invalid": "इस कोड को सत्यापित नहीं किया जा सका।"
+    },
+    "errors": {
+      "permissionDenied": "आप इस रिपोर्ट पर यह नहीं कर सकते।",
+      "responseAlreadySubmitted": "आप पहले ही इस रिपोर्ट का जवाब दे चुके हैं।",
+      "reportAlreadyResolved": "यह रिपोर्ट पहले ही हल हो चुकी है।",
+      "notFound": "वह रिपोर्ट अब नहीं मिल सकी।",
+      "generic": "कुछ गलत हो गया — कृपया फिर से कोशिश करें।"
+    }
+  },
+  "rfq": {
+    "errors": {
+      "rfqNotOpen": "यह अनुरोध अब खुला नहीं है।",
+      "responseWindowClosed": "इस अनुरोध के लिए प्रतिक्रिया समय सीमा समाप्त हो गई है।",
+      "quoteAlreadyPending": "इस अनुरोध पर आपका पहले से एक कोट है — फिर से कोट देने के लिए उसे वापस लें।",
+      "quoteNotAvailable": "वह कोट अब उपलब्ध नहीं है।",
+      "quoteExpired": "वह कोट समाप्त हो गया है।",
+      "hsnGstRequired": "बिना कैटलॉग पार्ट वाले अनुरोध के लिए HSN कोड और GST दर आवश्यक है।",
+      "listingNotOwned": "आप केवल अपनी लिस्टिंग ही जोड़ सकते हैं।",
+      "listingOrPartRequired": "स्वीकार करने से पहले इस अनुरोध में एक लिंक की गई लिस्टिंग या कैटलॉग पार्ट होना चाहिए।",
+      "permissionDenied": "आप इस अनुरोध पर यह नहीं कर सकते।",
+      "codNotEligible": "इस ऑर्डर के लिए कैश ऑन डिलीवरी उपलब्ध नहीं है।",
+      "creditNotEligible": "इस ऑर्डर के लिए खाता क्रेडिट उपलब्ध नहीं है।",
+      "addressNotFound": "वह डिलीवरी पता नहीं मिला।",
+      "gatewayUnavailable": "भुगतान शुरू नहीं हो सका — कृपया फिर से प्रयास करें।",
+      "contactInfoBlocked": "RFQ संदेशों में फ़ोन नंबर और ईमेल पते की अनुमति नहीं है।",
+      "generic": "कुछ गलत हो गया — कृपया फिर से प्रयास करें।"
+    },
+    "form": {
+      "signInRequired": "कोट का अनुरोध करने के लिए साइन इन करें।",
+      "dialogTitle": "कोट का अनुरोध करें",
+      "bulkCta": "इससे ज़्यादा चाहिए? थोक कोट पाएं",
+      "partLabel": "पार्ट",
+      "description": "आपको कौन सा पार्ट चाहिए?",
+      "descriptionPlaceholder": "जैसे Honda City 2018 के लिए ब्रेक पैड",
+      "descriptionRequired": "कृपया आवश्यक पार्ट का विवरण दें।",
+      "category": "श्रेणी",
+      "qty": "मात्रा",
+      "targetPrice": "प्रति यूनिट लक्षित मूल्य (वैकल्पिक)",
+      "targetPricePlaceholder": "₹",
+      "deliveryPincode": "डिलीवरी पिनकोड",
+      "pincodeInvalid": "एक मान्य 6-अंकीय पिनकोड दर्ज करें।",
+      "requiredByDate": "किस तारीख तक चाहिए (वैकल्पिक)",
+      "notes": "टिप्पणियां (वैकल्पिक)",
+      "notesPlaceholder": "विक्रेताओं को कोई अन्य जानकारी",
+      "attachments": "फ़ोटो (वैकल्पिक)",
+      "addAttachment": "फ़ोटो जोड़ें",
+      "submit": "अनुरोध भेजें",
+      "success": "आपका अनुरोध विक्रेताओं को भेज दिया गया है।",
+      "successRouted": "आपका अनुरोध {{count}} मेल खाते विक्रेताओं को भेज दिया गया है।"
+    },
+    "list": {
+      "title": "आपके कोट अनुरोध",
+      "navLink": "थोक कोट चाहिए?",
+      "newRequest": "नया अनुरोध",
+      "emptyTitle": "अभी तक कोई कोट अनुरोध नहीं",
+      "emptyDescription": "थोक कोट का अनुरोध करें और विक्रेता यहां जवाब देंगे।",
+      "untitled": "बिना शीर्षक अनुरोध",
+      "qty": "{{count}} यूनिट",
+      "target": "लक्ष्य {{price}}",
+      "quoteCount": "{{count}} कोट"
+    },
+    "new": {
+      "title": "कोट का अनुरोध करें",
+      "description": "विक्रेताओं को बताएं कि आपको क्या चाहिए और वे अपना सबसे अच्छा मूल्य भेजेंगे।"
+    },
+    "detail": {
+      "noQuotesYet": "अभी तक कोई कोट नहीं — विक्रेता आमतौर पर 48 घंटों में जवाब देते हैं।",
+      "notFound": "यह अनुरोध नहीं मिला।",
+      "withdraw": "अनुरोध वापस लें",
+      "withdrawSuccess": "अनुरोध वापस ले लिया गया।",
+      "quotesTitle": "कोट",
+      "deliveryTo": "{{pincode}} पर डिलीवरी"
+    },
+    "status": {
+      "open": "खुला",
+      "quoted": "कोट प्राप्त",
+      "accepted": "स्वीकृत",
+      "converted": "ऑर्डर में बदला गया",
+      "expired": "समाप्त",
+      "withdrawn": "वापस लिया गया"
+    },
+    "quoteStatus": {
+      "pending": "लंबित",
+      "accepted": "स्वीकृत",
+      "rejected": "नहीं चुना गया",
+      "withdrawn": "वापस लिया गया",
+      "expired": "समाप्त"
+    },
+    "compare": {
+      "seller": "विक्रेता",
+      "unitPrice": "यूनिट मूल्य",
+      "qty": "कोट की गई मात्रा",
+      "leadTime": "डिलीवरी समय",
+      "leadTimeDays": "{{count}} दिन",
+      "landedCost": "कुल लागत",
+      "status": "स्थिति",
+      "estBadge": "(अनुमानित)",
+      "plusTaxShipping": "+ कर और शिपिंग",
+      "accept": "स्वीकार करें",
+      "openThread": "संदेश"
+    },
+    "accept": {
+      "title": "इस कोट को स्वीकार करें",
+      "lineSummary": "{{price}} प्रति यूनिट पर {{qty}} यूनिट",
+      "success": "कोट स्वीकृत — आपका ऑर्डर दे दिया गया है।",
+      "confirm": "ऑर्डर दें"
+    },
+    "thread": {
+      "moderationNotice": "आपकी सुरक्षा के लिए, संदेशों में फ़ोन नंबर और ईमेल की अनुमति नहीं है — इसके बजाय यहां मूल्य और समय-सीमा साझा करें।",
+      "empty": "अभी तक कोई संदेश नहीं।",
+      "placeholder": "एक संदेश लिखें…",
+      "send": "भेजें",
+      "titleWithSeller": "{{seller}} के साथ संदेश",
+      "contactInfoWarning": {
+        "phone": "यह फ़ोन नंबर जैसा लगता है — हम यहां संपर्क विवरण साझा करने की अनुमति नहीं देते।",
+        "email": "यह ईमेल पता जैसा लगता है — हम यहां संपर्क विवरण साझा करने की अनुमति नहीं देते।"
+      }
+    },
+    "seller": {
+      "inboxTitle": "RFQ इनबॉक्स",
+      "inboxEmptyTitle": "अभी तक आपको कोई अनुरोध नहीं भेजा गया",
+      "inboxEmptyDescription": "आपकी श्रेणियों से मेल खाते खरीदार अनुरोध यहां दिखेंगे।",
+      "respondBy": "{{date}} तक जवाब दें",
+      "youQuoted": "आपने कोट दिया",
+      "yourQuote": "आपका कोट",
+      "withdrawQuote": "कोट वापस लें",
+      "quoteWithdrawn": "कोट वापस ले लिया गया।",
+      "buildQuote": "अपना कोट बनाएं",
+      "rfqClosed": "यह अनुरोध अब कोट स्वीकार नहीं कर रहा है।",
+      "unitPrice": "यूनिट मूल्य",
+      "unitPriceRequired": "एक यूनिट मूल्य दर्ज करें।",
+      "qtyOffered": "आप कितनी मात्रा दे सकते हैं",
+      "counterQtyHint": "खरीदार ने {{requested}} का अनुरोध किया — जरूरत पड़ने पर अलग मात्रा दें।",
+      "moq": "न्यूनतम ऑर्डर मात्रा (वैकल्पिक)",
+      "leadTimeDays": "डिलीवरी समय (दिन)",
+      "validUntil": "कोट कब तक मान्य है",
+      "validUntilRequired": "एक वैधता तिथि निर्धारित करें।",
+      "linkListing": "अपनी किसी लिस्टिंग को जोड़ें (वैकल्पिक)",
+      "noLinkedListing": "कोई लिंक की गई लिस्टिंग नहीं",
+      "hsnCode": "HSN कोड",
+      "gstRate": "GST दर",
+      "message": "खरीदार को संदेश (वैकल्पिक)",
+      "messagePlaceholder": "खरीदार को कोई अन्य जानकारी",
+      "submitQuote": "कोट सबमिट करें",
+      "quoteSubmitted": "कोट सबमिट हो गया।"
+    }
+  },
+  "sellerOrders": {
+    "title": "ऑर्डर",
+    "emptyTitle": "अभी तक यहां कोई ऑर्डर नहीं",
+    "emptyDescription": "इस चरण के ऑर्डर यहां दिखाई देंगे।",
+    "selectedCount": "{{count}} चयनित",
+    "selectRow": "ऑर्डर चुनें",
+    "printSelected": "पैकिंग स्लिप प्रिंट करें",
+    "nav": {
+      "dashboard": "डैशबोर्ड",
+      "listings": "लिस्टिंग",
+      "partRequests": "पार्ट अनुरोध",
+      "rfqs": "RFQ",
+      "orders": "ऑर्डर",
+      "tax": "GST और अनुपालन",
+      "payments": "भुगतान",
+      "staff": "स्टाफ",
+      "settings": "सेटिंग्स",
+      "warrantyClaims": "वारंटी",
+      "disputes": "विवाद"
+    },
+    "tabs": {
+      "new": "नए",
+      "toPack": "पैक करना है",
+      "toShip": "भेजना है",
+      "shipped": "भेज दिया गया",
+      "delivered": "डिलीवर हो गया",
+      "cancelled": "रद्द",
+      "returns": "रिटर्न"
+    },
+    "bulkAccept": {
+      "action": "चयनित स्वीकार करें",
+      "success": "{{count}} ऑर्डर स्वीकृत किए गए",
+      "partialFailure": "{{count}} ऑर्डर स्वीकार नहीं किए जा सके",
+      "failure": "चयनित ऑर्डर स्वीकार नहीं किए जा सके — कृपया फिर से प्रयास करें।"
+    },
+    "actions": {
+      "accept": "स्वीकार करें",
+      "reject": "अस्वीकार करें",
+      "pack": "पैक किया गया चिह्नित करें",
+      "ship": "भेजें",
+      "markOutForDelivery": "डिलीवरी के लिए निकला हुआ चिह्नित करें",
+      "markDelivered": "डिलीवर किया गया चिह्नित करें"
+    },
+    "ship": {
+      "awbLabel": "AWB नंबर",
+      "courierLabel": "कूरियर",
+      "confirm": "शिपमेंट की पुष्टि करें",
+      "success": "भेजा गया के रूप में चिह्नित"
+    },
+    "shipping": {
+      "bookAction": "कूरियर बुक करें",
+      "bookSuccess": "शिपमेंट बुक हो गया",
+      "pickupDateLabel": "पिकअप तारीख",
+      "pickupAction": "पिकअप शेड्यूल करें",
+      "pickupSuccess": "पिकअप शेड्यूल हो गया",
+      "pickupScheduledOn": "पिकअप {{date}} के लिए शेड्यूल किया गया",
+      "labelAction": "लेबल डाउनलोड करें",
+      "errors": {
+        "notPacked": "कूरियर बुक करने से पहले यह ऑर्डर पैक होना चाहिए",
+        "notBooked": "पहले कूरियर शिपमेंट बुक करें",
+        "originNotSet": "शिपमेंट बुक करने से पहले अपनी विक्रेता प्रोफ़ाइल में वेयरहाउस पता जोड़ें"
+      }
+    },
+    "packingSlip": {
+      "title": "पैकिंग स्लिप",
+      "subOrderId": "सब-ऑर्डर आईडी",
+      "deliverTo": "यहां डिलीवर करें",
+      "sku": "SKU",
+      "item": "आइटम",
+      "qty": "मात्रा"
+    },
+    "returns": {
+      "emptyTitle": "कोई रिटर्न अनुरोध नहीं",
+      "approve": "स्वीकृत करें",
+      "reject": "अस्वीकृत करें",
+      "markRefunded": "रिफंड किया गया चिह्नित करें",
+      "status": {
+        "requested": "अनुरोधित",
+        "approved": "स्वीकृत",
+        "rejected": "अस्वीकृत",
+        "picked_up": "पिकअप हो गया",
+        "refunded": "रिफंड हो गया",
+        "closed": "बंद",
+        "qc_passed": "QC पास",
+        "qc_disputed": "QC असहमति",
+        "replaced": "रिप्लेस हुआ"
+      },
+      "pickupAwb": "पिकअप AWB",
+      "qcDisputedNote": "आपने इस रिटर्न पर असहमति जताई है। यदि खरीदार असहमत है तो एडमिन को भेजें।",
+      "qc": {
+        "action": "QC जमा करें",
+        "photosLabel": "QC फ़ोटो",
+        "photosRequired": "कम से कम एक QC फ़ोटो आवश्यक है।",
+        "noteLabel": "टिप्पणी (वैकल्पिक)",
+        "pass": "पास — रिटर्न हल करें",
+        "dispute": "असहमति",
+        "passSuccess": "QC दर्ज हुआ — रिटर्न हल हो गया",
+        "disputeSuccess": "QC असहमति दर्ज हुई",
+        "failure": "QC जमा नहीं हो सका — कृपया फिर से प्रयास करें।"
+      }
+    },
+    "ewayBill": {
+      "title": "ई-वे बिल कार्य",
+      "emptyTitle": "कोई ई-वे बिल कार्य नहीं",
+      "emptyDescription": "कंसाइनमेंट-मूल्य सीमा से अधिक शिपमेंट यहां दिखाई देंगे।",
+      "exportCsv": "लंबित को CSV के रूप में निर्यात करें",
+      "consignmentValue": "कंसाइनमेंट मूल्य",
+      "downloadJson": "JSON डाउनलोड करें",
+      "numberPlaceholder": "ई-वे बिल नंबर",
+      "markGenerated": "नंबर सहेजें",
+      "generatedTitle": "जनरेट हो गया",
+      "marked": "ई-वे बिल नंबर सहेजा गया",
+      "markFailed": "ई-वे बिल नंबर सहेज नहीं सके — कृपया फिर से प्रयास करें।",
+      "exportFailed": "निर्यात नहीं हो सका — कृपया फिर से प्रयास करें।"
+    }
+  },
+  "sellerPayments": {
+    "currentBalance": "वर्तमान बैलेंस",
+    "upcomingPayout": "आगामी भुगतान",
+    "expectedOn": "{{date}} को अपेक्षित",
+    "recentActivity": "हाल की गतिविधि",
+    "noActivity": "अभी तक कोई लेजर गतिविधि नहीं।",
+    "payoutHistory": "भुगतान इतिहास",
+    "emptyTitle": "अभी तक कोई भुगतान नहीं",
+    "emptyDescription": "योग्य ऑर्डर का रिटर्न विंडो पूरा होते ही आपका पहला सेटलमेंट यहां दिखेगा।",
+    "downloadStatement": "विवरण डाउनलोड करें",
+    "statementDownloadFailed": "विवरण डाउनलोड नहीं हो सका — कृपया फिर से प्रयास करें।",
+    "gross": "सकल",
+    "commission": "कमीशन",
+    "taxWithheld": "रोका गया टैक्स",
+    "orderCount": "ऑर्डर",
+    "status": {
+      "pending": "लंबित",
+      "processing": "प्रोसेसिंग",
+      "paid": "भुगतान हो गया",
+      "failed": "विफल"
+    },
+    "entryType": {
+      "orderCredit": "बिक्री",
+      "commission": "कमीशन",
+      "refund": "रिफंड",
+      "payout": "भुगतान",
+      "adjustment": "समायोजन",
+      "tcs": "TCS",
+      "tds": "TDS",
+      "shipping": "शिपिंग शुल्क",
+      "penalty": "पेनल्टी",
+      "disputeRefund": "विवाद रिफंड (एडमिन द्वारा बाध्य)"
+    }
+  },
+  "khata": {
+    "title": "खाता क्रेडिट",
+    "limit": "क्रेडिट लिमिट",
+    "used": "उपयोग किया गया",
+    "available": "उपलब्ध",
+    "suspended": "अतिदेय भुगतान के कारण आपका खाता खाता फिलहाल निलंबित है।",
+    "closed": "आपका खाता खाता बंद है।",
+    "repayAmount": "चुकाने की राशि (₹)",
+    "repayNow": "अभी भुगतान करें",
+    "repayFailed": "रिपेमेंट लिंक नहीं बन सका — कृपया फिर से प्रयास करें।",
+    "statements": "विवरण",
+    "noStatements": "अभी तक कोई विवरण नहीं",
+    "noStatementsDescription": "खाता गतिविधि होने पर मासिक विवरण यहां दिखेंगे।",
+    "dueOn": "{{date}} तक देय",
+    "statementStatus": {
+      "due": "देय",
+      "paid": "भुगतान हो गया",
+      "overdue": "अतिदेय"
+    },
+    "requestLimitTitle": "खाता क्रेडिट लिमिट का अनुरोध करें",
+    "requestedLimit": "अनुरोधित लिमिट (₹)",
+    "reasonOptional": "कारण (वैकल्पिक)",
+    "submitRequest": "अनुरोध भेजें",
+    "requestSubmitted": "आपका अनुरोध समीक्षा के लिए भेज दिया गया है।",
+    "requestFailed": "अनुरोध भेजा नहीं जा सका — कृपया फिर से प्रयास करें।",
+    "notEligibleTitle": "खाता क्रेडिट सत्यापित गैराज के लिए है",
+    "notEligibleDescription": "खाता क्रेडिट के योग्य बनने के लिए अपना गैराज खाता सत्यापित करवाएं।"
+  },
+  "sellerListings": {
+    "title": "लिस्टिंग",
+    "addAction": "लिस्टिंग जोड़ें",
+    "emptyTitle": "अभी तक कोई लिस्टिंग नहीं",
+    "emptyDescription": "बिक्री शुरू करने के लिए मास्टर कैटलॉग से अपनी पहली लिस्टिंग जोड़ें।",
+    "tabs": {
+      "all": "सभी",
+      "draft": "ड्राफ्ट",
+      "active": "सक्रिय",
+      "paused": "रोकी गई",
+      "out_of_stock": "स्टॉक में नहीं",
+      "rejected": "अस्वीकृत",
+      "archived": "संग्रहीत"
+    },
+    "status": {
+      "draft": "ड्राफ्ट",
+      "active": "सक्रिय",
+      "paused": "रोकी गई",
+      "out_of_stock": "स्टॉक में नहीं",
+      "rejected": "अस्वीकृत",
+      "archived": "संग्रहीत"
+    },
+    "table": {
+      "part": "पार्ट",
+      "sku": "SKU",
+      "price": "शुरुआती कीमत",
+      "stock": "स्टॉक",
+      "status": "स्थिति"
+    },
+    "actions": {
+      "edit": "संपादित करें",
+      "stock": "स्टॉक",
+      "activate": "सक्रिय करें",
+      "pause": "रोकें",
+      "archive": "संग्रहीत करें"
+    },
+    "inventory": {
+      "title": "इन्वेंटरी",
+      "notFound": "लिस्टिंग नहीं मिली",
+      "totalStock": "कुल स्टॉक",
+      "reserved": "आरक्षित",
+      "available": "उपलब्ध",
+      "outOfStock": "स्टॉक में नहीं",
+      "lowStock": "कम स्टॉक",
+      "adjustDeltaLabel": "इतना बदलें",
+      "adjustDeltaPlaceholder": "जैसे 10 या -5",
+      "adjustReasonLabel": "कारण",
+      "adjustNoteLabel": "नोट (वैकल्पिक)",
+      "adjustAction": "लागू करें",
+      "adjustSuccess": "स्टॉक अपडेट हो गया",
+      "insufficientStock": "यह बदलाव स्टॉक को शून्य से नीचे ले जाएगा।",
+      "ledgerEmptyTitle": "अभी तक कोई स्टॉक मूवमेंट नहीं",
+      "date": "तारीख",
+      "reasonColumn": "कारण",
+      "delta": "बदलाव",
+      "balance": "बैलेंस",
+      "note": "नोट",
+      "reason": {
+        "restock": "रीस्टॉक",
+        "sale": "बिक्री",
+        "return": "रिटर्न",
+        "adjustment": "समायोजन",
+        "correction": "सुधार"
+      }
+    },
+    "addFlow": {
+      "step1Title": "पार्ट खोजें",
+      "step1Description": "पार्ट नंबर, नाम या ब्रांड से मास्टर कैटलॉग में खोजें।",
+      "searchPlaceholder": "पार्ट नंबर, नाम या ब्रांड खोजें",
+      "searchMinChars": "खोजने के लिए कम से कम 2 अक्षर टाइप करें",
+      "noResults": "कैटलॉग में कोई मिलता-जुलता पार्ट नहीं मिला।",
+      "requestNewPart": "यह पार्ट नहीं मिल रहा? इसका अनुरोध करें",
+      "confirmPart": "यह पार्ट उपयोग करें",
+      "step2Title": "व्यावसायिक विवरण",
+      "step2Description": "केवल कीमत, स्टॉक और लॉजिस्टिक्स — पार्ट का विवरण कैटलॉग से आता है।",
+      "skuLabel": "आपका SKU",
+      "conditionLabel": "स्थिति",
+      "stockQtyLabel": "स्टॉक मात्रा",
+      "mrpLabel": "MRP (₹)",
+      "taxIncludedLabel": "कीमतों में GST शामिल है",
+      "weightLabel": "वजन (ग्राम)",
+      "warrantyLabel": "वारंटी (महीने)",
+      "packLabelLabel": "पैक लेबल",
+      "returnWindowLabel": "रिटर्न विंडो (दिन)",
+      "priceLabel": "यूनिट कीमत (₹)",
+      "hsnCodeLabel": "HSN कोड",
+      "gstRateLabel": "GST दर",
+      "oversizedLabel": "ओवरसाइज़्ड (बंपर, पैनल, बैटरी)",
+      "saveDraft": "ड्राफ्ट के रूप में सेव करें",
+      "publish": "लिस्टिंग प्रकाशित करें",
+      "saveSuccess": "लिस्टिंग सेव हो गई",
+      "saveError": "लिस्टिंग सेव नहीं हो सकी — ऊपर दी गई त्रुटियां देखें।",
+      "publishBlockedOutOfStock": "प्रकाशित करने से पहले स्टॉक जोड़ें",
+      "images": {
+        "title": "फ़ोटो",
+        "add": "फ़ोटो जोड़ें",
+        "uploading": "अपलोड हो रहा है…",
+        "remove": "हटाएं",
+        "reorder": "क्रम बदलने के लिए खींचें"
+      }
+    },
+    "condition": {
+      "new": "नया",
+      "used": "पुराना",
+      "refurbished": "नवीनीकृत"
+    },
+    "pricingEditor": {
+      "title": "मात्रा-स्लैब मूल्य निर्धारण",
+      "moqLabel": "न्यूनतम ऑर्डर मात्रा (MOQ)",
+      "stepQtyLabel": "स्टेप मात्रा",
+      "addTier": "टियर जोड़ें",
+      "tierLabel": "टियर {{tierNumber}}",
+      "andAbove": "और अधिक",
+      "endsAtLabel": "यहां समाप्त होता है",
+      "unitPriceLabel": "यूनिट कीमत (₹)",
+      "reorderTier": "टियर {{tierNumber}} का क्रम बदलें — खींचें या तीर कुंजियों का उपयोग करें",
+      "removeTier": "टियर {{tierNumber}} हटाएं",
+      "previewTitle": "खरीदार पूर्वावलोकन",
+      "previewEmpty": "खरीदार-सामने पूर्वावलोकन देखने के लिए टियर कीमतें दर्ज करें।",
+      "decreasePreviewQty": "कम मात्रा का पूर्वावलोकन करें",
+      "increasePreviewQty": "अधिक मात्रा का पूर्वावलोकन करें",
+      "upsellHint": "{{qty}} और जोड़ने पर {{price}}/यूनिट मिलेगा",
+      "fixErrorsBeforeSave": "सेव करने से पहले ऊपर दी गई मूल्य निर्धारण त्रुटियां ठीक करें।",
+      "sharesDefaultMoq": "डिफ़ॉल्ट लैडर का MOQ ({{moq}}) और स्टेप मात्रा ({{stepQty}}) साझा करता है — प्रति समूह केवल कीमतें अलग होती हैं।"
+    },
+    "buyerGroups": {
+      "title": "खरीदार-समूह मूल्य निर्धारण",
+      "description": "रिटेल, मैकेनिक, गैराज, फ्लीट या रीसेलर खरीदारों को उनकी अपनी कीमत लैडर दें। बिना ओवरराइड वाला समूह ऊपर दिया गया डिफ़ॉल्ट लैडर देखता है।",
+      "type": {
+        "retail": "रिटेल",
+        "mechanic": "मैकेनिक",
+        "garage": "गैराज",
+        "fleet": "फ्लीट",
+        "reseller": "रीसेलर"
+      },
+      "usingDefault": "यह समूह डिफ़ॉल्ट लैडर देखता है।",
+      "copyFromDefault": "डिफ़ॉल्ट से कॉपी करें",
+      "removeOverride": "ओवरराइड हटाएं"
+    },
+    "templates": {
+      "title": "मूल्य निर्धारण टेम्पलेट",
+      "empty": "अभी तक कोई सेव किया गया टेम्पलेट नहीं।",
+      "apply": "लागू करें",
+      "delete": "हटाएं",
+      "saveCurrent": "मौजूदा लैडर को टेम्पलेट के रूप में सेव करें",
+      "namePlaceholder": "जैसे स्टैंडर्ड 3-स्टेप 5/10%",
+      "save": "टेम्पलेट सेव करें",
+      "saved": "टेम्पलेट सेव हो गया",
+      "fixErrorsToSave": "टेम्पलेट सेव करने से पहले ऊपर दी गई मूल्य निर्धारण त्रुटियां ठीक करें।"
+    },
+    "marginCalculator": {
+      "title": "मार्जिन कैलकुलेटर",
+      "costPriceLabel": "आपकी लागत मूल्य (₹)",
+      "commissionRateHint": "इस श्रेणी के लिए प्लेटफ़ॉर्म कमीशन: {{percent}}%",
+      "enterCostPrompt": "प्रति-टियर मार्जिन देखने के लिए अपनी लागत मूल्य दर्ज करें।",
+      "tier": "टियर",
+      "price": "कीमत",
+      "commission": "कमीशन",
+      "shipping": "अनुमानित शिपिंग",
+      "margin": "मार्जिन",
+      "marginPercent": "मार्जिन %",
+      "belowCostWarning": "कमीशन और अनुमानित शिपिंग के बाद एक या अधिक टियर लागत से नीचे बिक रहे हैं।",
+      "shippingEstimateNote": "शिपिंग का अनुमान एक सामान्य (राष्ट्रीय-क्षेत्र) डिलीवरी के लिए है — वास्तविक शुल्क खरीदार के स्थान पर निर्भर करता है और चेकआउट पर परिकलित होता है।"
+    },
+    "pricingErrors": {
+      "firstTierMustMatchMoq": "टियर 1 को MOQ ({{moq}}) से शुरू होना चाहिए",
+      "moqMustBeMultipleOfStep": "MOQ, स्टेप मात्रा ({{stepQty}}) का पूर्ण गुणज होना चाहिए",
+      "tierMustBeOpenEnded": "अंतिम टियर खुला रहना चाहिए — \"यहां समाप्त होता है\" खाली छोड़ें",
+      "onlyLastTierOpenEnded": "केवल अंतिम टियर खुला रह सकता है — टियर {{tierNumber}} के लिए \"यहां समाप्त होता है\" मान सेट करें",
+      "maxMustBeAtLeastMin": "टियर {{tierNumber}} का \"यहां समाप्त होता है\" मान उसकी शुरुआत के बराबर या उससे अधिक होना चाहिए",
+      "tierMustStartAfterPrevious": "टियर {{tierNumber}} को {{expectedMinQty}} से शुरू होना चाहिए — टियर {{previousTierNumber}} {{previousMaxQty}} पर समाप्त होता है",
+      "tierPriceMustBeLower": "टियर {{tierNumber}} की कीमत टियर {{previousTierNumber}} से कम होनी चाहिए",
+      "raw": "{{raw}}"
+    },
+    "partRequest": {
+      "title": "नया पार्ट अनुरोध करें",
+      "description": "कैटलॉग में यह पार्ट नहीं मिल रहा? इसे एडमिन समीक्षा हेतु जमा करें — स्वीकृत होने पर यह कैटलॉग में जुड़ जाएगा और आपके लिए एक ड्राफ्ट लिस्टिंग अपने आप बन जाएगी।",
+      "titleLabel": "पार्ट का नाम",
+      "brandLabel": "ब्रांड",
+      "oemNumberLabel": "OEM नंबर",
+      "partTypeLabel": "पार्ट प्रकार",
+      "partType": {
+        "oem": "OEM",
+        "oes": "OES",
+        "aftermarket": "आफ्टरमार्केट",
+        "genuine": "जेन्युइन"
+      },
+      "categoryLabel": "श्रेणी",
+      "subcategoryLabel": "उप-श्रेणी",
+      "noSubcategory": "कोई उप-श्रेणी नहीं",
+      "specsLabel": "विवरण / स्पेसिफिकेशन",
+      "fitmentLabel": "फिटमेंट नोट्स",
+      "fitmentPlaceholder": "जैसे मारुति सुज़ुकी स्विफ्ट 2018-2023, बलेनो 2019+",
+      "submit": "अनुरोध जमा करें",
+      "submitSuccess": "पार्ट अनुरोध जमा हो गया",
+      "queueTitle": "पार्ट अनुरोध",
+      "newAction": "नया पार्ट अनुरोध करें",
+      "emptyTitle": "अभी तक कोई पार्ट अनुरोध नहीं",
+      "emptyDescription": "कैटलॉग में मौजूद न होने वाले पार्ट्स के लिए आपके अनुरोध यहां दिखेंगे।",
+      "viewListing": "ड्राफ्ट लिस्टिंग देखें",
+      "status": {
+        "pending": "लंबित",
+        "under_review": "समीक्षाधीन",
+        "changes_requested": "बदलाव आवश्यक",
+        "approved": "स्वीकृत",
+        "rejected": "अस्वीकृत"
+      }
+    },
+    "bulkUpload": {
+      "navLink": "बल्क अपलोड",
+      "pageTitle": "लिस्टिंग बल्क अपलोड करें",
+      "title": "बल्क अपलोड",
+      "description": "टेम्पलेट डाउनलोड करें, ऑफ़लाइन अपनी लिस्टिंग भरें, फिर यहां अपलोड करें। केवल सही पंक्तियां जोड़ी जाती हैं — बाकी की वजह साफ़ भाषा में वापस मिलती है।",
+      "downloadTemplate": "टेम्पलेट डाउनलोड करें",
+      "uploadAction": "फ़ाइल अपलोड करें",
+      "parsing": "आपकी फ़ाइल जांची जा रही है…",
+      "startOver": "फिर से शुरू करें",
+      "notASeller": "यह पेज केवल विक्रेताओं के लिए उपलब्ध है।",
+      "parseError": "फ़ाइल पढ़ी नहीं जा सकी — जांच लें कि यह टेम्पलेट से सेव की गई .csv या .xlsx है।",
+      "commitError": "लिस्टिंग सेव नहीं हो सकीं — फिर से कोशिश करें।",
+      "commitSuccess": "{{count}} लिस्टिंग जोड़ी गई",
+      "commitSuccess_other": "{{count}} लिस्टिंग जोड़ी गईं",
+      "summaryTotal": "{{count}} पंक्तियां",
+      "summaryValid": "{{count}} सही",
+      "summaryInvalid": "{{count}} गलत",
+      "summaryCommitted": "{{count}} जोड़ी गईं",
+      "downloadErrorReport": "त्रुटि रिपोर्ट डाउनलोड करें",
+      "commitAction": "{{count}} सही लिस्टिंग जोड़ें",
+      "commitAction_other": "{{count}} सही लिस्टिंग जोड़ें",
+      "committing": "लिस्टिंग जोड़ी जा रही हैं…",
+      "table": {
+        "row": "पंक्ति",
+        "sku": "SKU",
+        "status": "स्थिति",
+        "reason": "वजह",
+        "valid": "सही",
+        "invalid": "गलत"
+      }
+    },
+    "bulkActions": {
+      "selectAll": "सभी लिस्टिंग चुनें",
+      "selectRow": "{{title}} चुनें",
+      "selectedCount": "{{count}} चयनित",
+      "clearSelection": "चयन हटाएं",
+      "priceChange": {
+        "trigger": "बल्क मूल्य परिवर्तन",
+        "title": "बल्क मूल्य परिवर्तन",
+        "byCategory": "श्रेणी के अनुसार",
+        "byBrand": "ब्रांड के अनुसार",
+        "categoryLabel": "श्रेणी",
+        "brandLabel": "ब्रांड",
+        "percentMode": "प्रतिशत",
+        "absoluteMode": "निश्चित राशि",
+        "percentValueLabel": "बदलाव (%, छूट के लिए नकारात्मक)",
+        "absoluteValueLabel": "बदलाव (₹, छूट के लिए नकारात्मक)",
+        "invalidValue": "एक गैर-शून्य संख्या दर्ज करें।",
+        "apply": "मूल्य परिवर्तन लागू करें",
+        "success": "{{updated}} लिस्टिंग अपडेट हुईं, {{failed}} छोड़ी गईं"
+      },
+      "stockUpdate": {
+        "trigger": "स्टॉक अपडेट करें",
+        "title": "चयनित लिस्टिंग के लिए स्टॉक अपडेट करें",
+        "setMode": "इस पर सेट करें",
+        "deltaMode": "इससे बदलें",
+        "setValueLabel": "नई स्टॉक मात्रा",
+        "deltaValueLabel": "बदलाव (जैसे 10 या -5)",
+        "invalidValue": "एक पूर्ण संख्या दर्ज करें।",
+        "apply": "स्टॉक अपडेट करें",
+        "success": "{{updated}} लिस्टिंग अपडेट हुईं, {{failed}} छोड़ी गईं"
+      },
+      "statusChange": {
+        "trigger": "स्थिति बदलें",
+        "title": "चयनित लिस्टिंग की स्थिति बदलें",
+        "statusLabel": "नई स्थिति",
+        "apply": "स्थिति परिवर्तन लागू करें",
+        "success": "{{updated}} लिस्टिंग अपडेट हुईं, {{failed}} छोड़ी गईं"
+      }
+    }
+  },
+  "sellerDashboard": {
+    "title": "डैशबोर्ड",
+    "viewAllOrders": "सभी ऑर्डर देखें",
+    "todaysOrders": {
+      "title": "आज के ऑर्डर",
+      "emptyTitle": "आज अभी तक कोई ऑर्डर नहीं",
+      "orderId": "ऑर्डर",
+      "items": "आइटम",
+      "total": "कुल",
+      "status": "स्थिति"
+    },
+    "pendingActions": {
+      "title": "लंबित कार्य",
+      "needsAccept": "स्वीकृति चाहिए",
+      "needsPack": "पैकिंग चाहिए"
+    },
+    "revenueChart": {
+      "title": "राजस्व",
+      "rangeLabel": "दिनांक सीमा",
+      "rangeDays": "{{count}} दिन",
+      "emptyTitle": "इस अवधि में अभी तक कोई बिक्री नहीं"
+    },
+    "topSellingParts": {
+      "title": "सबसे ज़्यादा बिकने वाले पार्ट्स",
+      "emptyTitle": "इस अवधि में अभी तक कोई बिक्री नहीं",
+      "part": "पार्ट",
+      "unitsSold": "बिकी इकाइयां",
+      "revenue": "राजस्व"
+    },
+    "conversion": {
+      "title": "कन्वर्ज़न",
+      "caveat": "अनुमानित: चयनित अवधि में बिकी इकाइयां ÷ सभी समय की लिस्टिंग व्यू।"
+    },
+    "slaScorecard": {
+      "title": "SLA स्कोरकार्ड",
+      "acceptOnTime": "समय पर स्वीकृत",
+      "packOnTime": "समय पर पैक"
+    },
+    "missedDemand": {
+      "title": "छूटी हुई मांग",
+      "description": "आपकी श्रेणियों में खरीदारों की वे खोजें जिनमें कुछ नहीं मिला।",
+      "emptyTitle": "हाल ही में आपकी श्रेणियों में कोई छूटी खोज नहीं"
+    }
+  },
+  "home": {
+    "emptyTitle": "कैटलॉग जल्द आ रहा है",
+    "emptyDescription": "लिस्टिंग लाइव होते ही यहां श्रेणियां दिखाई देंगी।",
+    "emptyAction": "श्रेणियां देखें",
+    "vehicleSelector": {
+      "title": "अपने वाहन के अनुकूल पार्ट्स देखने के लिए वाहन चुनें",
+      "subtitle": "अपनी बाइक या कार एक बार जोड़ें, और हर लिस्टिंग बताएगी कि वह फिट होती है या नहीं।"
+    },
+    "categoryTiles": {
+      "title": "श्रेणी के अनुसार खरीदें"
+    },
+    "dealOfDay": {
+      "title": "आज का सौदा",
+      "badge": "सिर्फ आज"
+    },
+    "bulkBuySpotlight": {
+      "title": "सबसे बड़ी बल्क-खरीद बचत"
+    },
+    "brandRail": {
+      "title": "ब्रांड के अनुसार खरीदें"
+    },
+    "recentlyViewed": {
+      "title": "हाल में देखा गया"
+    },
+    "reorderRail": {
+      "title": "अपने पसंदीदा फिर से ऑर्डर करें",
+      "andMore": " +{{count}} और"
+    }
+  },
+  "admin": {
+    "nav": {
+      "dashboard": "डैशबोर्ड",
+      "gstReports": "GST रिपोर्ट",
+      "creditApprovals": "क्रेडिट स्वीकृतियां",
+      "sellerApplications": "विक्रेता आवेदन",
+      "partRequests": "पार्ट अनुरोध",
+      "rfqs": "RFQ",
+      "notifications": "सूचनाएं",
+      "reviewModeration": "समीक्षा मॉडरेशन",
+      "spuriousReports": "नकली पार्ट रिपोर्ट",
+      "brandAuthorizations": "ब्रांड प्राधिकरण",
+      "warrantyClaims": "वारंटी दावे",
+      "disputes": "विवाद",
+      "sellers": "विक्रेता",
+      "orders": "ऑर्डर",
+      "finance": "वित्त",
+      "catalogue": "कैटलॉग",
+      "fitment": "फिटमेंट",
+      "listings": "लिस्टिंग",
+      "returns": "रिटर्न",
+      "marketing": "मार्केटिंग",
+      "content": "कॉन्टेंट",
+      "users": "उपयोगकर्ता",
+      "config": "कॉन्फ़िग",
+      "auditLog": "ऑडिट लॉग",
+      "analytics": "एनालिटिक्स",
+      "groups": {
+        "overview": "ओवरव्यू",
+        "sellers": "विक्रेता",
+        "catalogue": "कैटलॉग",
+        "fitment": "फिटमेंट",
+        "listings": "लिस्टिंग",
+        "orders": "ऑर्डर",
+        "returnsDisputes": "रिटर्न और विवाद",
+        "finance": "वित्त",
+        "marketing": "मार्केटिंग",
+        "content": "कॉन्टेंट",
+        "users": "उपयोगकर्ता",
+        "config": "कॉन्फ़िग",
+        "platform": "प्लेटफ़ॉर्म",
+        "analytics": "एनालिटिक्स"
+      },
+      "support": "सहायता टिकट"
+    },
+    "analytics": {
+      "title": "एनालिटिक्स",
+      "rangeLabel": "तारीख़ सीमा",
+      "segmentLabel": "खरीदार वर्ग",
+      "segmentAll": "सभी खरीदार",
+      "funnel": {
+        "tabLabel": "फ़नल",
+        "empty": "इस अवधि में अभी कोई फ़नल गतिविधि नहीं है।",
+        "countLabel": "इवेंट",
+        "dropOff": "-{{percent}}%",
+        "steps": {
+          "search": "खोज",
+          "view_item_list": "सूची देखी",
+          "view_item": "प्रोडक्ट देखा",
+          "add_to_cart": "कार्ट में जोड़ा",
+          "view_cart": "कार्ट देखा",
+          "begin_checkout": "चेकआउट शुरू किया",
+          "add_payment_info": "भुगतान जोड़ा",
+          "purchase": "खरीदा"
+        }
+      },
+      "slab": {
+        "tabLabel": "स्लैब प्रभावशीलता",
+        "empty": "इस अवधि में अभी कोई GMV दर्ज नहीं है।",
+        "gmvLabel": "GMV",
+        "tierLabel": "मात्रा ≥ {{qty}}"
+      },
+      "cohort": {
+        "tabLabel": "कोहोर्ट रिटेंशन",
+        "empty": "इस खरीदार प्रकार के लिए अभी कोई कोहोर्ट नहीं है।",
+        "tableCaption": "हर महीने के कोहोर्ट में से कितने प्रतिशत ने N महीने बाद कम से कम एक ऑर्डर दिया।",
+        "cohortMonth": "कोहोर्ट",
+        "cohortSize": "खरीदार",
+        "monthOffset": "M+{{count}}"
+      }
+    },
+    "notifications": {
+      "title": "विफल सूचनाएं",
+      "subtitle": "ऐसे संदेश जिनके सभी डिलीवरी पुनः प्रयास समाप्त हो गए — मूल सूचना (इन-ऐप) उपयोगकर्ता तक फिर भी पहुंची; यह केवल बाहरी चैनल है।",
+      "emptyTitle": "कोई विफल डिलीवरी नहीं",
+      "channel": "चैनल",
+      "type": "प्रकार",
+      "attempts": "प्रयास",
+      "lastError": "अंतिम त्रुटि",
+      "failedAt": "विफल हुआ",
+      "resolved": "हल किया गया"
+    },
+    "rfqs": {
+      "title": "RFQ",
+      "demandTitle": "छूटे हुए कैटलॉग पार्ट्स की मांग",
+      "allTitle": "सभी अनुरोध",
+      "emptyTitle": "अभी तक कोई RFQ नहीं"
+    },
+    "reviewModeration": {
+      "title": "फ्लैग की गई समीक्षाएं",
+      "emptyTitle": "कुछ भी फ्लैग नहीं किया गया",
+      "emptyDescription": "हर समीक्षा साफ प्रकाशित हुई — जिन समीक्षाओं को स्वचालित स्क्रीन फ्लैग करेगी वे यहां दिखेंगी।",
+      "actionFailed": "वह कार्रवाई पूरी नहीं हो सकी — कृपया फिर से कोशिश करें।",
+      "flag": {
+        "contact_info": "संपर्क जानकारी",
+        "profanity": "अभद्र भाषा",
+        "pii": "व्यक्तिगत पहचान जानकारी"
+      },
+      "action": {
+        "approve": "स्वीकृत करें और प्रकाशित करें",
+        "approveSuccess": "समीक्षा प्रकाशित हो गई",
+        "reject": "अस्वीकृत करें और छिपाएं",
+        "rejectSuccess": "समीक्षा छिपा दी गई"
+      }
+    },
+    "spuriousReports": {
+      "title": "नकली पार्ट रिपोर्ट",
+      "detailTitle": "रिपोर्ट विवरण",
+      "notFound": "रिपोर्ट नहीं मिली",
+      "emptyTitle": "कोई खुली रिपोर्ट नहीं",
+      "emptyDescription": "खरीदारों की संदिग्ध-पार्ट रिपोर्ट यहां दिखेंगी।",
+      "actionFailed": "वह कार्रवाई पूरी नहीं हो सकी — कृपया फिर से कोशिश करें।",
+      "listingLabel": "लिस्टिंग",
+      "sellerLabel": "विक्रेता",
+      "statusLabel": "स्थिति",
+      "reasonTitle": "खरीदार की वजह",
+      "sellerResponseTitle": "विक्रेता की प्रतिक्रिया",
+      "outcomeTitle": "परिणाम के साथ हल करें",
+      "notesLabel": "एडमिन नोट्स (वैकल्पिक)",
+      "resolvedWith": "इस परिणाम के साथ हल किया गया: {{outcome}}",
+      "status": {
+        "submitted": "सबमिट हुई",
+        "under_review": "समीक्षाधीन",
+        "seller_responded": "विक्रेता ने जवाब दिया",
+        "resolved": "हल हो गई"
+      },
+      "outcome": {
+        "warning": "चेतावनी",
+        "listing_removal": "लिस्टिंग हटाना",
+        "category_ban": "श्रेणी प्रतिबंध",
+        "payout_hold": "भुगतान रोक",
+        "delisting": "डीलिस्टिंग",
+        "dismissed": "खारिज"
+      },
+      "action": {
+        "startReview": "समीक्षा शुरू करें",
+        "startReviewSuccess": "समीक्षाधीन चिह्नित किया गया",
+        "resolve": "रिपोर्ट हल करें",
+        "resolveSuccess": "रिपोर्ट हल हो गई"
+      }
+    },
+    "brandAuthorizations": {
+      "title": "ब्रांड प्राधिकरण",
+      "emptyTitle": "समीक्षा हेतु कोई सबमिशन नहीं",
+      "emptyDescription": "विक्रेता द्वारा सबमिट किए गए ब्रांड-प्राधिकरण दस्तावेज़ यहां दिखेंगे।",
+      "actionFailed": "वह कार्रवाई पूरी नहीं हो सकी — कृपया फिर से कोशिश करें।",
+      "viewDocument": "दस्तावेज़ देखें",
+      "rejectReasonPlaceholder": "अस्वीकृति का कारण",
+      "action": {
+        "verify": "सत्यापित करें",
+        "verifySuccess": "प्राधिकरण सत्यापित — मिलती-जुलती लिस्टिंग पर असली पार्ट बैज दिखेगा।",
+        "reject": "अस्वीकृत करें",
+        "rejectSuccess": "प्राधिकरण अस्वीकृत"
+      }
+    },
+    "gstReports": {
+      "title": "GST रिपोर्ट",
+      "subtitle": "टैक्स दरें और सीमाएं config/tax में सेट की जाती हैं और गो-लाइव से पहले चार्टर्ड अकाउंटेंट से समीक्षा करानी चाहिए।",
+      "month": "महीना",
+      "exportCsv": "CSV निर्यात करें",
+      "downloaded": "{{count}} पंक्ति(याँ) डाउनलोड हुईं",
+      "errors": {
+        "generic": "वह रिपोर्ट नहीं बन सकी — कृपया फिर से प्रयास करें।"
+      },
+      "gstr1": {
+        "title": "GSTR-1 आउटवर्ड सप्लाई सारांश",
+        "description": "चयनित महीने के लिए प्रति विक्रेता, B2B/B2C, दर-वार टैक्सेबल वैल्यू और टैक्स।"
+      },
+      "tcs": {
+        "title": "TCS सारांश",
+        "description": "GSTR-8 मिलान के लिए प्रति विक्रेता नेट टैक्सेबल सप्लाई और रोकी गई TCS।"
+      },
+      "gmv": {
+        "title": "मासिक GMV और टैक्स",
+        "description": "चयनित महीने के लिए मार्केटप्लेस-व्यापी ग्रॉस मर्चेंडाइज वैल्यू, वसूला गया टैक्स और TCS।",
+        "gmv": "GMV",
+        "tax": "वसूला गया टैक्स",
+        "tcs": "TCS"
+      },
+      "ewayBill": {
+        "title": "ई-वे बिल कार्य",
+        "description": "मार्केटप्लेस-व्यापी सभी लंबित ई-वे-बिल कार्य, GST पोर्टल के बल्क टूल्स के लिए निर्यात योग्य।"
+      },
+      "tds": {
+        "title": "TDS सारांश",
+        "description": "एक वित्त-वर्ष तिमाही के लिए प्रति विक्रेता धारा 194-O TDS काटा गया।",
+        "financialYear": "वित्त वर्ष",
+        "quarter": "तिमाही",
+        "generate": "CSV निर्यात करें"
+      }
+    },
+    "credit": {
+      "emptyTitle": "कोई लंबित अनुरोध नहीं",
+      "emptyDescription": "समीक्षा हेतु लंबित खाता क्रेडिट-लिमिट अनुरोध यहां दिखेंगे।",
+      "requested": "अनुरोधित",
+      "approvedLimit": "स्वीकृत लिमिट (₹)",
+      "approve": "स्वीकृत करें",
+      "reject": "अस्वीकृत करें",
+      "approved": "अनुरोध स्वीकृत",
+      "rejected": "अनुरोध अस्वीकृत",
+      "actionFailed": "वह कार्रवाई पूरी नहीं हो सकी — कृपया फिर से प्रयास करें।"
+    },
+    "sellerApplications": {
+      "emptyTitle": "समीक्षा हेतु कोई आवेदन लंबित नहीं",
+      "emptyDescription": "जमा किए गए विक्रेता आवेदन यहां दिखेंगे।",
+      "detailTitle": "विक्रेता आवेदन",
+      "notFound": "आवेदन नहीं मिला",
+      "gstinRequiredToApprove": "यह आवेदक GST-पंजीकृत नहीं है। इस प्लेटफ़ॉर्म संस्करण में स्वीकृति के लिए GSTIN आवश्यक है — GSTIN मांगने हेतु बदलाव का अनुरोध करें, या अस्वीकार करें।",
+      "notesTitle": "समीक्षा नोट्स",
+      "notePlaceholder": "क्या बदलना है?",
+      "addNote": "नोट जोड़ें",
+      "actionFailed": "वह कार्रवाई पूरी नहीं हो सकी — कृपया फिर से प्रयास करें।",
+      "action": {
+        "startReview": "समीक्षा शुरू करें",
+        "requestChanges": "बदलाव का अनुरोध करें",
+        "reject": "अस्वीकार करें",
+        "approve": "स्वीकृत करें",
+        "start_reviewSuccess": "समीक्षाधीन के रूप में चिह्नित",
+        "request_changesSuccess": "बदलाव का अनुरोध भेजा गया",
+        "rejectSuccess": "आवेदन अस्वीकृत",
+        "approveSuccess": "विक्रेता स्वीकृत"
+      }
+    },
+    "partRequests": {
+      "title": "पार्ट अनुरोध",
+      "emptyTitle": "समीक्षा हेतु कोई अनुरोध लंबित नहीं",
+      "emptyDescription": "विक्रेताओं द्वारा जमा किए गए नए पार्ट अनुरोध यहां दिखेंगे।",
+      "detailTitle": "पार्ट अनुरोध",
+      "notFound": "अनुरोध नहीं मिला",
+      "confirmCatalogueValues": "कैटलॉग मान की पुष्टि करें",
+      "approvedPartNumber": "पार्ट नंबर",
+      "approveRequiresValues": "स्वीकृत करने के लिए पार्ट नंबर और HSN कोड आवश्यक है।",
+      "notesTitle": "समीक्षा नोट्स",
+      "actionFailed": "वह कार्रवाई पूरी नहीं हो सकी — कृपया फिर से प्रयास करें।",
+      "action": {
+        "start_reviewSuccess": "समीक्षाधीन के रूप में चिह्नित",
+        "request_changesSuccess": "बदलाव का अनुरोध भेजा गया",
+        "rejectSuccess": "अनुरोध अस्वीकृत",
+        "approveSuccess": "पार्ट कैटलॉग में जोड़ा गया"
+      }
+    },
+    "warrantyClaims": {
+      "title": "वारंटी दावे",
+      "detailTitle": "वारंटी दावा",
+      "notFound": "दावा नहीं मिला",
+      "emptyTitle": "कोई एस्केलेटेड वारंटी दावा नहीं",
+      "emptyDescription": "विक्रेताओं द्वारा ब्रांड को भेजे गए दावे यहां समाधान हेतु दिखेंगे।",
+      "reasonLabel": "कारण",
+      "sellerLabel": "विक्रेता",
+      "brandLabel": "ब्रांड",
+      "statusLabel": "स्थिति",
+      "resolutionTypeLabel": "समाधान",
+      "resolutionType": {
+        "refund": "रिफंड",
+        "replacement": "रिप्लेसमेंट",
+        "repair_reimbursement": "मरम्मत प्रतिपूर्ति"
+      },
+      "amountLabel": "राशि (पैसे में, वैकल्पिक)",
+      "noteLabel": "टिप्पणी",
+      "resolve": "हल करें",
+      "actionFailed": "यह कार्रवाई पूरी नहीं हो सकी — कृपया फिर से प्रयास करें।",
+      "status": {
+        "submitted": "जमा हुआ",
+        "seller_review": "विक्रेता समीक्षा में",
+        "approved": "स्वीकृत",
+        "rejected": "अस्वीकृत",
+        "escalated_to_brand": "ब्रांड को भेजा गया",
+        "resolved": "हल हुआ"
+      },
+      "actionSuccess": "हल हो गया"
+    },
+    "disputes": {
+      "title": "विवाद",
+      "detailTitle": "विवाद",
+      "notFound": "विवाद नहीं मिला",
+      "emptyTitle": "कोई खुला विवाद नहीं",
+      "emptyDescription": "एडमिन समाधान हेतु एस्केलेटेड रिटर्न और वारंटी दावे यहां दिखेंगे।",
+      "typeLabel": "प्रकार",
+      "reasonTitle": "कारण",
+      "evidenceTitle": "साक्ष्य",
+      "slaLabel": "SLA समय सीमा",
+      "statusLabel": "स्थिति",
+      "actionLabel": "समाधान कार्रवाई",
+      "action": {
+        "refund_buyer": "खरीदार को रिफंड (पूर्ण)",
+        "partial_refund": "खरीदार को रिफंड (आंशिक)",
+        "uphold_seller": "विक्रेता का पक्ष बरकरार",
+        "dismissed": "खारिज करें"
+      },
+      "refundAmountLabel": "रिफंड राशि (पैसे में)",
+      "adminNoteLabel": "एडमिन टिप्पणी (आवश्यक)",
+      "resolve": "विवाद हल करें",
+      "resolveSuccess": "विवाद हल हुआ",
+      "actionFailed": "हल नहीं हो सका — कृपया फिर से प्रयास करें।",
+      "status": {
+        "open": "खुला",
+        "under_review": "समीक्षा में",
+        "resolved": "हल हुआ"
+      }
+    },
+    "sla": {
+      "breached": "समय सीमा पार",
+      "hoursLeft": "{{count}} घंटे शेष",
+      "daysLeft": "{{count}} दिन शेष"
+    },
+    "dashboard": {
+      "periodLabel": "अवधि",
+      "periodDays": "{{count}} दिन",
+      "vsPreviousPeriod": "पिछली अवधि की तुलना में",
+      "alertsTitle": "अलर्ट",
+      "metrics": {
+        "gmv": "GMV",
+        "orders": "ऑर्डर",
+        "aov": "औसत ऑर्डर मूल्य",
+        "takeRate": "टेक रेट",
+        "newBuyers": "नए खरीदार",
+        "newSellers": "नए विक्रेता",
+        "repeatRate": "रिपीट दर",
+        "paymentSuccessRate": "भुगतान सफलता दर"
+      },
+      "alerts": {
+        "slaBreachesOpen": "SLA उल्लंघन (24 घंटे)",
+        "failedPayouts": "विफल भुगतान",
+        "stuckPayments": "अटके हुए भुगतान",
+        "spuriousReportsOpen": "खुली नकली-पार्ट रिपोर्ट"
+      },
+      "newOrders": {
+        "title": "नए ऑर्डर",
+        "emptyTitle": "अभी तक कोई ऑर्डर नहीं"
+      }
+    },
+    "sellers": {
+      "searchPlaceholder": "व्यवसाय नाम या GSTIN से खोजें",
+      "emptyTitle": "अभी तक कोई विक्रेता नहीं",
+      "emptyDescription": "स्वीकृत विक्रेता यहां दिखाई देंगे।",
+      "table": {
+        "name": "व्यवसाय",
+        "status": "स्थिति",
+        "rating": "रेटिंग",
+        "commission": "कमीशन",
+        "warnings": "चेतावनियां",
+        "actions": "कार्रवाई"
+      },
+      "manage": "प्रबंधित करें",
+      "statusSection": "स्थिति",
+      "suspendReasonLabel": "निलंबन का कारण",
+      "suspend": "निलंबित करें",
+      "reinstate": "पुनः सक्रिय करें",
+      "statusNotManageable": "स्थिति \"{{status}}\" यहां सीधे प्रबंधित नहीं की जा सकती।",
+      "commissionLabel": "कमीशन ओवरराइड (%)",
+      "commissionHint": "प्लेटफ़ॉर्म डिफ़ॉल्ट कमीशन दर उपयोग करने हेतु खाली छोड़ें।",
+      "commissionPlatformDefault": "प्लेटफ़ॉर्म डिफ़ॉल्ट",
+      "commissionInvalid": "0 से 100 के बीच कमीशन प्रतिशत दर्ज करें।",
+      "commissionSaved": "कमीशन ओवरराइड सेव हो गया।",
+      "suspendSuccess": "विक्रेता निलंबित कर दिया गया।",
+      "reinstateSuccess": "विक्रेता पुनः सक्रिय कर दिया गया।",
+      "actionFailed": "यह कार्रवाई विफल रही। कृपया पुनः प्रयास करें।"
+    },
+    "orders": {
+      "actionFailed": "यह कार्रवाई विफल रही। कृपया पुनः प्रयास करें।",
+      "applyForceStatus": "स्थिति लागू करें",
+      "currentStatus": "स्थिति",
+      "forceCancel": "बलपूर्वक रद्द करें",
+      "forceCancelReasonPrompt": "बलपूर्वक रद्द करने का कारण:",
+      "forceCancelSuccess": "सब-ऑर्डर रद्द कर दिया गया।",
+      "forceRefund": "बलपूर्वक रिफंड",
+      "forceRefundAmountPrompt": "₹ में रिफंड राशि:",
+      "forceRefundInvalidAmount": "एक मान्य राशि दर्ज करें।",
+      "forceRefundReasonPrompt": "बलपूर्वक रिफंड का कारण:",
+      "forceRefundSuccess": "रिफंड शुरू कर दिया गया।",
+      "forceStatusPlaceholder": "एक स्थिति चुनें",
+      "forceStatusReasonPlaceholder": "कारण (आवश्यक)",
+      "forceStatusSuccess": "ऑर्डर स्थिति अपडेट हो गई।",
+      "forceStatusTitle": "ऑर्डर स्थिति बलपूर्वक बदलें",
+      "notFoundTitle": "उस ID से कोई ऑर्डर नहीं मिला",
+      "orderIdLabel": "ऑर्डर ID",
+      "paymentStatus": "भुगतान",
+      "reconciliation": {
+        "emptyTitle": "मिलान के लिए कुछ नहीं",
+        "issue": "समस्या",
+        "issues": {
+          "pending_payment_stale": "भुगतान लंबित अटका हुआ",
+          "failed_payment": "भुगतान विफल, ऑर्डर रद्द नहीं हुआ",
+          "paid_but_uncancelled_reservation": "भुगतान हुआ पर रिज़र्वेशन साफ़ नहीं हुआ"
+        }
+      },
+      "searchAction": "खोजें",
+      "subOrdersTitle": "सब-ऑर्डर",
+      "tabs": {
+        "lookup": "लुकअप और बलपूर्वक कार्रवाई",
+        "reconciliation": "भुगतान मिलान"
+      },
+      "total": "कुल"
+    },
+    "finance": {
+      "tabs": {
+        "commission": "कमीशन योजना",
+        "payouts": "भुगतान",
+        "ledger": "लेजर एक्सप्लोरर",
+        "refunds": "रिफंड रजिस्टर"
+      },
+      "commission": {
+        "notConfigured": "कमीशन कॉन्फ़िग अभी सेट अप नहीं हुआ है।",
+        "categoryRates": "श्रेणी दर ओवरराइड",
+        "addRow": "पंक्ति जोड़ें",
+        "categorySlug": "श्रेणी स्लग",
+        "percent": "प्रतिशत",
+        "settlementCycleDays": "निपटान चक्र (दिन)",
+        "creditOverdueGraceDays": "क्रेडिट ओवरड्यू छूट (दिन)",
+        "slaBreachPenalty": "SLA उल्लंघन जुर्माना (₹)",
+        "saveSuccess": "कमीशन योजना सेव हो गई।",
+        "saveFailed": "कमीशन योजना सेव नहीं हो सकी।"
+      },
+      "payouts": {
+        "description": "हर योग्य विक्रेता के लिए भुगतान रन मैन्युअल रूप से चलाएं।",
+        "triggerAction": "अभी भुगतान चलाएं",
+        "triggerSuccess": "{{count}} विक्रेता(ओं) के लिए भुगतान रन शुरू हुआ।",
+        "triggerFailed": "भुगतान रन शुरू नहीं हो सका।",
+        "emptyTitle": "अभी तक कोई भुगतान नहीं",
+        "seller": "विक्रेता",
+        "net": "शुद्ध राशि",
+        "status": "स्थिति",
+        "paidAt": "भुगतान तिथि",
+        "statusValue": {
+          "paid": "भुगतान हुआ",
+          "processing": "प्रक्रिया में",
+          "pending": "लंबित",
+          "failed": "विफल"
+        }
+      },
+      "ledger": {
+        "sellerIdLabel": "विक्रेता ID",
+        "emptyTitle": "कोई लेजर प्रविष्टि नहीं मिली",
+        "type": "प्रकार",
+        "amount": "राशि",
+        "balanceAfter": "शेष राशि",
+        "date": "तारीख़",
+        "description": "विवरण"
+      },
+      "refundRegister": {
+        "emptyTitle": "कोई रिफंड दर्ज नहीं",
+        "types": {
+          "refund_debit": "रिफंड",
+          "dispute_refund_debit": "विवाद रिफंड"
+        }
+      }
+    },
+    "catalogue": {
+      "tabs": {
+        "parts": "पार्ट्स",
+        "brands": "ब्रांड",
+        "categories": "श्रेणियां",
+        "bulkImport": "बल्क इम्पोर्ट"
+      },
+      "parts": {
+        "searchPlaceholder": "पार्ट नंबर, नाम या OEM नंबर से खोजें",
+        "emptyTitle": "अभी तक कोई कैटलॉग पार्ट नहीं",
+        "newTitle": "नया पार्ट",
+        "editTitle": "पार्ट संपादित करें",
+        "edit": "संपादित करें",
+        "partNumber": "पार्ट नंबर",
+        "name": "नाम",
+        "categorySlug": "श्रेणी स्लग",
+        "brand": "ब्रांड",
+        "hsnCode": "HSN कोड",
+        "gstRate": "GST दर",
+        "oemNumbers": "OEM नंबर (सेमीकोलन से अलग)",
+        "saveSuccess": "पार्ट सेव हो गया।",
+        "saveFailed": "पार्ट सेव नहीं हो सका।",
+        "savedWithDuplicates": "सेव हो गया, पर {{count}} संभावित OEM डुप्लिकेट मौजूद हैं।",
+        "duplicateConfirm": "{{count}} मौजूदा पार्ट(्स) का OEM नंबर समान है। फिर भी सेव करें?",
+        "countryOfOrigin": "मूल देश"
+      },
+      "brands": {
+        "name": "नाम",
+        "slug": "स्लग",
+        "status": "स्थिति",
+        "add": "ब्रांड जोड़ें",
+        "emptyTitle": "अभी तक कोई ब्रांड नहीं",
+        "saveSuccess": "ब्रांड जोड़ा गया।",
+        "saveFailed": "ब्रांड नहीं जोड़ा जा सका।"
+      },
+      "categories": {
+        "name": "नाम",
+        "slug": "स्लग",
+        "status": "स्थिति",
+        "add": "श्रेणी जोड़ें",
+        "emptyTitle": "अभी तक कोई श्रेणी नहीं",
+        "saveSuccess": "श्रेणी जोड़ी गई।",
+        "saveFailed": "श्रेणी नहीं जोड़ी जा सकी।"
+      },
+      "bulkImport": {
+        "instructions": "यह हेडर वाली CSV अपलोड करें: partNumber,name,categorySlug,subcategorySlug,brand,hsnCode,gstRatePercent,oemNumbers (oemNumbers सेमीकोलन से अलग)।",
+        "row": "पंक्ति",
+        "status": "स्थिति",
+        "rowStatus": {
+          "ok": "तैयार",
+          "duplicate": "डुप्लिकेट OEM",
+          "error": "त्रुटि"
+        },
+        "parseFailed": "फ़ाइल सत्यापित नहीं हो सकी।",
+        "commitAction": "{{count}} पंक्ति(यां) इम्पोर्ट करें",
+        "commitSuccess": "{{count}} पार्ट बनाए गए।",
+        "commitFailed": "इम्पोर्ट विफल रहा।"
+      }
+    },
+    "fitment": {
+      "tabs": {
+        "workbench": "वर्कबेंच",
+        "bulkImport": "बल्क इम्पोर्ट"
+      },
+      "addNewTitle": "फिटमेंट मैपिंग जोड़ें",
+      "partId": "पार्ट ID",
+      "makeId": "मेक ID",
+      "modelId": "मॉडल ID",
+      "variantIdOptional": "वेरिएंट ID (वैकल्पिक)",
+      "addAction": "मैपिंग जोड़ें",
+      "addSuccess": "फिटमेंट मैपिंग जोड़ी गई।",
+      "saveFailed": "फिटमेंट मैपिंग सेव नहीं हो सकी।",
+      "conflictWarning": "सेव हो गया, पर {{count}} विरोधी पंक्ति(यां) मौजूद हैं।",
+      "conflictBlocked": "{{count}} विरोधी पंक्ति(यां) पहले से मौजूद हैं — सेव करने से पहले हल करें।",
+      "searchTitle": "खोजें",
+      "byPart": "पार्ट ID से",
+      "byVehicle": "वाहन मॉडल ID से",
+      "searchValueLabel": "खोज मान",
+      "emptyTitle": "कोई फिटमेंट पंक्ति नहीं मिली",
+      "verified": "सत्यापित",
+      "verifiedYes": "सत्यापित",
+      "verifiedNo": "असत्यापित",
+      "verifyAction": "सत्यापित करें",
+      "verifySuccess": "फिटमेंट पंक्ति सत्यापित हुई।",
+      "bulkImport": {
+        "instructions": "यह हेडर वाली CSV अपलोड करें: partId,makeId,modelId,variantId,yearFrom,yearTo,notes।",
+        "parseFailed": "फ़ाइल सत्यापित नहीं हो सकी।",
+        "commitSuccess": "{{count}} फिटमेंट पंक्ति(यां) बनाई गईं।",
+        "commitFailed": "इम्पोर्ट विफल रहा।",
+        "rowStatus": {
+          "ok": "तैयार",
+          "conflict": "विरोध",
+          "error": "त्रुटि"
+        }
+      }
+    },
+    "listings": {
+      "tabs": {
+        "search": "खोजें",
+        "anomalies": "मूल्य और स्टॉक रिपोर्ट"
+      },
+      "sellerIdFilter": "विक्रेता ID से फ़िल्टर करें",
+      "titleFilter": "शीर्षक से फ़िल्टर करें",
+      "emptyTitle": "कोई लिस्टिंग नहीं मिली",
+      "title": "शीर्षक",
+      "seller": "विक्रेता",
+      "status": "स्थिति",
+      "price": "कीमत",
+      "block": "ब्लॉक करें",
+      "unblock": "अनब्लॉक करें",
+      "blockReasonPrompt": "इस लिस्टिंग को ब्लॉक करने का कारण:",
+      "blockSuccess": "लिस्टिंग ब्लॉक कर दी गई।",
+      "unblockSuccess": "लिस्टिंग अनब्लॉक कर दी गई।",
+      "actionFailed": "यह कार्रवाई विफल रही। कृपया पुनः प्रयास करें।",
+      "statusValue": {
+        "active": "सक्रिय",
+        "paused": "रुका हुआ",
+        "out_of_stock": "स्टॉक ख़त्म",
+        "rejected": "ब्लॉक किया गया",
+        "draft": "ड्राफ्ट",
+        "archived": "आर्काइव"
+      },
+      "anomaly": {
+        "priceTitle": "मूल्य विसंगतियां",
+        "priceEmptyTitle": "कोई मूल्य विसंगति नहीं मिली",
+        "mrp": "MRP",
+        "sellingPrice": "न्यूनतम टियर कीमत",
+        "direction": "MRP की तुलना में",
+        "directionValue": {
+          "above": "अधिक",
+          "below": "कम"
+        },
+        "outOfStockTitle": "स्टॉक ख़त्म",
+        "outOfStockEmptyTitle": "कुछ भी स्टॉक ख़त्म नहीं"
+      }
+    },
+    "returns": {
+      "emptyTitle": "कोई सक्रिय रिटर्न नहीं",
+      "emptyDescription": "निर्णय या QC की प्रतीक्षा में रिटर्न यहां दिखाई देंगे।",
+      "status": {
+        "requested": "अनुरोधित",
+        "approved": "QC की प्रतीक्षा में",
+        "qc_disputed": "QC पर असहमति"
+      },
+      "reason": {
+        "wrong_part_sent": "गलत पार्ट भेजा गया",
+        "doesnt_fit": "फिट नहीं होता",
+        "damaged_in_transit": "ट्रांज़िट में क्षतिग्रस्त",
+        "defective": "दोषपूर्ण",
+        "suspected_spurious": "संदिग्ध नकली",
+        "changed_mind": "विचार बदला",
+        "rto_undelivered": "RTO अनडिलीवर्ड"
+      }
+    },
+    "marketing": {
+      "tabs": {
+        "coupons": "कूपन",
+        "banners": "बैनर",
+        "campaigns": "कैंपेन",
+        "homeSections": "होमपेज"
+      },
+      "coupons": {
+        "newAction": "नया कूपन",
+        "code": "कोड",
+        "discount": "छूट",
+        "usage": "उपयोग",
+        "status": "स्थिति",
+        "emptyTitle": "अभी तक कोई कूपन नहीं",
+        "percentOff": "% छूट",
+        "flatOff": "₹ छूट",
+        "validDays": "वैधता (दिन)",
+        "saveSuccess": "कूपन बनाया गया।",
+        "saveFailed": "कूपन नहीं बनाया जा सका।"
+      },
+      "banners": {
+        "newAction": "नया बैनर",
+        "slot": "स्लॉट",
+        "schedule": "शेड्यूल",
+        "sortOrder": "क्रम",
+        "status": "स्थिति",
+        "emptyTitle": "अभी तक कोई बैनर नहीं",
+        "imageUrl": "इमेज URL",
+        "linkUrl": "लिंक URL (वैकल्पिक)",
+        "startAt": "प्रारंभ तिथि",
+        "endAt": "समाप्ति तिथि",
+        "saveSuccess": "बैनर बनाया गया।",
+        "saveFailed": "बैनर नहीं बनाया जा सका।"
+      },
+      "campaigns": {
+        "newAction": "नया कैंपेन",
+        "title": "शीर्षक",
+        "body": "संदेश",
+        "audience": "ऑडियंस",
+        "status": "स्थिति",
+        "emptyTitle": "अभी तक कोई कैंपेन नहीं",
+        "saveSuccess": "कैंपेन ड्राफ्ट सेव हुआ।",
+        "saveFailed": "कैंपेन सेव नहीं हो सका।",
+        "sendAction": "भेजें",
+        "sendConfirm": "क्या अभी यह कैंपेन भेजें? इसे पूर्ववत नहीं किया जा सकता।",
+        "sendSuccess": "{{count}} प्राप्तकर्ता(ओं) को कैंपेन भेजा गया।",
+        "sendFailed": "कैंपेन नहीं भेजा जा सका।"
+      },
+      "homeSections": {
+        "newAction": "नया सेक्शन",
+        "order": "क्रम",
+        "type": "प्रकार",
+        "title": "शीर्षक",
+        "status": "स्थिति",
+        "titleEn": "शीर्षक (अंग्रेज़ी)",
+        "titleHi": "शीर्षक (हिन्दी)",
+        "emptyTitle": "अभी तक कोई होमपेज सेक्शन नहीं",
+        "saveSuccess": "होमपेज सेक्शन सेव हुआ।",
+        "saveFailed": "सेक्शन सेव नहीं हो सका।",
+        "reorderFailed": "सेक्शन का क्रम नहीं बदला जा सका।",
+        "incompleteForm": "इस सेक्शन प्रकार के लिए पहले सभी ज़रूरी फ़ील्ड भरें।",
+        "moveUp": "ऊपर ले जाएं",
+        "moveDown": "नीचे ले जाएं",
+        "categorySlug": "कैटेगरी स्लग",
+        "imageUrl": "इमेज URL",
+        "addTile": "पंक्ति जोड़ें",
+        "listingId": "लिस्टिंग ID",
+        "maxItems": "अधिकतम आइटम",
+        "pinnedListingIds": "पिन की गई लिस्टिंग IDs (कॉमा से अलग)",
+        "brandIds": "ब्रांड IDs (कॉमा से अलग)",
+        "typeLabel": {
+          "hero_banner": "हीरो बैनर",
+          "vehicle_selector": "वाहन चयनकर्ता CTA",
+          "category_tiles": "कैटेगरी टाइल्स",
+          "deal_of_day": "आज का सौदा",
+          "bulk_buy_spotlight": "बल्क-खरीद बचत",
+          "brand_rail": "ब्रांड रेल",
+          "recently_viewed": "हाल में देखा गया",
+          "reorder_rail": "फिर से ऑर्डर करें",
+          "trust_strip": "ट्रस्ट स्ट्रिप"
+        },
+        "helper": {
+          "hero_banner": "\"home_hero\" स्लॉट का सबसे ऊपर वाला सक्रिय बैनर दिखाता है — इसकी इमेज/लिंक बैनर टैब से प्रबंधित करें।",
+          "vehicle_selector": "\"अपने वाहन के अनुकूल पार्ट्स देखने के लिए वाहन चुनें\" पिकर दिखाता है। किसी अतिरिक्त फ़ील्ड की ज़रूरत नहीं।"
+        }
+      }
+    },
+    "content": {
+      "tabs": {
+        "pages": "पेज",
+        "strings": "स्ट्रिंग ओवरराइड"
+      },
+      "pages": {
+        "newAction": "नया पेज",
+        "slug": "स्लग",
+        "type": "प्रकार",
+        "status": "स्थिति",
+        "emptyTitle": "अभी तक कोई पेज नहीं",
+        "titleEn": "शीर्षक (अंग्रेज़ी)",
+        "titleHi": "शीर्षक (हिन्दी)",
+        "bodyEn": "बॉडी (अंग्रेज़ी)",
+        "bodyHi": "बॉडी (हिन्दी)",
+        "saveDraft": "ड्राफ्ट सेव करें",
+        "publish": "प्रकाशित करें",
+        "saveSuccess": "पेज सेव हो गया।",
+        "saveFailed": "पेज सेव नहीं हो सका।"
+      },
+      "strings": {
+        "keyPlaceholder": "i18next कुंजी (जैसे checkout.codNotice)",
+        "emptyTitle": "अभी तक कोई ओवरराइड नहीं",
+        "saveSuccess": "ओवरराइड सेव हो गया।",
+        "saveFailed": "ओवरराइड सेव नहीं हो सका।"
+      }
+    },
+    "users": {
+      "phoneSearchPlaceholder": "सटीक फ़ोन नंबर से खोजें",
+      "emptyTitle": "कोई उपयोगकर्ता नहीं मिला",
+      "name": "नाम",
+      "phone": "फ़ोन",
+      "flags": "फ़्लैग",
+      "codAbuse": "COD दुरुपयोग",
+      "returnAbuse": "रिटर्न दुरुपयोग",
+      "setCodAbuse": "COD दुरुपयोग फ़्लैग करें",
+      "clearCodAbuse": "COD दुरुपयोग फ़्लैग हटाएं",
+      "setReturnAbuse": "रिटर्न दुरुपयोग फ़्लैग करें",
+      "clearReturnAbuse": "रिटर्न दुरुपयोग फ़्लैग हटाएं",
+      "flagUpdateSuccess": "फ़्लैग अपडेट हो गया।",
+      "actionFailed": "यह कार्रवाई विफल रही। कृपया पुनः प्रयास करें।",
+      "impersonateAction": "इम्पर्सोनेट करें (नया टैब खुलेगा)",
+      "impersonateReasonPrompt": "इस उपयोगकर्ता को इम्पर्सोनेट करने का कारण (आवश्यक, लॉग किया जाता है):",
+      "impersonateFailed": "इम्पर्सोनेशन सेशन शुरू नहीं हो सका।"
+    },
+    "config": {
+      "comingSoonTitle": "कॉन्फ़िग एडिटर जल्द आ रहा है",
+      "comingSoonDescription": "फ़ीचर फ़्लैग, टैक्स दरें, शिपिंग मैट्रिक्स, SLA विंडो और COD कैप यहां बिना डिप्लॉय किए संपादित किए जा सकेंगे।"
+    },
+    "auditLog": {
+      "targetTypeFilter": "टारगेट प्रकार से फ़िल्टर करें (जैसे sellers)",
+      "actorIdFilter": "कर्ता (एडमिन) ID से फ़िल्टर करें",
+      "emptyTitle": "कोई ऑडिट लॉग प्रविष्टि नहीं मिली",
+      "action": "कार्रवाई",
+      "target": "टारगेट",
+      "actor": "कर्ता",
+      "when": "कब",
+      "note": "टिप्पणी"
+    },
+    "support": {
+      "title": "सहायता टिकट",
+      "detailTitle": "सहायता टिकट",
+      "notFound": "टिकट नहीं मिला",
+      "emptyTitle": "कोई खुला टिकट नहीं",
+      "emptyDescription": "जवाब की आवश्यकता वाले नए संपर्क-फॉर्म सबमिशन यहां दिखाई देंगे।",
+      "categoryLabel": "श्रेणी",
+      "statusLabel": "स्थिति",
+      "slaLabel": "SLA समय-सीमा",
+      "contactLabel": "संपर्क",
+      "replyTitle": "जवाब",
+      "sendReply": "जवाब भेजें",
+      "markResolved": "हल के रूप में चिह्नित करें",
+      "markClosed": "बंद के रूप में चिह्नित करें",
+      "replySuccess": "जवाब भेजा गया",
+      "resolveSuccess": "टिकट अपडेट किया गया",
+      "actionFailed": "यह पूरा नहीं हो सका — कृपया पुनः प्रयास करें।",
+      "status": {
+        "open": "खुला",
+        "in_progress": "प्रगति में",
+        "resolved": "हल हो गया",
+        "closed": "बंद"
+      },
+      "authorRole": {
+        "buyer": "ग्राहक",
+        "seller": "विक्रेता",
+        "admin": "सहायता"
+      }
+    }
+  },
+  "sellerWarrantyClaims": {
+    "title": "वारंटी दावे",
+    "emptyTitle": "कोई वारंटी दावा नहीं",
+    "emptyDescription": "आपके डिलीवर ऑर्डर पर खरीदारों द्वारा जमा किए गए दावे यहां दिखेंगे।",
+    "reasonLabel": "कारण",
+    "descriptionLabel": "विवरण",
+    "approve": "स्वीकृत करें",
+    "reject": "अस्वीकृत करें",
+    "escalateToBrand": "ब्रांड को भेजें",
+    "notesLabel": "टिप्पणी (वैकल्पिक)",
+    "actionFailed": "यह कार्रवाई पूरी नहीं हो सकी — कृपया फिर से प्रयास करें।",
+    "actionSuccess": "हो गया",
+    "status": {
+      "submitted": "जमा हुआ",
+      "seller_review": "समीक्षा में",
+      "approved": "स्वीकृत",
+      "rejected": "अस्वीकृत",
+      "escalated_to_brand": "ब्रांड को भेजा गया",
+      "resolved": "हल हुआ"
+    }
+  },
+  "sellerDisputes": {
+    "title": "विवाद",
+    "emptyTitle": "कोई विवाद नहीं",
+    "emptyDescription": "एस्केलेटेड रिटर्न और वारंटी दावे यहां दिखेंगे।",
+    "reasonLabel": "कारण",
+    "addEvidence": "साक्ष्य जोड़ें",
+    "evidenceUrlPlaceholder": "साक्ष्य फ़ोटो URL पेस्ट करें",
+    "submitEvidence": "जोड़ें",
+    "status": {
+      "open": "खुला",
+      "under_review": "समीक्षा में",
+      "resolved": "हल हुआ"
+    }
+  },
+  "onboarding": {
+    "language": {
+      "title": "अपनी भाषा चुनें",
+      "description": "आप इसे कभी भी अपने खाता सेटिंग्स से बदल सकते हैं।",
+      "continue": "जारी रखें"
+    }
+  },
+  "pwa": {
+    "installPrompt": {
+      "title": "SnapSpare इंस्टॉल करें",
+      "description": "तेज़ पहुंच और ऑफ़लाइन ऑर्डर ट्रैकिंग के लिए इसे अपनी होम स्क्रीन पर जोड़ें।",
+      "install": "इंस्टॉल करें",
+      "dismiss": "अभी नहीं"
+    }
+  },
+  "preferences": {
+    "title": "प्राथमिकताएं",
+    "lowDataMode": {
+      "label": "लो-डेटा मोड",
+      "description": "छोटी तस्वीरें, कोई ऑटोप्ले नहीं, और कम बैकग्राउंड लोडिंग — सीमित डेटा प्लान या धीमे कनेक्शन के लिए अच्छा।"
+    }
+  },
+  "legal": {
+    "notFoundTitle": "पृष्ठ नहीं मिला",
+    "notFoundDescription": "यह पृष्ठ अभी उपलब्ध नहीं है — कृपया बाद में देखें।"
+  },
+  "help": {
+    "title": "सहायता केंद्र",
+    "subtitle": "ऑर्डर, रिटर्न, मूल्य निर्धारण और बिक्री के बारे में सामान्य प्रश्नों के उत्तर।",
+    "metaDescription": "सहायता केंद्र — SnapSpare के बारे में सामान्य प्रश्नों के उत्तर।",
+    "emptyTitle": "अभी तक कोई सहायता लेख नहीं",
+    "stillNeedHelp": "जो खोज रहे थे वह नहीं मिला?",
+    "contactSupportLink": "सहायता से संपर्क करें"
+  },
+  "support": {
+    "title": "सहायता",
+    "subtitle": "हम ऑर्डर, भुगतान, रिटर्न और आपके खाते में मदद के लिए यहां हैं।",
+    "metaDescription": "SnapSpare सहायता से संपर्क करें — संपर्क फॉर्म, WhatsApp, फ़ोन, और व्यावसायिक घंटे।",
+    "contactForm": {
+      "title": "हमें संदेश भेजें",
+      "nameLabel": "आपका नाम",
+      "categoryLabel": "यह किस बारे में है?",
+      "emailLabel": "ईमेल",
+      "phoneLabel": "फ़ोन",
+      "contactChannelHint": "हमें जवाब देने में सक्षम बनाने के लिए एक ईमेल या फ़ोन नंबर जोड़ें।",
+      "subjectLabel": "विषय",
+      "messageLabel": "संदेश",
+      "submit": "सबमिट करें",
+      "success": "हमें आपका संदेश मिल गया है।",
+      "error": "आपका संदेश सबमिट नहीं हो सका — कृपया पुनः प्रयास करें।",
+      "submittedTitle": "धन्यवाद — हमें आपका संदेश मिल गया",
+      "submittedDescription": "हमारी सहायता टीम इस फॉर्म के साथ दिखाई गई SLA के भीतर जवाब देगी।",
+      "viewTickets": "मेरे सहायता टिकट देखें",
+      "submitAnother": "एक और संदेश भेजें"
+    },
+    "category": {
+      "order_issue": "ऑर्डर समस्या",
+      "payment_issue": "भुगतान समस्या",
+      "return_refund": "रिटर्न या रिफंड",
+      "seller_conduct": "विक्रेता का आचरण",
+      "account_access": "साइन इन नहीं कर सकते / खाता पहुंच",
+      "listing_or_pricing": "लिस्टिंग या मूल्य निर्धारण प्रश्न",
+      "other": "कुछ और"
+    },
+    "whatsapp": {
+      "cta": "WhatsApp पर हमसे चैट करें",
+      "prefilledMessage": "नमस्ते, मुझे अपने SnapSpare खाते/ऑर्डर में मदद चाहिए।"
+    },
+    "businessHours": {
+      "title": "व्यावसायिक घंटे",
+      "closedToday": "आज हम बंद हैं",
+      "openToday": "आज खुला है, {{hours}}",
+      "closed": "बंद",
+      "timezoneNote": "सभी समय भारतीय मानक समय (IST) में हैं।",
+      "day": {
+        "monday": "सोमवार",
+        "tuesday": "मंगलवार",
+        "wednesday": "बुधवार",
+        "thursday": "गुरुवार",
+        "friday": "शुक्रवार",
+        "saturday": "शनिवार",
+        "sunday": "रविवार"
+      }
+    },
+    "slaNote": "हम हर सहायता टिकट को कुछ घंटों के भीतर स्वीकार करते हैं और {{hours}} घंटों के भीतर हल करने का लक्ष्य रखते हैं।",
+    "grievanceLink": "शिकायत निवारण अधिकारी विवरण और वैधानिक समय-सीमा",
+    "helpCentreLink": "सहायता केंद्र ब्राउज़ करें"
+  },
+  "footer": {
+    "legal": {
+      "navLabel": "कानूनी",
+      "termsOfUse": "उपयोग की शर्तें",
+      "privacyPolicy": "गोपनीयता नीति",
+      "sellerAgreement": "विक्रेता समझौता",
+      "returnRefundPolicy": "रिटर्न और रिफंड नीति",
+      "shippingPolicy": "शिपिंग नीति",
+      "cancellationPolicy": "रद्दीकरण नीति",
+      "grievanceRedressal": "शिकायत निवारण"
+    },
+    "helpCentre": "सहायता केंद्र",
+    "contactSupport": "सहायता से संपर्क करें",
+    "operatedBy": "{{name}} द्वारा संचालित",
+    "grievanceOfficer": "शिकायत निवारण अधिकारी: {{name}}"
+  }
+}

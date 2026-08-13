@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /seller
+Disallow: /account
+Disallow: /orders
+Disallow: /cart
+Disallow: /checkout
+Disallow: /rfq
+Disallow: /login
+Disallow: /impersonate
+
+Sitemap: https://snapspare.app/sitemap.xml

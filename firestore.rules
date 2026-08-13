@@ -1,0 +1,1062 @@
+rules_version = '2';
+
+// Phase 3: rules for every collection the product needs. Default deny at the
+// root (bottom of the file) still catches anything not explicitly opened
+// here. Money/order math is never trusted from the client — every write path
+// that touches pricing, tax, or order state is Cloud-Function-only (Admin
+// SDK, which bypasses these rules entirely).
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ---------------------------------------------------------------------
+    // Helpers
+    // ---------------------------------------------------------------------
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    // request.auth.token.role (dot access) throws instead of returning null
+    // when a token genuinely has no such custom claim (e.g. a buyer token,
+    // which never gets `sellerId`) — and an error anywhere in a boolean
+    // expression can poison an `||` that would otherwise legitimately
+    // succeed via its other branch. token.get(key, default) is the
+    // documented-safe way to read a possibly-absent claim.
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.get('role', null) == 'admin';
+    }
+
+    // A seller is only ever granted the `sellerId` custom claim while their
+    // seller doc's status == 'active' (see functions/src/auth/onSellerStatusChange.ts,
+    // which revokes the claim entirely on suspension/rejection/deactivation).
+    // So checking the claim here is equivalent to checking seller.status ==
+    // 'active' without an extra get() — the Cloud Function is the single
+    // place that invariant is maintained.
+    function isSeller(sellerId) {
+      return isSignedIn() && request.auth.token.get('sellerId', null) == sellerId;
+    }
+
+    // Phase 13: a caller holding the bare { role:'seller', sellerId } claim
+    // (no `staffRole`) is the owner and implicitly has every permission; a
+    // staff account (acceptSellerStaffInvite.ts sets `staffRole` +
+    // `permissions` claims) additionally needs `permission` in its
+    // `permissions` claim. Mirrors functions/src/seller/staffAuthz.ts's
+    // requireSellerPermission() exactly.
+    function hasSellerPermission(sellerId, permission) {
+      return isSeller(sellerId) && (
+        request.auth.token.get('staffRole', null) == null
+        || permission in request.auth.token.get('permissions', [])
+      );
+    }
+
+    // Type/range guard for a single paise-denominated (or other nonnegative
+    // integer) field on the incoming write. Used for defense-in-depth on
+    // client-writable documents — it does not replace the full zod
+    // validation the client already ran, since rules can't practically
+    // re-run listingPricingSchema's cross-tier invariants (contiguous
+    // ranges, strictly-descending price) here.
+    function hasValidPaiseField(field) {
+      return request.resource.data[field] is int && request.resource.data[field] >= 0;
+    }
+
+    // Fields that gate authorization or pricing eligibility: never
+    // client-writable, regardless of who owns the document. Only the
+    // beforeUserCreated / setUserRole / onSellerStatusChange Cloud Functions
+    // (Admin SDK, bypasses rules) may change these.
+    function unchangedProtectedUserFields() {
+      let before = resource.data;
+      let after = request.resource.data;
+      return after.roles == before.roles
+        && after.primaryRole == before.primaryRole
+        && after.status == before.status
+        && after.createdAt == before.createdAt
+        && after.get('codAbuseFlag', false) == before.get('codAbuseFlag', false)
+        && after.get('garageVerifiedAt', null) == before.get('garageVerifiedAt', null)
+        // Phase 18 buyer-abuse signals — same "Cloud-Function-only" treatment
+        // as codAbuseFlag (rtoCount/codAbuseFlag auto-set by
+        // processRtoRefund.ts, returnAbuseFlag/returnRatePercent by
+        // flagReturnAbuseBuyers.ts).
+        && after.get('rtoCount', 0) == before.get('rtoCount', 0)
+        && after.get('returnAbuseFlag', false) == before.get('returnAbuseFlag', false)
+        && after.get('returnRatePercent', null) == before.get('returnRatePercent', null)
+        // Phase 23 abuse signals — same "Cloud-Function-only" treatment:
+        // orderVelocityFlag by orderVelocity.ts, deviceFingerprint/
+        // duplicateAccountFlag by registerDeviceFingerprint.ts.
+        && after.get('orderVelocityFlag', false) == before.get('orderVelocityFlag', false)
+        && after.get('deviceFingerprint', null) == before.get('deviceFingerprint', null)
+        && after.get('duplicateAccountFlag', false) == before.get('duplicateAccountFlag', false);
+    }
+
+    // ---------------------------------------------------------------------
+    // Users
+    // ---------------------------------------------------------------------
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      // Always created by the beforeUserCreated blocking function via the
+      // Admin SDK, never by the client directly.
+      allow create: if false;
+      allow update: if isOwner(userId) && unchangedProtectedUserFields();
+      allow delete: if false;
+
+      match /addresses/{addressId} {
+        allow read: if isOwner(userId) || isAdmin();
+        allow write: if isOwner(userId);
+      }
+
+      match /vehicles/{vehicleId} {
+        allow read: if isOwner(userId) || isAdmin();
+        allow write: if isOwner(userId);
+      }
+    }
+
+    // ---------------------------------------------------------------------
+    // Sellers
+    // ---------------------------------------------------------------------
+
+    // Read-only for the /seller/* route guard: a seller may read their own
+    // seller doc, an admin may read any. All writes (onboarding, approval,
+    // suspension) happen through admin-only callables using the Admin SDK —
+    // never a direct client write, so this stays closed even to admins here.
+    match /sellers/{sellerId} {
+      allow read: if isSeller(sellerId) || isAdmin();
+      allow write: if false;
+
+      // Phase 13: onboarding-collected pickup addresses, copied here by
+      // reviewSellerApplication.ts on approval. Post-approval, the seller
+      // (or manage_listings staff) can add/edit further pickup addresses
+      // directly — no money/authorization implications, unlike the parent
+      // seller doc.
+      match /pickupAddresses/{addressId} {
+        allow read: if isSeller(sellerId) || isAdmin();
+        allow write: if hasSellerPermission(sellerId, 'manage_listings');
+      }
+
+      // Phase 13: seller-editable settings, deliberately split out of the
+      // parent (Cloud-Function-only) seller doc — see
+      // packages/shared/src/schemas/sellerSettings.ts's header comment.
+      // `holidayMode` and `storeSlug` are the field groups here that stay
+      // callable-only (setHolidayMode.ts bulk-touches listings;
+      // setStoreSlug.ts atomically claims storeSlugReservations), enforced
+      // the same way unchangedProtectedUserFields() guards the users
+      // collection. Phase 14 M9: publicly readable — this is the only
+      // seller-scoped doc safe to expose signed-out, holding the
+      // denormalized businessName/ratingAvg/ratingCount/storeSlug the
+      // public store page (requirement 7) reads, deliberately instead of
+      // widening `sellers/{sellerId}`'s read rule (which also holds
+      // gstin/pan/bankAccount). Phase 24: legalName/registeredAddress/gstin
+      // (Consumer Protection Rule 5(4) disclosure) join
+      // holidayMode/storeSlug as protected fields below — a seller must
+      // never directly overwrite their own legal-identity disclosure;
+      // reviewSellerApplication.ts (Admin SDK) is the only writer.
+      match /settings/{docId} {
+        allow read: if true;
+        allow write: if hasSellerPermission(sellerId, 'manage_listings')
+          && request.resource.data.get('holidayMode', null) == resource.data.get('holidayMode', null)
+          && request.resource.data.get('storeSlug', null) == resource.data.get('storeSlug', null)
+          && request.resource.data.get('legalName', null) == resource.data.get('legalName', null)
+          && request.resource.data.get('registeredAddress', null) == resource.data.get('registeredAddress', null)
+          && request.resource.data.get('gstin', null) == resource.data.get('gstin', null);
+      }
+    }
+
+    // Phase 13: draft-persisted seller onboarding application. `applicationId`
+    // is always the applicant's own uid (see sellerApplication.ts), so the
+    // owner can write their own draft directly (fast save-per-step, no
+    // callable round-trip) while it's still editable — but the
+    // status-machine fields are never client-writable, exactly like
+    // `sellers/{sellerId}` above; submitSellerApplication.ts and
+    // reviewSellerApplication.ts (Admin SDK) are the only writers of those.
+    function unchangedApplicationReviewFields() {
+      let before = resource.data;
+      let after = request.resource.data;
+      return after.status == before.status
+        && after.get('reviewNotes', []) == before.get('reviewNotes', [])
+        && after.get('reviewedBy', null) == before.get('reviewedBy', null)
+        && after.get('reviewedAt', null) == before.get('reviewedAt', null)
+        && after.get('submittedAt', null) == before.get('submittedAt', null);
+    }
+
+    match /sellerApplications/{applicationId} {
+      allow read: if isOwner(applicationId) || isAdmin();
+      allow create: if isOwner(applicationId) && applicationId == request.auth.uid
+        && request.resource.data.status == 'draft';
+      allow update: if isOwner(applicationId)
+        && resource.data.status in ['draft', 'changes_requested']
+        && unchangedApplicationReviewFields();
+      allow delete: if false;
+    }
+
+    // Phase 13: staff accounts. Every mutation (invite/accept/remove) needs
+    // the Admin SDK anyway — custom-claims side effects can't happen from a
+    // client write — so this mirrors `sellers/{sellerId}`'s "read scoped,
+    // write:false" shape exactly; permission-matrix enforcement for these
+    // callables lives in functions/src/seller/staffAuthz.ts.
+    match /sellerStaff/{staffId} {
+      allow read: if isAdmin() || isSeller(resource.data.sellerId);
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Master catalog + vehicle data: public read, admin-only write.
+    // ("catalog/**" and "vehicles/**" from the spec map onto these five
+    // flat top-level collections — Firestore has no literal "catalog/"
+    // parent document, so each master-data collection gets the same rule.)
+    // ---------------------------------------------------------------------
+
+    match /catalogParts/{partId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /catalogFitments/{fitmentId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /vehicleMakes/{makeId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /vehicleModels/{modelId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /vehicleVariants/{variantId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ---------------------------------------------------------------------
+    // Listings
+    // ---------------------------------------------------------------------
+
+    function listingFieldsValid() {
+      let data = request.resource.data;
+      return hasValidPaiseField('stockQty')
+        && (!('mrpPaise' in data) || hasValidPaiseField('mrpPaise'))
+        && data.pricing.moq is int && data.pricing.moq > 0
+        && data.pricing.tiers is list
+        && data.pricing.tiers.size() >= 1 && data.pricing.tiers.size() <= 6
+        && data.gstRatePercent in [0, 5, 12, 18, 28]
+        && data.hsnCode is string
+        && data.hsnCode.matches('^([0-9]{4}|[0-9]{6}|[0-9]{8})$');
+    }
+
+    match /listings/{listingId} {
+      // Public catalog read for active listings only; the owning seller and
+      // admins can also read drafts/paused/rejected/archived listings.
+      allow read: if (resource.data.status == 'active')
+        || isSeller(resource.data.sellerId)
+        || isAdmin();
+
+      // Phase 14: seller-initiated create/update goes exclusively through
+      // the saveListing/updateListingStatus callables now (Admin SDK,
+      // bypasses this file entirely) — persistListing.ts re-validates the
+      // full listingSchema there, including listingPricingSchema's deep
+      // tier-ladder invariants (contiguous ranges, strictly-descending
+      // price, moq % stepQty) that listingFieldsValid() below can only
+      // shallow-check. This isn't "less enforcement": it closes a real gap
+      // where a client bypassing the shared zod schema could previously
+      // write a rules-valid-but-logically-broken ladder directly, and a
+      // second gap where any staff account (regardless of
+      // hasSellerPermission) could write listings — the old rule checked
+      // isSeller() only, unlike every other seller-owned collection here.
+      // Direct writes stay open to admins only, for moderation
+      // (block/unblock a listing) — listingFieldsValid() remains as
+      // defense-in-depth on that path.
+      allow create: if isAdmin() && listingFieldsValid();
+      allow update: if isAdmin() && listingFieldsValid();
+
+      allow delete: if false; // archive via status instead of deleting
+
+      // Phase 14: per-listing cost price, deliberately kept off the parent
+      // doc (which is publicly readable once status == 'active') since cost
+      // price is competitively sensitive. Feeds the SlabPricingEditor's
+      // margin calculator — see packages/shared/src/pricing/margin.ts.
+      match /private/cost {
+        allow read, write: if hasSellerPermission(
+          get(/databases/$(database)/documents/listings/$(listingId)).data.sellerId,
+          'manage_listings'
+        ) || isAdmin();
+      }
+    }
+
+    // Phase 14: saved pricing-ladder "shapes" (requirement 3d). Callable-only
+    // write (savePricingTemplate/deletePricingTemplate/applyPricingTemplate)
+    // — same posture as listings, since a template's tiers need the same
+    // deep tier-ladder validation these rules can't practically re-run.
+    match /pricingTemplates/{templateId} {
+      allow read: if hasSellerPermission(resource.data.sellerId, 'manage_listings') || isAdmin();
+      allow write: if false;
+    }
+
+    // Phase 14: seller-submitted new-SKU proposals (requirement 2), reviewed
+    // by an admin via reviewPartRequest.ts. Callable-only, same posture as
+    // listings/pricingTemplates — the seller's own queue-status view and the
+    // admin queue both just read this collection.
+    match /partRequests/{requestId} {
+      allow read: if hasSellerPermission(resource.data.sellerId, 'manage_listings') || isAdmin();
+      allow write: if false;
+    }
+
+    // Phase 14: append-only stock movement log (requirement 5). Written only
+    // by adjustStock.ts (manual) and the order-lifecycle transactions
+    // (createOrder/paymentTransition/stockOps.ts) — never a direct client
+    // write.
+    match /stockLedger/{entryId} {
+      allow read: if hasSellerPermission(resource.data.sellerId, 'manage_listings') || isAdmin();
+      allow write: if false;
+    }
+
+    // Phase 14: bulk upload jobs (requirement 4) — status/progress/row
+    // results, written only by parseBulkListingUpload.ts /
+    // commitBulkListingUpload.ts.
+    match /bulkUploadJobs/{jobId} {
+      allow read: if hasSellerPermission(resource.data.sellerId, 'manage_listings') || isAdmin();
+      allow write: if false;
+    }
+
+    // Phase 14 M8: daily per-seller dashboard rollup (requirement 6) —
+    // written only by rollupSellerDailyStats.ts. Readable by any seller
+    // staff member (no specific permission — the dashboard is a general
+    // landing view, not a privileged action), or an admin.
+    match /sellerDailyStats/{statId} {
+      allow read: if isSeller(resource.data.sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    // Phase 14 M9: atomic store-handle claim lock, doc id = the slug
+    // itself — written only by setStoreSlug.ts. Publicly readable so the
+    // public /store/:sellerSlug route can resolve slug -> sellerId
+    // signed-out.
+    match /storeSlugReservations/{slug} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Cart — one per buyer, id == uid. Line-item add/qty/remove/save-for-later
+    // stay direct client writes (unitPricePaise/tierMinQtyApplied are only
+    // ever a display-only snapshot, see cartItemSchema's doc comment) — the
+    // payable total is never read from this doc, only from the priceCart
+    // callable's response (Phase 7).
+    // ---------------------------------------------------------------------
+
+    match /carts/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // ---------------------------------------------------------------------
+    // Coupons (Phase 7) — coupon validation itself always goes through the
+    // priceCart callable (Admin SDK, bypasses these rules), never a direct
+    // client read; this rule only opens active coupons for read in case a
+    // future "available offers" listing needs one. usedCount and every
+    // other field are only ever written by Cloud Functions.
+    // ---------------------------------------------------------------------
+
+    match /coupons/{couponId} {
+      allow read: if resource.data.status == 'active' || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // ---------------------------------------------------------------------
+    // Orders / subOrders — never client-writable. All writes (placement,
+    // status transitions, payment reconciliation) go through Cloud Functions
+    // using the Admin SDK. A multi-seller order's parent `orders` doc is
+    // buyer-only to read (it can contain other sellers' line items); each
+    // `subOrders` doc is scoped to exactly the buyer and the one seller it
+    // belongs to.
+    // ---------------------------------------------------------------------
+
+    match /orders/{orderId} {
+      allow read: if isOwner(resource.data.buyerId) || isAdmin();
+      allow write: if false;
+    }
+
+    match /subOrders/{subOrderId} {
+      allow read: if isOwner(resource.data.buyerId)
+        || isSeller(resource.data.sellerId)
+        || isAdmin();
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Money ledgers: payments, payouts, seller ledgers, buyer credit
+    // accounts. Same rule everywhere — Cloud-Function/Admin-SDK writes only.
+    // ---------------------------------------------------------------------
+
+    // Populated by createOrder/confirmPayment/razorpayWebhook (Phase 8), all
+    // Admin SDK. The buyer may read their own payment record (the "resume
+    // payment" banner and order confirmation screen both poll payment status
+    // via the parent order instead, but this stays open for completeness).
+    match /payments/{paymentId} {
+      allow read: if isOwner(resource.data.buyerId) || isAdmin();
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Idempotency keys (Phase 8) — internal bookkeeping for createOrder /
+    // confirmPayment retries. Never read or written by the client; closed
+    // for defense-in-depth like rateLimits/pincodes above.
+    // ---------------------------------------------------------------------
+
+    match /idempotencyKeys/{key} {
+      allow read, write: if false;
+    }
+
+    // -----------------------------------------------------------------------
+    // Phase 12: payments, refunds, seller payouts and credit. Every write
+    // here is Cloud-Function/Admin-SDK only, same treatment as every other
+    // money-adjacent collection in this file.
+    // -----------------------------------------------------------------------
+
+    // Raw gateway webhook deliveries — internal bookkeeping/audit only,
+    // never read or written by the client, same treatment as idempotencyKeys.
+    match /webhookEvents/{eventId} {
+      allow read, write: if false;
+    }
+
+    // Buyer-submitted bank account for a COD refund (submitRefundBankDetails.ts
+    // is the only write path). The owning buyer may read their own submission.
+    match /refundBankDetails/{refundBankDetailId} {
+      allow read: if isOwner(resource.data.buyerId) || isAdmin();
+      allow write: if false;
+    }
+
+    match /creditLimitRequests/{requestId} {
+      allow read: if isOwner(resource.data.buyerId) || isAdmin();
+      allow write: if false;
+    }
+
+    match /creditStatements/{statementId} {
+      allow read: if isOwner(resource.data.buyerId) || isAdmin();
+      allow write: if false;
+    }
+
+    // Internal audit record of a Khata repayment's application — never
+    // surfaced to the client directly (the account's own outstandingPaise
+    // and the statement list already show the effect).
+    match /creditRepayments/{repaymentId} {
+      allow read, write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Shipping rate cache (Phase 10) — internal bookkeeping for
+    // getShippingRates.ts's short-lived (originPincode, destPincode,
+    // weightSlab) cache. Never read or written by the client, same
+    // treatment as idempotencyKeys above.
+    // ---------------------------------------------------------------------
+
+    match /shippingRateCache/{key} {
+      allow read, write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Notifications (Phase 9) — typed order-lifecycle events queued by
+    // Cloud Functions for Phase 16's dispatchers to pick up. A user may
+    // read their own; never client-writable.
+    // ---------------------------------------------------------------------
+
+    match /notificationsQueue/{notificationId} {
+      allow read: if isOwner(resource.data.userId) || isAdmin();
+      // Read-state (read/readAt) changes go through the markNotificationRead
+      // / markAllNotificationsRead callables (Admin SDK), not a loosened
+      // client-write rule here — keeps this collection's write surface at
+      // zero, same as every other state-machine collection in this file.
+      allow write: if false;
+    }
+
+    // Phase 16: canonical per-user channel preferences (buyer + seller +
+    // admin alike, doc id == userId). Written only via
+    // updateNotificationPreferences (Admin SDK).
+    match /notificationPreferences/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if false;
+    }
+
+    // Phase 16: admin-only triage view of notifications whose delivery
+    // exhausted every retry. Written only by
+    // functions/src/notifications/processNotificationChannels.ts.
+    match /notificationsDeadLetter/{deadLetterId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    // Phase 16: internal per-user/per-channel/per-day send counters backing
+    // the marketing-notification rate limit — pure bookkeeping, never read
+    // or written by any client.
+    match /notificationRateCounters/{counterId} {
+      allow read, write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // SLA breaches (Phase 9) — seller-scorecard data written only by
+    // autoCancelUnacceptedSubOrders. The owning seller may read their own
+    // breach history; never client-writable.
+    // ---------------------------------------------------------------------
+
+    match /slaBreaches/{slaBreachId} {
+      allow read: if isSeller(resource.data.sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    match /payouts/{payoutId} {
+      allow read: if isSeller(resource.data.sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // GST invoicing & compliance (Phase 11) — every write here is
+    // Cloud-Function/Admin-SDK only (numbering, PDF generation, TCS/TDS
+    // ledger postings all have to be atomic and server-computed, same as
+    // every other money/tax path in this file). Reads are scoped to the
+    // buyer, the owning seller, or an admin — the same three parties
+    // getInvoiceUrl.ts/getCreditNoteUrl.ts authorize for the signed PDF URL.
+    // ---------------------------------------------------------------------
+
+    match /invoices/{invoiceId} {
+      allow read: if isOwner(resource.data.buyerId) || isSeller(resource.data.sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    match /creditNotes/{creditNoteId} {
+      allow read: if isOwner(resource.data.buyerId) || isSeller(resource.data.sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    // Sequential-numbering counters and the FY gross-sales running total —
+    // internal bookkeeping only, same treatment as idempotencyKeys/
+    // rateLimits above: never read or written by the client.
+    match /invoiceCounters/{counterId} {
+      allow read, write: if false;
+    }
+
+    match /creditNoteCounters/{counterId} {
+      allow read, write: if false;
+    }
+
+    match /sellerFyGrossSales/{counterId} {
+      allow read, write: if false;
+    }
+
+    // E-way-bill tasks — the seller console's to-do list for shipments over
+    // the configured consignment-value threshold (design brief item 6). The
+    // owning seller may read their own (to export the JSON/CSV payload) but
+    // never write directly — status/ewayBillNumber only ever change via the
+    // markEwayBillGenerated callable.
+    match /ewayBillTasks/{ewayBillTaskId} {
+      allow read: if isSeller(resource.data.sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    match /ledgers/{ledgerId} {
+      allow read: if isAdmin()
+        || (resource.data.ownerType == 'seller' && isSeller(resource.data.ownerId));
+      allow write: if false;
+
+      match /entries/{entryId} {
+        allow read: if isAdmin()
+          || (get(/databases/$(database)/documents/ledgers/$(ledgerId)).data.ownerType == 'seller'
+              && isSeller(get(/databases/$(database)/documents/ledgers/$(ledgerId)).data.ownerId));
+        allow write: if false;
+      }
+    }
+
+    match /creditAccounts/{creditAccountId} {
+      allow read: if isOwner(resource.data.buyerId) || isAdmin();
+      allow write: if false;
+
+      // Append-only audit log of every limit change (design brief item 7) —
+      // owner + admin read, never client-writable (approveCreditLimit.ts and
+      // autoBlockOverdueCredit.ts are the only writers).
+      match /limitChanges/{changeId} {
+        allow read: if isAdmin()
+          || (isSignedIn()
+              && get(/databases/$(database)/documents/creditAccounts/$(creditAccountId)).data.buyerId == request.auth.uid);
+        allow write: if false;
+      }
+    }
+
+    // ---------------------------------------------------------------------
+    // Reviews
+    // ---------------------------------------------------------------------
+
+    // Internal-only gate written by the "subOrder delivered" Cloud Function.
+    // Never read or written directly by a client — the reviews create rule
+    // below reaches it via get(), which (unlike a client read) is exempt
+    // from this collection's own rules.
+    match /reviewEligibility/{eligibilityId} {
+      allow read, write: if false;
+    }
+
+    function reviewEligibilityDocId() {
+      return request.auth.uid + '_' + request.resource.data.listingId;
+    }
+
+    function hasReviewEligibility() {
+      return exists(/databases/$(database)/documents/reviewEligibility/$(reviewEligibilityDocId()))
+        && get(/databases/$(database)/documents/reviewEligibility/$(reviewEligibilityDocId())).data.eligible == true;
+    }
+
+    // A review may be edited by its author for 7 days after creation.
+    function withinReviewEditWindow(createdAt) {
+      return request.time.toMillis() - createdAt < 7 * 24 * 60 * 60 * 1000;
+    }
+
+    match /reviews/{reviewId} {
+      allow read: if resource.data.status == 'published'
+        || isOwner(resource.data.buyerId)
+        || isSeller(resource.data.sellerId)
+        || isAdmin();
+
+      // Phase 17: partId and vehicleFitted are pinned equal to the
+      // reviewEligibility gate doc's own values — never trusted from
+      // whatever the client's write happens to supply — same "gate doc is
+      // the source of truth" idiom as verifiedPurchase/hasReviewEligibility()
+      // itself. images is capped at MAX_REVIEW_IMAGES (4).
+      allow create: if isOwner(request.resource.data.buyerId)
+        && request.resource.data.verifiedPurchase == true
+        && request.resource.data.status == 'pending'
+        && hasReviewEligibility()
+        && request.resource.data.partId == get(/databases/$(database)/documents/reviewEligibility/$(reviewEligibilityDocId())).data.partId
+        && request.resource.data.get('vehicleFitted', null) == get(/databases/$(database)/documents/reviewEligibility/$(reviewEligibilityDocId())).data.get('vehicleFitted', null)
+        && request.resource.data.images.size() <= 4;
+
+      // The buyer may only edit their own rating/title/comment/images within
+      // the edit window; every identity/authorization field must stay
+      // exactly as it was (sellerReply is seller-owned and not opened for
+      // client writes yet — no seller-reply UI ships in this phase).
+      allow update: if isAdmin()
+        || (isOwner(resource.data.buyerId)
+            && withinReviewEditWindow(resource.data.createdAt)
+            && request.resource.data.buyerId == resource.data.buyerId
+            && request.resource.data.sellerId == resource.data.sellerId
+            && request.resource.data.orderId == resource.data.orderId
+            && request.resource.data.subOrderId == resource.data.subOrderId
+            && request.resource.data.listingId == resource.data.listingId
+            && request.resource.data.partId == resource.data.partId
+            && request.resource.data.get('vehicleFitted', null) == resource.data.get('vehicleFitted', null)
+            && request.resource.data.images.size() <= 4
+            && request.resource.data.verifiedPurchase == resource.data.verifiedPurchase
+            && request.resource.data.get('sellerReply', null) == resource.data.get('sellerReply', null)
+            && request.resource.data.status == resource.data.status);
+
+      allow delete: if isAdmin();
+    }
+
+    // ---------------------------------------------------------------------
+    // Q&A (Phase 6, tightened Phase 17) — part-level, public read (like
+    // catalogParts). A buyer may create their own question. Answering used
+    // to be a direct client update by "any signed-in seller" — same
+    // looseness the RFQ section used to have — but design brief item 6
+    // ("answerable by sellers [who stock the part] and by buyers who
+    // purchased") needs a real eligibility check (an active listing for the
+    // seller, or a delivered purchase for the buyer) that rules can't
+    // practically express, so answering is Cloud-Function-only now
+    // (answerQuestion.ts, Admin SDK) — matching the RFQ section's "that's no
+    // longer allowed" precedent. Answers live in a subcollection so a
+    // question can have more than one answerer.
+    // ---------------------------------------------------------------------
+
+    match /qaQuestions/{questionId} {
+      allow read: if true;
+
+      allow create: if isOwner(request.resource.data.buyerId);
+      allow update: if false;
+      allow delete: if isAdmin();
+
+      match /answers/{answerId} {
+        allow read: if true;
+        allow write: if false;
+      }
+    }
+
+    // ---------------------------------------------------------------------
+    // Co-occurrence (Phase 6) — "frequently bought together" / "others also
+    // viewed" counters. Public read (it's just aggregate, non-sensitive
+    // popularity data feeding a recommendation rail); writes only ever come
+    // from onSubOrderDelivered / logPartCoView via the Admin SDK.
+    // ---------------------------------------------------------------------
+
+    match /coOccurrence/{partId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Returns — participants only (buyer + the subOrder's seller). Phase 18:
+    // approve/reject now books a reverse pickup (an external shipping-
+    // provider call) and QC pass/dispute triggers a refund or a linked
+    // replacement sub-order — real side effects a rules expression can't
+    // safely perform, so client `update` is closed entirely (same
+    // Cloud-Function-only house bias as spuriousReports/rfqQuotes below).
+    // decideReturn.ts / submitReturnQc.ts / resolveReturnQcPass.ts /
+    // autoPassReturnQc.ts own every transition past `requested` now — the
+    // seller-can-direct-update-to-approved/rejected path that used to live
+    // here is gone. `create` is unchanged: the buyer's direct client create
+    // for a fresh `requested` return still works (requestReturn.ts is the
+    // recommended, window/policy-checked path, but isn't the only one).
+    // ---------------------------------------------------------------------
+
+    match /returns/{returnId} {
+      allow read: if isOwner(resource.data.buyerId) || isSeller(resource.data.sellerId) || isAdmin();
+
+      allow create: if isOwner(request.resource.data.buyerId)
+        && request.resource.data.status == 'requested';
+
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Phase 18: warranty claims — separate, longer-window claim/review/
+    // brand-escalation flow. Every write (submit/approve/reject/escalate/
+    // resolve) goes through submitWarrantyClaim.ts/decideWarrantyClaim.ts —
+    // resolving one can move money (executeRefund) and always needs a
+    // server-side eligibility check (warranty window, delivered status)
+    // rules can't practically re-derive. Read is scoped to the participants.
+    // ---------------------------------------------------------------------
+
+    match /warrantyClaims/{claimId} {
+      allow read: if isOwner(resource.data.buyerId) || isSeller(resource.data.sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Phase 18: disputes — admin-escalation for a QC disagreement or a
+    // rejected/brand-escalated warranty claim, with a forced-resolution
+    // action that can refund the buyer and debit the seller ledger. Unlike
+    // `returns`, even `create` is Cloud-Function-only (openDispute.ts) since
+    // opening one requires validating the linked return/claim is actually
+    // in a disputable state — not something a create-time rules expression
+    // can check without a `get()` on a doc shape rules can't fully trust.
+    // ---------------------------------------------------------------------
+
+    match /disputes/{disputeId} {
+      allow read: if isOwner(resource.data.buyerId) || isSeller(resource.data.sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Phase 15: RFQs — buyer owns the request; any signed-in seller may read
+    // it (sellers discover open RFQs via the Typesense-synced feed and the
+    // routedSellerIds-scoped inbox, but the underlying Firestore doc is
+    // still gated to signed-in sellers, not the public). rfqQuotes are
+    // scoped to the quoting seller + the buyer who owns the parent rfq
+    // (buyerId is denormalized onto the quote so this never needs a get()).
+    //
+    // Every write to rfqs/rfqQuotes/messages is Cloud-Function-only now
+    // (Admin SDK, bypasses these rules) — accepting a quote creates a real
+    // order (stock/tax/GST-split/invoicing), routing enforces a response
+    // window, and message bodies are moderated for contact-info sharing
+    // server-side. None of that can be safely re-implemented as a rules
+    // expression, matching this file's header ("every write path that
+    // touches pricing, tax, or order state is Cloud-Function-only"). An
+    // earlier version of this section let the buyer flip a quote straight
+    // to 'accepted' from the client — that's no longer allowed.
+    // ---------------------------------------------------------------------
+
+    match /rfqs/{rfqId} {
+      allow read: if isOwner(resource.data.buyerId)
+        || isAdmin()
+        || (isSignedIn() && request.auth.token.get('role', null) == 'seller');
+
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    match /rfqQuotes/{quoteId} {
+      allow read: if isAdmin()
+        || isSeller(resource.data.sellerId)
+        || isOwner(resource.data.buyerId);
+
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+
+      // Phase 15: one private thread per (rfq, seller) quote — not one
+      // shared thread per rfq — so a seller's negotiation is never visible
+      // to a competing seller quoting on the same RFQ. Read-only for
+      // participants; sendRfqMessage.ts (Cloud Function) moderates the body
+      // for phone numbers/emails before it's ever persisted, so a client
+      // write path here would bypass that moderation entirely.
+      match /messages/{messageId} {
+        allow read: if isAdmin() || isSeller(resource.data.sellerId) || isOwner(resource.data.buyerId);
+        allow create: if false;
+        allow update: if false;
+        allow delete: if false;
+      }
+    }
+
+    // ---------------------------------------------------------------------
+    // Config singleton (conventionally config/app)
+    // ---------------------------------------------------------------------
+
+    // Phase 14: commission rates/promotions (config/commission) are
+    // competitively sensitive — publicly readable via this rule was a
+    // pre-existing gap, harmless until now, but the SlabPricingEditor's
+    // margin calculator (getCommissionRatePreview callable) is the first
+    // feature that makes it actively exploitable (any seller could read a
+    // rival's effective rate straight off this doc otherwise). IMPORTANT:
+    // Firestore evaluates every match block whose path pattern matches a
+    // request and allows it if ANY of them grants access (OR, not
+    // "most-specific-wins" — verified against the emulator; a sibling
+    // `match /config/commission { allow read: if isAdmin(); }` block does
+    // NOT override this wildcard, it only adds another way to be allowed).
+    // So the exclusion has to live in this condition directly.
+    match /config/{configId} {
+      allow read: if configId != 'commission' || isAdmin();
+      allow write: if isAdmin();
+
+      match /private/{privateDocId} {
+        allow read: if isAdmin();
+        allow write: if isAdmin();
+      }
+    }
+
+    // ---------------------------------------------------------------------
+    // Pincode master — never read directly by the client (the
+    // `lookupPincode` callable is the only sanctioned path, so the format is
+    // validated server-side and the raw dataset isn't scrapeable). Admins
+    // may manage the dataset directly for corrections/imports.
+    // ---------------------------------------------------------------------
+
+    match /pincodes/{pincode} {
+      allow read: if false;
+      allow write: if isAdmin();
+    }
+
+    // ---------------------------------------------------------------------
+    // Rate-limit counters (e.g. lookupVehicleByReg's daily cap). Written and
+    // read exclusively by Cloud Functions via the Admin SDK, which bypasses
+    // these rules entirely — closed here for defense-in-depth, same as
+    // `pincodes`, so a client can never read or forge its own counter.
+    // ---------------------------------------------------------------------
+
+    match /rateLimits/{rateLimitId} {
+      allow read, write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Device fingerprints (Phase 23 abuse detection: duplicate-account
+    // detection). Written and read exclusively by
+    // functions/src/abuse/registerDeviceFingerprint.ts via the Admin SDK —
+    // closed here for defense-in-depth, same as rateLimits, so a client can
+    // never read who else shares its fingerprint or forge another device's.
+    // ---------------------------------------------------------------------
+
+    match /deviceFingerprints/{fingerprintId} {
+      allow read, write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Search (Phase 5) — the Typesense sync queue is Cloud-Function/Admin-SDK
+    // only, same as rateLimits. searchMisses is the one deliberately
+    // client-writable collection here: it must work for signed-out search
+    // too (see the schema's doc comment), so it's a direct create rather
+    // than a callable — shape-guarded, no read (it's a write-only inbox for
+    // the seller-acquisition/catalogue-gap report), no update/delete.
+    // ---------------------------------------------------------------------
+
+    match /searchIndexQueue/{listingId} {
+      allow read, write: if false;
+    }
+
+    // Phase 14: the catalog_parts search pipeline's queue — same
+    // Cloud-Function/Admin-SDK-only treatment as searchIndexQueue above.
+    match /catalogPartSearchIndexQueue/{partId} {
+      allow read, write: if false;
+    }
+
+    function searchMissFieldsValid() {
+      let data = request.resource.data;
+      return data.query is string && data.query.size() > 0 && data.query.size() <= 200
+        && data.normalizedQuery is string && data.normalizedQuery.size() > 0 && data.normalizedQuery.size() <= 200
+        && data.createdAt is int
+        && (!('userId' in data) || (isSignedIn() && data.userId == request.auth.uid));
+    }
+
+    match /searchMisses/{searchMissId} {
+      allow read: if isAdmin();
+      allow create: if searchMissFieldsValid();
+      allow update, delete: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Phase 17: trust systems — anti-counterfeit reports and brand
+    // authorizations. Both follow the RFQ/returns-tightened house bias
+    // (Cloud-Function-only writes, since the report/resolve/penalty-ladder
+    // flow needs server-side authorization checks and transactional side
+    // effects rules can't express) — read is scoped to the participants.
+    // ---------------------------------------------------------------------
+
+    match /spuriousReports/{reportId} {
+      allow read: if isOwner(resource.data.reporterId) || isSeller(resource.data.sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    match /brandAuthorizations/{authorizationId} {
+      allow read: if isSeller(resource.data.sellerId) || isAdmin();
+      allow write: if false;
+    }
+
+    // Audit log for QR/hologram scans (verifyPartAuthenticity.ts) — a user
+    // may see their own scan history, never anyone else's.
+    match /authenticityScans/{scanId} {
+      allow read: if isOwner(resource.data.scannedBy) || isAdmin();
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Phase 19: admin console. New collections here are deliberately
+    // Cloud-Function-only for writes (unlike some earlier-phase collections
+    // such as catalogParts/coupons, which allow a direct isAdmin() client
+    // write) specifically so every mutation funnels through a callable that
+    // calls writeAuditLog() — see functions/src/util/auditLog.ts. A direct
+    // admin client write here would silently skip the audit trail the
+    // design brief requires.
+    // ---------------------------------------------------------------------
+
+    // Append-only; never client-writable, not even by an admin — only
+    // writeAuditLog() (Admin SDK) appends.
+    match /auditLogs/{auditLogId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    match /brands/{brandId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /banners/{bannerId} {
+      allow read: if resource.data.status == 'active' || isAdmin();
+      allow write: if false;
+    }
+
+    match /campaigns/{campaignId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    // Published pages are public (policy/FAQ/SEO content); drafts admin-only.
+    match /cmsPages/{pageId} {
+      allow read: if resource.data.status == 'published' || isAdmin();
+      allow write: if false;
+    }
+
+    // Multilingual string overrides — i18next's admin-override layer reads
+    // these before falling back to its bundled locale files, so every
+    // client needs read access; written only by admin via a callable.
+    match /stringOverrides/{key} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /payoutRuns/{payoutRunId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    // Consent-gated support impersonation session log — see
+    // functions/src/users/startImpersonation.ts. Never client-writable;
+    // admin-read only (the impersonated user never sees this collection).
+    match /impersonationSessions/{sessionId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Phase 20: growth features. homeSections follows the same
+    // Cloud-Function-only pattern as Phase 19's banners/campaigns (see
+    // functions/src/marketing/saveHomeSection.ts) — every mutation funnels
+    // through writeAuditLog(). homepageComputed is a small
+    // server-aggregated doc (functions/src/marketing/computeBulkBuySpotlight.ts),
+    // public read since it carries nothing sensitive.
+    // ---------------------------------------------------------------------
+
+    match /homeSections/{sectionId} {
+      allow read: if resource.data.status == 'active' || isAdmin();
+      allow write: if false;
+    }
+
+    match /homepageComputed/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Phase 22: discoverability & measurement. seoLandingPages is public
+    // read (it's rendered content, see CategoryPage's SEO wiring) but
+    // Cloud-Function-only write (generateSeoLandingPages.ts). sitemapCache
+    // is never read by any client SDK — only the sitemapXml onRequest
+    // function reads it, via the Admin SDK, which bypasses these rules
+    // entirely — so it stays fully closed rather than granting a read path
+    // nothing legitimate uses. analyticsFunnelDaily/slabEffectivenessDaily/
+    // cohortRetention back the admin analytics dashboard's direct reads
+    // (see apps/web/src/features/admin/api/) — admin-only, write:false
+    // since only logFunnelEvent/the scheduled rollups (Admin SDK) write them.
+    // ---------------------------------------------------------------------
+
+    match /seoLandingPages/{landingPageId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /sitemapCache/{shardId} {
+      allow read, write: if false;
+    }
+
+    match /analyticsFunnelDaily/{docId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    match /slabEffectivenessDaily/{docId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    match /cohortRetention/{docId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Phase 24: launch readiness. Support tickets (contact form) — same
+    // treatment as `disputes` above: even `create` is Cloud-Function-only
+    // (createSupportTicket.ts), since a guest (not-signed-in) submission has
+    // no `request.auth` for a create-time rule to key off, and the SLA
+    // clock/message-seeding logic isn't something a rules expression can
+    // reasonably reproduce. A guest ticket (`userId` unset) has no owner who
+    // can read it back through this collection — the admin reply goes to
+    // contactEmail/contactPhone directly, outside the app; see
+    // createSupportTicket.ts's header comment.
+    // ---------------------------------------------------------------------
+
+    match /supportTickets/{ticketId} {
+      allow read: if (resource.data.userId is string && isOwner(resource.data.userId)) || isAdmin();
+      allow write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // Everything else stays closed by default.
+    // ---------------------------------------------------------------------
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

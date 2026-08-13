@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#14181C" />
+    <title>You're offline — SnapSpare</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      /* Deliberately plain, inline CSS: this file is served by the service
+         worker as a last-resort fallback (see scripts/generate-sw.mjs's
+         setCatchHandler), so it must render with zero network requests and
+         no build step — it can't pull in Tailwind's compiled output. Colors
+         are hand-copied from src/styles/globals.css's design tokens. */
+      :root {
+        --ink: #14181c;
+        --steel: #4a5560;
+        --signal: #ff6b00;
+        --surface: #ffffff;
+        --surface-muted: #f5f6f7;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        background: var(--surface);
+        color: var(--ink);
+        font:
+          16px/1.5 -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 32px 20px 64px;
+      }
+      .mark {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        background: var(--ink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 24px 0 16px;
+      }
+      h1 {
+        font-size: 22px;
+        margin: 0 0 6px;
+        text-align: center;
+      }
+      p.lead {
+        color: var(--steel);
+        text-align: center;
+        margin: 0 0 28px;
+        max-width: 32em;
+      }
+      button#retry {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0 20px;
+        border: none;
+        border-radius: 6px;
+        background: var(--signal);
+        color: var(--ink);
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      section {
+        width: 100%;
+        max-width: 480px;
+        margin-top: 32px;
+      }
+      section h2 {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--steel);
+        margin: 0 0 8px;
+      }
+      ul {
+        list-style: none;
+        margin: 0 0 24px;
+        padding: 0;
+        border: 1px solid var(--surface-muted);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      li {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--surface-muted);
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 14px;
+      }
+      li:last-child {
+        border-bottom: none;
+      }
+      .muted-empty {
+        color: var(--steel);
+        font-size: 14px;
+        padding: 4px 2px 20px;
+      }
+      .mono {
+        font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mark" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 32 32"><path d="M9 21 L16 8 L23 21 Z" fill="#FF6B00" /></svg>
+    </div>
+    <h1>You're offline</h1>
+    <p class="lead">
+      We couldn't reach SnapSpare. Check your connection — anything below was saved from your last visit.
+    </p>
+    <button id="retry" type="button">Try again</button>
+
+    <section>
+      <h2>Recent orders</h2>
+      <ul id="orders-list"></ul>
+      <p id="orders-empty" class="muted-empty" hidden>No cached orders yet — they'll show up here after your next visit online.</p>
+    </section>
+
+    <section>
+      <h2>My Garage</h2>
+      <ul id="garage-list"></ul>
+      <p id="garage-empty" class="muted-empty" hidden>No cached vehicles yet — they'll show up here after your next visit online.</p>
+    </section>
+
+    <script>
+      // Reads the same localStorage key src/stores/offlineCacheStore.ts
+      // (a Zustand persist store) writes to from OrdersPage/GarageList
+      // whenever they successfully load live data. This page has no
+      // bundler/React, so it reads the persisted JSON directly instead of
+      // importing the store.
+      function readCache() {
+        try {
+          var raw = localStorage.getItem('snapspare-offline-cache')
+          if (!raw) return { recentOrders: [], garageVehicles: [] }
+          return JSON.parse(raw).state || { recentOrders: [], garageVehicles: [] }
+        } catch {
+          return { recentOrders: [], garageVehicles: [] }
+        }
+      }
+
+      function formatINR(paise) {
+        var rupees = Math.floor(paise / 100)
+        var str = String(rupees).replace(/(\d)(?=(\d\d)+\d$)/g, '$1,')
+        return '₹' + str
+      }
+
+      var cache = readCache()
+
+      var ordersList = document.getElementById('orders-list')
+      var ordersEmpty = document.getElementById('orders-empty')
+      if (cache.recentOrders && cache.recentOrders.length > 0) {
+        cache.recentOrders.forEach(function (order) {
+          var li = document.createElement('li')
+          var left = document.createElement('span')
+          left.className = 'mono'
+          left.textContent = order.id
+          var right = document.createElement('span')
+          right.textContent = formatINR(order.totalPaise) + ' · ' + order.status
+          li.appendChild(left)
+          li.appendChild(right)
+          ordersList.appendChild(li)
+        })
+      } else {
+        ordersEmpty.hidden = false
+      }
+
+      var garageList = document.getElementById('garage-list')
+      var garageEmpty = document.getElementById('garage-empty')
+      if (cache.garageVehicles && cache.garageVehicles.length > 0) {
+        cache.garageVehicles.forEach(function (vehicle) {
+          var li = document.createElement('li')
+          li.textContent = vehicle.label
+          garageList.appendChild(li)
+        })
+      } else {
+        garageEmpty.hidden = false
+      }
+
+      document.getElementById('retry').addEventListener('click', function () {
+        location.reload()
+      })
+    </script>
+  </body>
+</html>

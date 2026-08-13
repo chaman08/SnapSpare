@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "dev": "snapspare-edcc1",
+    "staging": "snapspare-staging",
+    "prod": "snapspare-prod"
+  }
+}

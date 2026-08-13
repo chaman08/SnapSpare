@@ -1,0 +1,160 @@
+name: Deploy
+
+# Staged deploy pipeline: staging deploys automatically once CI is green on
+# `main`; prod deploys the same artifacts but only after a human approves a
+# GitHub Environment gate.
+#
+# Trigger choice: `workflow_run` on CI's completion, rather than a second
+# `push: branches: [main]` trigger on this same workflow. Two reasons:
+#   1. It's a hard dependency, not a coincidence — this workflow must never
+#      deploy a commit CI hasn't actually finished validating (typecheck,
+#      lint, test, test:rules, build, lighthouse). A second independent
+#      `push` trigger would start deploy.yml and ci.yml in parallel racing
+#      against each other, with nothing stopping a deploy of a commit that
+#      CI is about to fail on.
+#   2. `workflow_run` lets this file `if: github.event.workflow_run.conclusion
+#      == 'success'`-gate cleanly on CI's actual result without duplicating
+#      any of ci.yml's install/build steps here.
+# The alternative the task description offered — folding everything into one
+# workflow with sequential jobs — was passed over because it would mean
+# every PR run (which doesn't need to deploy anything) pays for a workflow
+# file that also carries deploy-shaped jobs/environments, and it couples
+# ci.yml's "did the code pass" concern with this file's "where does it go"
+# concern for no real benefit here.
+#
+# Both deploy-staging and deploy-prod deploy functions, then Firestore/
+# Storage rules, then hosting — in that order. Functions-before-hosting
+# mirrors firebase.json/README's stated principle: a client on the newly
+# deployed hosting bundle must never be able to call a function that doesn't
+# exist yet on the backend it's talking to. Rules are deployed between the
+# two so a newly required rule (backing a new function) is live before the
+# hosting bundle that exercises it ships.
+#
+# Secrets required (none of these exist in the repo yet — see
+# docs/runbooks/rollback.md):
+#   - FIREBASE_SERVICE_ACCOUNT_STAGING — JSON key for a service account on
+#     the `staging` Firebase project with Firebase Admin (or the narrower
+#     Firebase Hosting Admin + Cloud Functions Admin + Cloud Datastore
+#     Index Admin) roles.
+#   - FIREBASE_SERVICE_ACCOUNT_PROD — same, for the `prod` project.
+# Both `staging` and `prod` in .firebaserc (snapspare-staging,
+# snapspare-prod) are still placeholder project ids — see README
+# "Deliberately left out". Until real GCP projects exist at those ids and
+# the two secrets above are populated, both jobs below will fail at the
+# "Authenticate" step; that's expected until a human operator provisions
+# them (this workflow is scaffolding, not yet a live pipeline).
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+
+concurrency:
+  group: deploy-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: false
+
+jobs:
+  deploy-staging:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    # Named Environment for deployment-history/URL bookkeeping, not for
+    # gating — unlike `production` below, no required reviewers are set up
+    # for `staging` here (and none should be, per "auto-deploy to staging").
+    # A repo admin could still add protection rules to it later if that
+    # ever changes.
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Authenticate to Firebase (staging service account)
+        run: |
+          echo "$FIREBASE_SERVICE_ACCOUNT_STAGING" > "$RUNNER_TEMP/gcp-key.json"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/gcp-key.json" >> "$GITHUB_ENV"
+        env:
+          FIREBASE_SERVICE_ACCOUNT_STAGING: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STAGING }}
+
+      # 1. Functions first — see header comment.
+      - name: Build functions
+        run: pnpm --filter @snapspare/functions build
+
+      - name: Deploy functions (staging)
+        run: pnpm exec firebase deploy --only functions --project staging --non-interactive
+
+      # 2. Firestore/Storage rules — any rule a just-deployed function relies
+      #    on must be live before hosting starts sending it traffic.
+      - name: Deploy Firestore & Storage rules (staging)
+        run: pnpm exec firebase deploy --only firestore:rules,storage --project staging --non-interactive
+
+      # 3. Hosting last.
+      - name: Build web app
+        run: pnpm --filter @snapspare/web build
+
+      - name: Deploy hosting (staging)
+        run: pnpm exec firebase deploy --only hosting --project staging --non-interactive
+
+  deploy-prod:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    # A repo admin must create this "production" Environment under Settings
+    # -> Environments and add required reviewers there — that's not
+    # something a workflow file can configure. Until that's done, this job
+    # runs unattended, exactly like deploy-staging, the first time it's
+    # triggered. See docs/runbooks/rollback.md.
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Authenticate to Firebase (prod service account)
+        run: |
+          echo "$FIREBASE_SERVICE_ACCOUNT_PROD" > "$RUNNER_TEMP/gcp-key.json"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/gcp-key.json" >> "$GITHUB_ENV"
+        env:
+          FIREBASE_SERVICE_ACCOUNT_PROD: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROD }}
+
+      # 1. Functions first — see header comment.
+      - name: Build functions
+        run: pnpm --filter @snapspare/functions build
+
+      - name: Deploy functions (prod)
+        run: pnpm exec firebase deploy --only functions --project prod --non-interactive
+
+      # 2. Firestore/Storage rules.
+      - name: Deploy Firestore & Storage rules (prod)
+        run: pnpm exec firebase deploy --only firestore:rules,storage --project prod --non-interactive
+
+      # 3. Hosting last.
+      - name: Build web app
+        run: pnpm --filter @snapspare/web build
+
+      - name: Deploy hosting (prod)
+        run: pnpm exec firebase deploy --only hosting --project prod --non-interactive

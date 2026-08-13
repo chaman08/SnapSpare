@@ -1,0 +1,47 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Build output
+dist
+**/dist
+lib
+**/lib
+*.tsbuildinfo
+
+# Env files
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Firebase
+.firebase
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+pubsub-debug.log
+.emulator-data
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+
+# Husky
+.husky/_
+
+# Local-only Cloud Functions secret values for the emulator (see
+# functions/.env.example) — firebase-tools' own convention, never committed.
+functions/.secret.local
+
+# Generated from apps/web/.env by scripts/generate-sw.mjs (runs before
+# dev/build) — never hand-edited, so never committed.
+apps/web/public/sw.js

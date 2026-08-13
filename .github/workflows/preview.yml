@@ -1,0 +1,71 @@
+name: PR Hosting Preview
+
+# Deploys every PR's web build to a Firebase Hosting *preview channel* scoped
+# to that PR (channel id `pr-<number>`) against the `dev` project alias
+# (snapspare-edcc1) — `staging`/`prod` in .firebaserc are still placeholder
+# project ids (see README "Deliberately left out"), so there is nothing real
+# to preview against yet for those. Runs independently of ci.yml: a broken
+# preview shouldn't block CI status, and CI shouldn't block a preview of a
+# WIP PR.
+#
+# Requires a repo secret `FIREBASE_SERVICE_ACCOUNT_DEV` containing the full
+# JSON key of a service account on the `snapspare-edcc1` GCP project with at
+# least "Firebase Hosting Admin" (roles/firebasehosting.admin). Create it
+# via one of:
+#   - Firebase Console -> Project Settings -> Service Accounts -> Generate
+#     new private key (paste the resulting JSON file's contents as the
+#     secret value), or
+#   - `firebase init hosting:github` run locally against the `dev` project,
+#     which provisions the service account and can create the GitHub secret
+#     for you if you authorize it with the GitHub CLI.
+# This secret does not exist yet in this repo — until it's added, this
+# workflow's deploy step will fail with an auth error. See
+# docs/runbooks/rollback.md for the full list of secrets this pipeline needs.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: preview-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    # Preview channels only need hosting reachable — Cloud Functions/rules
+    # for a PR preview still hit the `dev` project's already-deployed
+    # backend, so functions are built (to catch compile errors) but not
+    # deployed here.
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build functions (typecheck only — not deployed for previews)
+        run: pnpm --filter @snapspare/functions build
+
+      - name: Build web app
+        run: pnpm --filter @snapspare/web build
+
+      - name: Deploy hosting preview channel
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}
+          projectId: snapspare-edcc1
+          channelId: pr-${{ github.event.number }}
+          expires: 7d

@@ -1,0 +1,37 @@
+{
+  "name": "snapspare",
+  "private": true,
+  "version": "0.0.0",
+  "engines": {
+    "node": ">=20 <21",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev": "pnpm --filter @snapspare/web dev",
+    "dev:emulators": "firebase emulators:start --import=./.emulator-data --export-on-exit=./.emulator-data",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "test:rules": "firebase emulators:exec --project demo-snapspare --only firestore \"pnpm --filter @snapspare/rules-tests test:rules\"",
+    "test:functions:emulator": "firebase emulators:exec --project demo-snapspare --only firestore \"pnpm --filter @snapspare/functions test:emulator\"",
+    "seed": "firebase emulators:exec --project demo-snapspare --only auth,firestore --export-on-exit=./.emulator-data \"pnpm --filter @snapspare/seed seed\"",
+    "deploy:functions": "pnpm --filter @snapspare/functions build && firebase deploy --only functions",
+    "deploy:hosting": "pnpm --filter @snapspare/web build && firebase deploy --only hosting",
+    "deploy:rules": "firebase deploy --only firestore:rules,storage",
+    "deploy:staged": "pnpm deploy:functions && pnpm deploy:rules && pnpm deploy:hosting",
+    "prepare": "husky || true"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "firebase-tools": "^13.24.1",
+    "husky": "^9.1.7",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.15.0"
+  }
+}
