@@ -597,13 +597,6 @@
       ]
     },
     {
-      "collectionGroup": "seoLandingPages",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "matchedPartCount", "order": "DESCENDING" }
-      ]
-    },
-    {
       "collectionGroup": "supportTickets",
       "queryScope": "COLLECTION",
       "fields": [
