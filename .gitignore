@@ -5,8 +5,7 @@ node_modules
 # Build output
 dist
 **/dist
-lib
-**/lib
+functions/lib
 *.tsbuildinfo
 
 # Env files

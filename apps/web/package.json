@@ -6,7 +6,7 @@
   "scripts": {
     "generate-sw": "node scripts/generate-sw.mjs",
     "dev": "node scripts/generate-sw.mjs && vite",
-    "build": "node scripts/generate-sw.mjs && tsc -b && vite build",
+    "build": "pnpm --filter @snapspare/shared build && node scripts/generate-sw.mjs && tsc -b && vite build",
     "build:prerender": "pnpm build && node scripts/generate-prerender-urls.mjs && node scripts/prerender.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
