@@ -16,8 +16,17 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
 const webRoot = fileURLToPath(new URL('..', import.meta.url))
-const envPath = `${webRoot}/.env`
-const envSource = existsSync(envPath) ? readFileSync(envPath, 'utf8') : ''
+// Mirrors Vite's own .env layering for the production build (.env, then
+// .env.production overriding matching keys) — apps/web/.env is gitignored
+// and won't exist on Vercel, so without this the generated service worker
+// would silently ship an empty (and thus invalid-api-key-throwing) Firebase
+// config in every deployed build.
+// readEnv() below takes the first regex match, so list higher-priority
+// files first: .env.production overrides .env for any key both define.
+const envSource = [`${webRoot}/.env.production`, `${webRoot}/.env`]
+  .filter(existsSync)
+  .map((path) => readFileSync(path, 'utf8'))
+  .join('\n')
 
 function readEnv(name) {
   const match = envSource.match(new RegExp(`^${name}=(.*)$`, 'm'))
