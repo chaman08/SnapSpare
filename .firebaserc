@@ -3,5 +3,13 @@
     "dev": "snapspare-edcc1",
     "staging": "snapspare-staging",
     "prod": "snapspare-prod"
+  },
+  "targets": {},
+  "etags": {
+    "snapspare-edcc1": {
+      "extensionInstances": {
+        "storage-resize-images": "83f83eac4cd67bdba76efe2e21c86b0e6009638f590d24c4146a355d742dbb33"
+      }
+    }
   }
 }

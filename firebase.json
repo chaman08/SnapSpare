@@ -48,7 +48,12 @@
       "source": "functions",
       "codebase": "default",
       "runtime": "nodejs20",
-      "predeploy": ["pnpm --filter @snapspare/functions build"]
+      "predeploy": [
+        "pnpm --filter @snapspare/shared build",
+        "pnpm --filter @snapspare/functions build",
+        "node scripts/prepare-functions-deploy.mjs"
+      ],
+      "postdeploy": ["node scripts/restore-functions-deploy.mjs"]
     }
   ],
   "firestore": {
@@ -59,7 +64,7 @@
     "rules": "storage.rules"
   },
   "extensions": {
-    "storage-resize-images": "firebase/storage-resize-images@0.2.2"
+    "storage-resize-images": "firebase/storage-resize-images@0.3.2"
   },
   "emulators": {
     "auth": { "port": 9099 },
