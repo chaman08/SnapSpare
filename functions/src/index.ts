@@ -6,7 +6,13 @@ import { initSentry } from './monitoring/sentry.js'
 initializeApp()
 initSentry()
 
-setGlobalOptions({ region: 'asia-south1', maxInstances: 10 })
+// `invoker: 'public'` is set explicitly (not left to the default) because
+// firebase-tools only re-applies the Cloud Run public-invoker IAM binding on
+// deploy when a function's spec has an *explicit* invoker value — a function
+// deployed without one, then later stripped of public access (e.g. by an org
+// policy sweep), silently stays unreachable on every future `deploy` since
+// the CLI has nothing to diff against and skips the IAM call entirely.
+setGlobalOptions({ region: 'asia-south1', maxInstances: 10, invoker: 'public' })
 
 /**
  * Scaffold-only health check so `firebase deploy --only functions` and the

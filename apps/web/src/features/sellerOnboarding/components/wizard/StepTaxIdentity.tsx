@@ -70,10 +70,10 @@ export function StepTaxIdentity({ uid, status, initial, onSaved, onBack }: StepT
       currentStep: 3,
       taxIdentity: {
         gstRegistered: values.gstRegistered,
-        gstin: values.gstRegistered ? (values.gstin || undefined) : undefined,
         pan: values.pan,
         gstComposition: values.gstRegistered ? values.gstComposition : false,
-        turnoverMode: values.gstRegistered ? undefined : values.turnoverMode,
+        ...(values.gstRegistered && values.gstin ? { gstin: values.gstin } : {}),
+        ...(!values.gstRegistered && values.turnoverMode ? { turnoverMode: values.turnoverMode } : {}),
       },
     })
     onSaved()

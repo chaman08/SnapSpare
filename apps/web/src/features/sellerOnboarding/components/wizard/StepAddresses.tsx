@@ -132,7 +132,9 @@ export function StepAddresses({ uid, status, initialRegistered, initialPickup, o
     await saveSellerApplicationStep(uid, status, {
       currentStep: 4,
       registeredAddress: values.registeredAddress,
-      pickupAddresses: values.pickupAddresses,
+      pickupAddresses: values.pickupAddresses.map(({ serviceable, ...address }) =>
+        serviceable === undefined ? address : { ...address, serviceable },
+      ),
     })
     onSaved()
   })
