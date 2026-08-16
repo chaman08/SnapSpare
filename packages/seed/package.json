@@ -10,6 +10,8 @@
     "seed": "tsx src/index.ts",
     "backfill-search": "tsx src/scripts/backfillSearchIndex.ts",
     "backfill-catalog-part-search": "tsx src/scripts/backfillCatalogPartSearchIndex.ts",
+    "promote-admin": "tsx src/scripts/promoteToAdmin.ts",
+    "seed-pincodes-prod": "tsx src/scripts/seedPincodesProd.ts",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "echo \"no tests in @snapspare/seed\" --passWithNoTests"

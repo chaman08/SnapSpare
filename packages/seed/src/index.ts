@@ -4,9 +4,13 @@ import { seedAdmin } from './seeders/seedAdmin.js'
 import { seedBuyers } from './seeders/seedBuyers.js'
 import { seedCatalogAndVehicles } from './seeders/seedCatalogAndVehicles.js'
 import { seedConfig } from './seeders/seedConfig.js'
+import { seedCoupons } from './seeders/seedCoupons.js'
 import { seedLegalContent } from './seeders/seedLegalContent.js'
 import { seedListings } from './seeders/seedListings.js'
+import { seedOrders } from './seeders/seedOrders.js'
 import { seedPincodes } from './seeders/seedPincodes.js'
+import { seedQa } from './seeders/seedQa.js'
+import { seedReviews } from './seeders/seedReviews.js'
 import { seedSellers } from './seeders/seedSellers.js'
 
 const SEED = 20260101 // fixed seed -> identical dataset on every `pnpm seed` run
@@ -31,13 +35,25 @@ async function main() {
   await seedBuyers()
 
   console.log('Seeding listings...')
-  await seedListings(rng, parts)
+  const listings = await seedListings(rng, parts)
 
   console.log('Seeding pincode master...')
   await seedPincodes()
 
   console.log('Seeding legal pages + help centre articles...')
   await seedLegalContent()
+
+  console.log('Seeding orders...')
+  const deliveredPurchases = await seedOrders(rng, listings)
+
+  console.log('Seeding reviews...')
+  await seedReviews(rng, deliveredPurchases)
+
+  console.log('Seeding Q&A...')
+  await seedQa(rng, parts)
+
+  console.log('Seeding coupons...')
+  await seedCoupons()
 
   const elapsedSeconds = ((Date.now() - startedAt) / 1000).toFixed(1)
   console.log(`\nDone in ${elapsedSeconds}s.`)
