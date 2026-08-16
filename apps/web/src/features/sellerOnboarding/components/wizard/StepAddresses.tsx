@@ -1,5 +1,5 @@
-import type { SellerApplication } from '@snapspare/shared'
-import { mobileSchema, pincodeSchema, stateCodeSchema } from '@snapspare/shared'
+import type { IndianStateCode, SellerApplication } from '@snapspare/shared'
+import { INDIAN_STATE_CODE_LIST, INDIAN_STATE_CODES, mobileSchema, pincodeSchema, stateCodeSchema } from '@snapspare/shared'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus, Trash2 } from 'lucide-react'
 import { type FocusEvent, useState } from 'react'
@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { lookupPincode } from '@/features/auth/api/pincodeLookup'
 import { checkPickupPincodeServiceability } from '@/features/sellerOnboarding/api/pickupServiceability'
 import { saveSellerApplicationStep } from '@/features/sellerOnboarding/api/sellerApplication'
@@ -128,6 +129,16 @@ export function StepAddresses({ uid, status, initialRegistered, initialPickup, o
     fields.forEach((_, i) => setValue(`pickupAddresses.${i}.isDefault`, i === index))
   }
 
+  function selectRegisteredState(code: string) {
+    setValue('registeredAddress.stateCode', code as IndianStateCode, { shouldValidate: true })
+    setValue('registeredAddress.state', INDIAN_STATE_CODES[code as IndianStateCode], { shouldValidate: true })
+  }
+
+  function selectPickupState(index: number, code: string) {
+    setValue(`pickupAddresses.${index}.stateCode`, code as IndianStateCode, { shouldValidate: true })
+    setValue(`pickupAddresses.${index}.state`, INDIAN_STATE_CODES[code as IndianStateCode], { shouldValidate: true })
+  }
+
   const submit = handleSubmit(async (values) => {
     await saveSellerApplicationStep(uid, status, {
       currentStep: 4,
@@ -160,8 +171,20 @@ export function StepAddresses({ uid, status, initialRegistered, initialPickup, o
         />
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <Input placeholder={t('address.form.city')} {...register('registeredAddress.city')} />
-          <Input placeholder={t('address.form.state')} readOnly {...register('registeredAddress.state')} />
+          <Select value={watch('registeredAddress.stateCode') || undefined} onValueChange={selectRegisteredState}>
+            <SelectTrigger aria-label={t('address.form.state')}>
+              <SelectValue placeholder={t('address.form.state')} />
+            </SelectTrigger>
+            <SelectContent>
+              {INDIAN_STATE_CODE_LIST.map((code) => (
+                <SelectItem key={code} value={code}>
+                  {INDIAN_STATE_CODES[code]}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
+        <input type="hidden" {...register('registeredAddress.state')} />
         <input type="hidden" {...register('registeredAddress.stateCode')} />
       </fieldset>
 
@@ -195,9 +218,24 @@ export function StepAddresses({ uid, status, initialRegistered, initialPickup, o
               <p className="text-xs text-alert">{t('sell.wizard.addresses.notServiceable')}</p>
             ) : null}
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              <Input placeholder={t('address.form.city')} readOnly {...register(`pickupAddresses.${index}.city`)} />
-              <Input placeholder={t('address.form.state')} readOnly {...register(`pickupAddresses.${index}.state`)} />
+              <Input placeholder={t('address.form.city')} {...register(`pickupAddresses.${index}.city`)} />
+              <Select
+                value={watch(`pickupAddresses.${index}.stateCode`) || undefined}
+                onValueChange={(code) => selectPickupState(index, code)}
+              >
+                <SelectTrigger aria-label={t('address.form.state')}>
+                  <SelectValue placeholder={t('address.form.state')} />
+                </SelectTrigger>
+                <SelectContent>
+                  {INDIAN_STATE_CODE_LIST.map((code) => (
+                    <SelectItem key={code} value={code}>
+                      {INDIAN_STATE_CODES[code]}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
+            <input type="hidden" {...register(`pickupAddresses.${index}.state`)} />
             <input type="hidden" {...register(`pickupAddresses.${index}.stateCode`)} />
             <label className="flex items-center gap-2 text-sm text-ink">
               <input type="radio" className="h-4 w-4 accent-signal" checked={watch(`pickupAddresses.${index}.isDefault`)} onChange={() => makeDefault(index)} />
